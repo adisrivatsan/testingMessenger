@@ -2,8 +2,13 @@ var express = require("express");
  var app = express();
  var port = process.env.PORT || 3000;
  var bodyParser = require('body-parser');
+ var request = require('request');
+
  app.use(express.static(__dirname));
+
  app.use(bodyParser.json());
+
+
  app.get("/", function (req,res) {
  	res.sendFile(__dirname + '/index.html');
  })
@@ -28,7 +33,7 @@ var express = require("express");
    res.sendStatus(200);
  });
 
- var token = "<page_access_token>";
+ var token = "EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD";
 
 function sendTextMessage(sender, text) {
   var messageData = {
