@@ -22,11 +22,34 @@ var express = require("express");
      sender = event.sender.id;
      if (event.message && event.message.text) {
        text = event.message.text;
-       // Handle a text message from this sender
+       sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
      }
    }
    res.sendStatus(200);
  });
+
+ var token = "<page_access_token>";
+
+function sendTextMessage(sender, text) {
+  var messageData = {
+    text:text
+  }
+  request({
+    url: 'https://www.facebook.com/Aditya-Productions-2-1768741990005872/?fref=ts/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+}
 
  app.listen(port);
  console.log("listening on port " + port);
