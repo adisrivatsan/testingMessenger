@@ -21,10 +21,12 @@ var express = require("express");
  })
 
  app.post('/webhook/', function (req, res) {
-   console.log('number of times'); 
+   console.log(req.body);
+   console.log(req.body.entry[0]); 
    messaging_events = req.body.entry[0].messaging;
    for (i = 0; i < messaging_events.length; i++) {
      event = req.body.entry[0].messaging[i];
+     console.log(event);
      sender = event.sender.id;
      if (event.message && event.message.text) {
        text = event.message.text;
