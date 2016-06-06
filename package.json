@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "ejs": "2.4.1",
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "http": "0.0.0",
+    "messenger-bot": "^2.3.0"
   },
   "repository": {
     "type": "git",
