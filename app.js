@@ -28,6 +28,7 @@ var express = require("express");
      if (event.message && event.message.text) {
        text = event.message.text;
        console.log(text);
+       console.log(sender); 
        sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
      }
    }
