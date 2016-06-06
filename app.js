@@ -29,9 +29,10 @@ var express = require("express");
      sender = event.sender.id;
      if (event.message && event.message.text) {
        text = event.message.text;
-       console.log(event.message.seq); 
+       console.log(event.message.seq);
 
-       sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
+       sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200) +
+     event.message.seq);
      }
    }
    res.sendStatus(200);
