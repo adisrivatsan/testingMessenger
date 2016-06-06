@@ -21,18 +21,16 @@ var express = require("express");
  })
 
  app.post('/webhook/', function (req, res) {
-   console.log('body ' + req.body);
-   console.log('text entry 0 ' + req.body.entry[0]);
-   messaging_events = req.body.entry[0].messaging;
-   console.log('messaging events ' + messaging_events);
+   var messaging_events = req.body.entry[0].messaging;
+
    for (i = 0; i < messaging_events.length; i++) {
-     event = req.body.entry[0].messaging[i];
+     event = messaging_events[i];
      console.log('event ' + event);
      sender = event.sender.id;
      if (event.message && event.message.text) {
        text = event.message.text;
-       console.log('text' + text);
-       console.log('sender ' + sender);
+       console.log(event.message.seq); 
+
        sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
      }
    }
