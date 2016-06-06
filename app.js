@@ -27,7 +27,7 @@ var express = require("express");
      sender = event.sender.id;
      if (event.message && event.message.text) {
        text = event.message.text;
-       console.log(text); 
+       console.log(text);
        //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
      }
    }
@@ -41,7 +41,7 @@ function sendTextMessage(sender, text) {
     text:text
   }
   request({
-    url: 'https://www.facebook.com/Aditya-Productions-2-1768741990005872/messages/?threadid=100002491919169&mercurythreadid=user%3A100002491919169&timestamp=1465188813726',
+    url: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {access_token:token},
     method: 'POST',
     json: {
