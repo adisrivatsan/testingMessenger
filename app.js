@@ -31,8 +31,7 @@ var express = require("express");
        text = event.message.text;
        console.log(event.message.seq);
 
-       sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200) +
-     event.message.seq);
+       sendTextMessage(sender, 'hello Benji. How are we doing today');
      }
    }
    res.sendStatus(200);
