@@ -35,7 +35,7 @@ function sendTextMessage(sender, text) {
     text:text
   }
   request({
-    url: 'https://www.facebook.com/Aditya-Productions-2-1768741990005872/?fref=ts',
+    url: 'https://www.facebook.com/Aditya-Productions-2-1768741990005872/messages/?threadid=100002491919169&mercurythreadid=user%3A100002491919169&timestamp=1465188813726',
     qs: {access_token:token},
     method: 'POST',
     json: {
