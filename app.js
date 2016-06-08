@@ -57,7 +57,7 @@ payload:{
        console.log(event.message.seq);
 
        sendTextMessage(sender, 'hello Benji. How are we doing today');
-       addButton(sender,buttonTest);
+       testButton(sender,buttonTest);
      }
    }
    res.sendStatus(200);
