@@ -57,7 +57,7 @@ var recieptTest = {
   attachment: {
     type: "template",
     payload: {
-      template_type: "reciept",
+      template_type: "receipt",
       recipient_name: "Aditya",
       order_number: "300",
       currency: "US",
