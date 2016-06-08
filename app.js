@@ -66,7 +66,7 @@ var imageTest = {
        console.log(event.message.seq);
 
        sendTextMessage(sender, 'test message working');
-       testButton(sender,imageTest);
+       testButton(sender,buttonTest);
      }
    }
    res.sendStatus(200);
