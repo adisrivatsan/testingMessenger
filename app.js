@@ -32,6 +32,7 @@ var express = require("express");
        console.log(event.message.seq);
 
        sendTextMessage(sender, 'hello Benji. How are we doing today');
+       addButton(sender);
      }
    }
    res.sendStatus(200);
@@ -50,6 +51,44 @@ function sendTextMessage(sender, text) {
     json: {
       recipient: {id:sender},
       message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+}
+
+function addButton (sender) {
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: {
+    attachment:{
+      type:"template",
+      payload:{
+        template_type:"button",
+        text:"What do you want to do next?",
+        buttons:[
+          {
+            type:"web_url",
+            url:"https://petersapparel.parseapp.com",
+            title:"Show Website"
+          },
+          {
+            type:"postback",
+            title:"Start Chatting",
+            payload:"USER_DEFINED_PAYLOAD"
+          }
+        ]
+      }
+    }
+  }
     }
   }, function(error, response, body) {
     if (error) {
