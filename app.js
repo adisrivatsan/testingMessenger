@@ -44,6 +44,15 @@ payload:{
 }
 };
 
+var imageTest = {
+  attachment: {
+    type: "image",
+    payload: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg"
+    }
+  }
+}
+
 
  app.post('/webhook/', function (req, res) {
    var messaging_events = req.body.entry[0].messaging;
@@ -56,8 +65,8 @@ payload:{
        text = event.message.text;
        console.log(event.message.seq);
 
-       sendTextMessage(sender, 'hello Benji. How are we doing today');
-       testButton(sender,buttonTest);
+       sendTextMessage(sender, 'test message working');
+       testButton(sender,imageTest);
      }
    }
    res.sendStatus(200);
