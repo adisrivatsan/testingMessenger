@@ -53,6 +53,25 @@ var imageTest = {
   }
 }
 
+var recieptTest = {
+  attachment: {
+    type: "template",
+    payload: {
+      template_type: "reciept",
+      recipient_name: "Aditya",
+      order_number: "300",
+      currency: "US",
+      payment_method: "credit",
+      elements: [{
+        title: "one"
+      }, {
+        title: "two"
+      }],
+      summary: "no summary"
+    }
+  }
+};
+
 
  app.post('/webhook/', function (req, res) {
    var messaging_events = req.body.entry[0].messaging;
@@ -66,7 +85,7 @@ var imageTest = {
        console.log(event.message.seq);
 
        sendTextMessage(sender, 'test message working');
-       testButton(sender,buttonTest);
+       testButton(sender,recieptTest);
      }
    }
    res.sendStatus(200);
