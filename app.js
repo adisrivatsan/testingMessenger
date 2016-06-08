@@ -69,7 +69,9 @@ var recieptTest = {
         title: "two",
         price: 10
       }],
-      summary: "no summary"
+      summary: {
+        total_cost: 30
+      }
     }
   }
 };
