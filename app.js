@@ -60,7 +60,7 @@ var recieptTest = {
       template_type: "receipt",
       recipient_name: "Aditya",
       order_number: "300",
-      currency: "US",
+      currency: "AED",
       payment_method: "credit",
       elements: [{
         title: "one"
