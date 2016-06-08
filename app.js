@@ -90,6 +90,8 @@ var recieptTest = {
 
        sendTextMessage(sender, 'test message working');
        testButton(sender,recieptTest);
+       testButton(sender, imageTest);
+       testButton(sender, buttonTest); 
      }
    }
    res.sendStatus(200);
