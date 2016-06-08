@@ -63,9 +63,11 @@ var recieptTest = {
       currency: "AED",
       payment_method: "credit",
       elements: [{
-        title: "one"
+        title: "one",
+        price: 5
       }, {
-        title: "two"
+        title: "two",
+        price: 10
       }],
       summary: "no summary"
     }
