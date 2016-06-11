@@ -95,7 +95,7 @@ request(options,function(error,body,response){
   console.log(error);
 })
 }
- welcomeMessage();
+ //welcomeMessage();
 
 
  app.post('/webhook/', function (req, res) {
