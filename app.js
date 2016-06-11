@@ -89,13 +89,13 @@ var recieptTest = {
        console.log(event.message.seq);
 
        if(text == 'hello') {
-         sendTextMessage(sender,'you said hello'); 
+         sendTextMessage(sender,'you said hello');
        }
 
        sendTextMessage(sender, 'test message working');
-       testButton(sender,recieptTest);
-       testButton(sender, imageTest);
-       testButton(sender, buttonTest);
+       //testButton(sender,recieptTest);
+       //testView(sender, imageTest);
+       //testView(sender, buttonTest);
      }
    }
    res.sendStatus(200);
@@ -124,7 +124,7 @@ function sendTextMessage(sender, text) {
   });
 }
 
-function testButton (sender,messageJson) {
+function testView (sender,messageJson) {
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
     qs: {access_token:token},
