@@ -76,9 +76,9 @@ var recieptTest = {
   }
 };
 
-/*var welcomeMessage = function() {
+var welcomeMessage = function() {
   var options = {
-  url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
+  url: 'https://graph.facebook.com/v2.6/1768741990005872/thread_settings?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
   method: 'POST',
   setting_type:"call_to_actions",
   thread_state:"new_thread",
@@ -94,8 +94,8 @@ var recieptTest = {
 request(options,function(error,body,response){
   console.log(error);
 })
-} */
- //welcomeMessage();
+}
+ welcomeMessage();
 
 
  app.post('/webhook/', function (req, res) {
