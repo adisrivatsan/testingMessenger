@@ -88,10 +88,14 @@ var recieptTest = {
        text = event.message.text;
        console.log(event.message.seq);
 
+       if(text == 'hello') {
+         sendTextMessage(sender,'you said hello'); 
+       }
+
        sendTextMessage(sender, 'test message working');
        testButton(sender,recieptTest);
        testButton(sender, imageTest);
-       testButton(sender, buttonTest); 
+       testButton(sender, buttonTest);
      }
    }
    res.sendStatus(200);
