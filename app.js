@@ -82,7 +82,6 @@ var welcomeMessage = function() {
   method: 'POST',
   setting_type:"call_to_actions",
   thread_state:"new_thread",
-  content-type: "application/json",
   call_to_actions:[
     {
       message:{
