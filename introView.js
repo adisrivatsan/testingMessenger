@@ -3,21 +3,21 @@ attachment:{
 type:"template",
 payload:{
   template_type:"button",
-  text:"Please Click an Option",
+  text:"Please Click An Option",
   buttons:[
     {
       type:"postback",
-      title:"Get food trucks around your area",
+      title:"Get Food Trucks\n Around Your Area",
       payload:"this is Adi"
     },
     {
       type:"postback",
-      title:"Search for Specific Food Truck",
+      title:"Search for Specific \nFood Truck",
       payload:"this is Adi"
     },
     {
       type:"postback",
-      title:"Food trucks Open at This hour",
+      title:"Food Trucks Open at\n This Hour",
       payload:"this is Adi"
     }
   ]
@@ -25,4 +25,4 @@ payload:{
 }
 };
 
-module.exports = IntroViewButton; 
+module.exports = IntroViewButton;
