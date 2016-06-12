@@ -37,7 +37,7 @@ payload:{
     {
       type:"postback",
       title:"Start Chatting",
-      payload:"USER_DEFINED_PAYLOAD"
+      payload:"this is Adi"
     }
   ]
 }
@@ -108,6 +108,16 @@ request(options,function(error,body,response){
        text = event.message.text;
        console.log(event.message.seq);
 
+       /*
+          Get the 3 buttons on the screen
+          Load up list of food trucks (dynamic)
+          Render from html
+          data store that can map food truck name to order
+          all the other views.
+       */
+
+
+
        if(text == 'hello') {
          sendTextMessage(sender,'you said hello');
        }
@@ -115,7 +125,7 @@ request(options,function(error,body,response){
        sendTextMessage(sender, 'test message working');
        //testButton(sender,recieptTest);
        //testView(sender, imageTest);
-       //testView(sender, buttonTest);
+       testView(sender, buttonTest);
      }
    }
    res.sendStatus(200);
