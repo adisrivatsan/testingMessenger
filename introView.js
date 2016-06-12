@@ -7,17 +7,17 @@ payload:{
   buttons:[
     {
       type:"postback",
-      title:"Get Food Trucks\n Around Your Area",
+      title:"Food Trucks In Area",
       payload:"this is Adi"
     },
     {
       type:"postback",
-      title:"Search for Specific \nFood Truck",
+      title:"Specific Food Truck",
       payload:"this is Adi"
     },
     {
       type:"postback",
-      title:"Food Trucks Open at\n This Hour",
+      title:"Open Food Trucks",
       payload:"this is Adi"
     }
   ]
