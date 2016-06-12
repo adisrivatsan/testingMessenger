@@ -125,10 +125,10 @@ request(options,function(error,body,response){
          sendTextMessage(sender,'you said hello');
        }
 
-       sendTextMessage(sender, 'test message working');
+       //sendTextMessage(sender, 'test message working');
        //testButton(sender,recieptTest);
        //testView(sender, imageTest);
-       testView(sender, buttonTest);
+       testView(sender, introView);
      }
    }
    res.sendStatus(200);

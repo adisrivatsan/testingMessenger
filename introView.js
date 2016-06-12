@@ -24,3 +24,5 @@ payload:{
 }
 }
 };
+
+module.exports = IntroViewButton; 
