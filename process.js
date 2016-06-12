@@ -9,7 +9,7 @@ $('.name').val('');
 $('.hour').val('');
 
 $.ajax({
-  url: 'http://testmessenger5.herokuapp.com/read',
+  url: 'https://testmessenger5.herokuapp.com/read',
   context: html
 }).done(function(){
     console.log('done baby');
