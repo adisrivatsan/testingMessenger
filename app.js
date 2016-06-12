@@ -13,6 +13,10 @@ var express = require("express");
  	res.sendFile(__dirname + '/index.html');
  })
 
+ app.get("/read", function (req,res) {
+   console.log(req.body); 
+ })
+
  app.get('/webhook/', function (req, res) {
    if (req.query['hub.verify_token'] === '<validation_token>') {
      res.send(req.query['hub.challenge']);
@@ -23,6 +27,11 @@ var express = require("express");
 //JSONS
 
 var introView = require('./introView');
+
+var fs = require('fs');
+fs.writeFileSync("sample.txt","\n" + 'hey yo baby' + "\n"  + "world2");
+var sampleText = fs.readFileSync("sample.txt", "UTF-8");
+console.log(sampleText);
 
 
 var buttonTest = {
