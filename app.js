@@ -128,7 +128,10 @@ request(options,function(error,body,response){
        //sendTextMessage(sender, 'test message working');
        //testButton(sender,recieptTest);
        //testView(sender, imageTest);
-       testView(sender, introView);
+       if(text == 'hey' || 'welcome') {
+         testView(sender, introView);
+       }
+
      }
    }
    res.sendStatus(200);
