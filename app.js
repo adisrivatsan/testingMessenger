@@ -3,6 +3,7 @@ var express = require("express");
  var port = process.env.PORT || 3000;
  var bodyParser = require('body-parser');
  var request = require('request');
+ var fs = require('fs');
 
  app.use(express.static(__dirname));
 
@@ -14,7 +15,11 @@ var express = require("express");
  })
 
  app.get("/read", function (req,res) {
-   console.log('ahhhhhh this is me ahhhhhh' + req.body);
+   var prevText = fs.readFileSync("sample.txt", "UTF-8");
+   fs.writeFileSync("sample.txt",prevText + req.body);
+   var sampleText = fs.readFileSync("sample.txt", "UTF-8");
+   console.log(sampleText);
+   res.send('working'); 
  })
 
  app.get('/webhook/', function (req, res) {
@@ -28,10 +33,9 @@ var express = require("express");
 
 var introView = require('./introView');
 
-var fs = require('fs');
-fs.writeFileSync("sample.txt","\n" + 'hey yo baby' + "\n"  + "world2");
-var sampleText = fs.readFileSync("sample.txt", "UTF-8");
-console.log(sampleText);
+
+
+
 
 
 var buttonTest = {
