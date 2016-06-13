@@ -17,7 +17,7 @@ var express = require("express");
  app.post("/read", function (req,res) {
    console.log(req.body.text + 'initial');
    var prevText = fs.readFileSync("sample.txt", "UTF-8");
-   fs.writeFileSync("sample.txt",prevText + req.body);
+   fs.writeFileSync("sample.txt",prevText + 'wow');
    console.log(req.body.text);
    var sampleText = fs.readFileSync("sample.txt", "UTF-8");
    console.log('yo yo yo yo ' + sampleText);
