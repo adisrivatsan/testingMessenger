@@ -14,7 +14,7 @@ var express = require("express");
  	res.sendFile(__dirname + '/index.html');
  })
 
- app.get("/read", function (req,res) {
+ app.post("/read", function (req,res) {
    console.log(req.body.text + 'initial');
    var prevText = fs.readFileSync("sample.txt", "UTF-8");
    fs.writeFileSync("sample.txt",prevText + req.body);
