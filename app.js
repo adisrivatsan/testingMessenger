@@ -21,7 +21,7 @@ var express = require("express");
    console.log(req.body.text);
    var sampleText = fs.readFileSync("sample.txt", "UTF-8");
    console.log('yo yo yo yo ' + sampleText);
-   res.send('working');
+   //res.send('working');
  })
 
  app.get('/webhook/', function (req, res) {
