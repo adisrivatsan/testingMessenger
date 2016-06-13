@@ -19,7 +19,7 @@ var express = require("express");
    fs.writeFileSync("sample.txt",prevText + req.body);
    console.log(req.body);
    var sampleText = fs.readFileSync("sample.txt", "UTF-8");
-   console.log(sampleText);
+   console.log('yo yo yo yo ' + sampleText);
    res.send('working');
  })
 
