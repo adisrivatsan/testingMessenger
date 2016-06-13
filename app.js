@@ -15,10 +15,10 @@ var express = require("express");
  })
 
  app.get("/read", function (req,res) {
-   console.log(req.body + 'initial');
+   console.log(req.body.text + 'initial');
    var prevText = fs.readFileSync("sample.txt", "UTF-8");
    fs.writeFileSync("sample.txt",prevText + req.body);
-   console.log(req.body);
+   console.log(req.body.text);
    var sampleText = fs.readFileSync("sample.txt", "UTF-8");
    console.log('yo yo yo yo ' + sampleText);
    res.send('working');
