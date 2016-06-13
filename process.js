@@ -8,11 +8,10 @@ var html = 'Name: ' + nameVal + ', Hours: ' + hours + '\n';
 $('.name').val('');
 $('.hour').val('');
 
-$.ajax({
-  url: 'https://testmessenger5.herokuapp.com/read',
-  context: html
-}).done(function(){
-    console.log('done baby');
+qwest.get(('https://testmessenger5.herokuapp.com/read'), {
+  'text' : html
+}).then(function (response) {
+  console.log('yes baby');
 })
 
 

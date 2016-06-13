@@ -14,7 +14,7 @@ var express = require("express");
  })
 
  app.get("/read", function (req,res) {
-   console.log(req.body); 
+   console.log('ahhhhhh this is me ahhhhhh' + req.body);
  })
 
  app.get('/webhook/', function (req, res) {
