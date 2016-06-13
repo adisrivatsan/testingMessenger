@@ -15,12 +15,13 @@ var express = require("express");
  })
 
  app.get("/read", function (req,res) {
+   console.log(req.body + 'initial'); 
    var prevText = fs.readFileSync("sample.txt", "UTF-8");
    fs.writeFileSync("sample.txt",prevText + req.body);
    console.log(req.body);
    var sampleText = fs.readFileSync("sample.txt", "UTF-8");
    console.log('yo yo yo yo ' + sampleText);
-   res.send('working');
+   //res.send('working');
  })
 
  app.get('/webhook/', function (req, res) {
