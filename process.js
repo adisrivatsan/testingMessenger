@@ -8,7 +8,7 @@ var html = 'Name: ' + nameVal + ', Hours: ' + hours + '\n';
 $('.name').val('');
 $('.hour').val('');
 
-qwest.post(('https://testmessenger5.herokuapp.com/read'), {
+qwest.get(('https://testmessenger5.herokuapp.com/read'), {
   'text' : html
 }).then(function () {
   console.log('yes baby');

@@ -14,11 +14,11 @@ var express = require("express");
  	res.sendFile(__dirname + '/index.html');
  })
 
- app.post("/read", function (req,res) {
-   console.log(req.body.text + 'initial');
+ app.get("/read", function (req,res) {
+   console.log(req.body + 'initial');
    var prevText = fs.readFileSync("sample.txt", "UTF-8");
    fs.writeFileSync("sample.txt",prevText + 'wow');
-   console.log(req.body.text);
+   console.log(req.body);
    var sampleText = fs.readFileSync("sample.txt", "UTF-8");
    console.log('yo yo yo yo ' + sampleText);
    //res.send('working');
