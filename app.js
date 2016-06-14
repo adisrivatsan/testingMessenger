@@ -5,24 +5,10 @@ var express = require("express");
  var request = require('request');
  var fs = require('fs');
  var pg = require('pg');
+ var _ = require('underscore');
  app.use(express.static(__dirname));
 
  app.use(bodyParser.json());
-
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.render('pages/db', {results: result.rows} ); }
-    });
-  });
-})
-
-
-
 
  app.get("/", function (req,res) {
  	res.sendFile(__dirname + '/index.html');
@@ -38,6 +24,37 @@ app.get('/db', function (request, response) {
    //res.send('working');
  })
 
+//setup vendor information
+var vendorInfo = [];
+var requestVendorInfo = function() {
+  request.get('https://docs.google.com/document/d/1pDM5yUhNXp0-4JzrN-q68n9cv0rfO26RPfsoBiUTNNU/edit',function(error,res,body) {
+      //var lines = body.split('\n');
+      var content ='';
+      var reg = new RegExp('.*<meta property="og:description" content=(.*)<meta name="google" content="notranslate">.*');
+      var myArray = reg.exec(body);
+
+      var lines = myArray[1].split('\t');
+      //console.log(lines);
+      var holder = [];
+      var nameReg = new RegExp('N: (.*) H: (.*)');
+      for(var i =0; i<lines.length; i++) {
+        //console.log(lines[i]);
+        var arr3 = nameReg.exec(lines[i]);
+        var name2 = arr3[1];
+        var hours2 = arr3[2];
+        var tempObj = {
+          name: name2,
+          hours: hours2
+        };
+        holder.push(Object.assign({},tempObj));
+      }
+      console.log(holder);
+  })
+
+}
+requestVendorInfo();
+
+
  app.get('/webhook/', function (req, res) {
    if (req.query['hub.verify_token'] === '<validation_token>') {
      res.send(req.query['hub.challenge']);
@@ -48,10 +65,6 @@ app.get('/db', function (request, response) {
 //JSONS
 
 var introView = require('./introView');
-
-
-
-
 
 
 var buttonTest = {
@@ -147,6 +160,15 @@ request(options,function(error,body,response){
           data store that can map food truck name to order
           all the other views.
        */
+       var info = [ { name: 'Lyn', hours: '10-5' },
+       { name: 'Magic Carpet', hours: '11-7' },
+       { name: 'Terry', hours: '12-8' } ];
+       var nameList = _.map(info, function(num) {
+         return num.name;
+       });
+       var hourList = _.map(info, function(num) {
+         return num.hours;
+       });
 
 
 
