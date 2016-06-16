@@ -52,7 +52,7 @@ var requestVendorInfo = function() {
   })
 
 }
-requestVendorInfo();
+//requestVendorInfo();
 
 
  app.get('/webhook/', function (req, res) {
@@ -176,9 +176,6 @@ request(options,function(error,body,response){
          sendTextMessage(sender,'you said hello');
        }
 
-       //sendTextMessage(sender, 'test message working');
-       //testButton(sender,recieptTest);
-       //testView(sender, imageTest);
        if(text == 'hey' || 'welcome') {
          testView(sender, introView);
        }
