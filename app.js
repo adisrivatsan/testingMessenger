@@ -6,6 +6,7 @@ var express = require("express");
  var fs = require('fs');
  var pg = require('pg');
  var _ = require('underscore');
+ var q = require('q');
  app.use(express.static(__dirname));
 
  app.use(bodyParser.json());
@@ -65,6 +66,18 @@ var requestVendorInfo = function() {
 //JSONS
 
 var introView = require('./introView');
+
+
+var prom1 = function(callback) {
+   callback(require('./testingMon'));
+}
+var printFunc = function(data) {
+  console.log(data);
+}
+var storage = prom1(printFunc);
+
+
+
 
 
 var buttonTest = {
