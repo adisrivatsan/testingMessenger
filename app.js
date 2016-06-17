@@ -145,7 +145,7 @@ db.once('open', function callback () {
           text = event.message.text;
           console.log(event.message.seq);
 
-          sendTextMessage(sender,'!!!' + ven);
+          sendTextMessage(sender,ven);
 
           if(text == 'hello') {
             sendTextMessage(sender,'you said hello');
