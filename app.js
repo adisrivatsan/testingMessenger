@@ -7,6 +7,10 @@ var express = require("express");
  var pg = require('pg');
  var _ = require('underscore');
  var q = require('q');
+ var mongoose = require('mongoose');
+ mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
+
+
  app.use(express.static(__dirname));
 
  app.use(bodyParser.json());
@@ -26,33 +30,7 @@ var express = require("express");
  })
 
 //setup vendor information
-var vendorInfo = [];
-var requestVendorInfo = function() {
-  request.get('https://docs.google.com/document/d/1pDM5yUhNXp0-4JzrN-q68n9cv0rfO26RPfsoBiUTNNU/edit',function(error,res,body) {
-      //var lines = body.split('\n');
-      var content ='';
-      var reg = new RegExp('.*<meta property="og:description" content=(.*)<meta name="google" content="notranslate">.*');
-      var myArray = reg.exec(body);
 
-      var lines = myArray[1].split('\t');
-      //console.log(lines);
-      var holder = [];
-      var nameReg = new RegExp('N: (.*) H: (.*)');
-      for(var i =0; i<lines.length; i++) {
-        //console.log(lines[i]);
-        var arr3 = nameReg.exec(lines[i]);
-        var name2 = arr3[1];
-        var hours2 = arr3[2];
-        var tempObj = {
-          name: name2,
-          hours: hours2
-        };
-        holder.push(Object.assign({},tempObj));
-      }
-      console.log(holder);
-  })
-
-}
 //requestVendorInfo();
 
 
@@ -62,22 +40,6 @@ var requestVendorInfo = function() {
    }
    res.send('Error, wrong validation token');
  })
-
-//JSONS
-
-var introView = require('./introView');
-
-
-var prom1 = function(callback) {
-   callback(require('./testingMon'));
-}
-var printFunc = function(data) {
-  console.log(data);
-}
-var storage = prom1(printFunc);
-
-
-
 
 
 var buttonTest = {
@@ -152,7 +114,17 @@ request(options,function(error,body,response){
   console.log(error);
 })
 }
- welcomeMessage();
+ //welcomeMessage();
+
+ var VendorSchema = mongoose.Schema({
+     Name: String,
+     Hour: String
+ });
+
+ var Vendor = mongoose.model('Vendor', VendorSchema);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
 
 
  app.post('/webhook/', function (req, res) {
@@ -173,17 +145,17 @@ request(options,function(error,body,response){
           data store that can map food truck name to order
           all the other views.
        */
-       var info = [ { name: 'Lyn', hours: '10-5' },
-       { name: 'Magic Carpet', hours: '11-7' },
-       { name: 'Terry', hours: '12-8' } ];
-       var nameList = _.map(info, function(num) {
-         return num.name;
-       });
-       var hourList = _.map(info, function(num) {
-         return num.hours;
-       });
+       db.once('open', function callback () {
+         //var data = db.collection('FoodTruckVendorInfo').find();
+         //console.log(data);
+         console.log('hello');
 
+         Vendor.find(function (err, ven) {
+           console.log(ven + '!!!!!!!'); 
+           db.close();
+       })
 
+       });
 
        if(text == 'hello') {
          sendTextMessage(sender,'you said hello');

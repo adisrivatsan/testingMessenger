@@ -23,9 +23,10 @@ db.once('open', function callback () {
 
   Vendor.find(function (err, ven) {
   //if (err) return console.error(err);
-  console.log(ven); 
+  //console.log(ven);
   store.push(ven);
-  module.exports = store;
+  //console.log(store);
+  module.exports = ven;
   db.close();
 })
 
