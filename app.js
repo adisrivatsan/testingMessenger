@@ -127,50 +127,44 @@ request(options,function(error,body,response){
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
+db.once('open', function callback () {
+  //var data = db.collection('FoodTruckVendorInfo').find();
+  //console.log(data);
+  console.log('hello');
 
- app.post('/webhook/', function (req, res) {
-   var messaging_events = req.body.entry[0].messaging;
+  Vendor.find(function (err, ven) {
+    //console.log(ven + '!!!!!!!');
+    app.post('/webhook/', function (req, res) {
+      var messaging_events = req.body.entry[0].messaging;
 
-   for (i = 0; i < messaging_events.length; i++) {
-     event = messaging_events[i];
-     console.log('event ' + event);
-     sender = event.sender.id;
-     if (event.message && event.message.text) {
-       text = event.message.text;
-       console.log(event.message.seq);
+      for (i = 0; i < messaging_events.length; i++) {
+        event = messaging_events[i];
+        console.log('event ' + event);
+        sender = event.sender.id;
+        if (event.message && event.message.text) {
+          text = event.message.text;
+          console.log(event.message.seq);
 
-       /*
-          Get the 3 buttons on the screen
-          Load up list of food trucks (dynamic)
-          Render from html
-          data store that can map food truck name to order
-          all the other views.
-       */
-       db.once('open', function callback () {
-         //var data = db.collection('FoodTruckVendorInfo').find();
-         //console.log(data);
-         console.log('hello');
+          sendTextMessage(sender,'!!!' + ven);
 
-         Vendor.find(function (err, ven) {
-           console.log(ven + '!!!!!!!');
-           sendTextMessage(sender,'' + ven); 
-           db.close();
-       })
+          if(text == 'hello') {
+            sendTextMessage(sender,'you said hello');
+          }
 
-       });
+          if(text == 'hey' || 'welcome') {
+            testView(sender, introView);
+          }
 
-       if(text == 'hello') {
-         sendTextMessage(sender,'you said hello');
-       }
+        }
+      }
+      res.sendStatus(200);
+    });
+    db.close();
+})
 
-       if(text == 'hey' || 'welcome') {
-         testView(sender, introView);
-       }
+});
 
-     }
-   }
-   res.sendStatus(200);
- });
+
 
  var token = "EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD";
 
