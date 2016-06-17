@@ -33,7 +33,7 @@ var express = require("express");
 
 //requestVendorInfo();
 
-var introView = require('./introView'); 
+var introView = require('./introView');
 
  app.get('/webhook/', function (req, res) {
    if (req.query['hub.verify_token'] === '<validation_token>') {
@@ -153,6 +153,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
          Vendor.find(function (err, ven) {
            console.log(ven + '!!!!!!!');
+           sendTextMessage(sender,'' + ven); 
            db.close();
        })
 
