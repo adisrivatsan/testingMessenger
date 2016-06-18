@@ -81,10 +81,18 @@ db.once('open', function callback () {
           var nameArray = _.map(ven,function (num) {
             return num.Name;
           })
+          var specificFoodTruck = function(foodTruckName) {
+            var item = _.find(function(num) {
+              return num.Name == foodTruckName;
+            })
+            return item;
+          }
+
 
           if(text == 'hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' + nameArray);
+            sendTextMessage(sender,'yo baby' + specificFoodTruck('Trivano'));
           } else if(text == 'hey' || text == 'welcome') {
             testView(sender, introView);
           }
@@ -97,6 +105,7 @@ db.once('open', function callback () {
 })
 
 });
+
 
 
  app.listen(port);
