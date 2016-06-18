@@ -77,6 +77,9 @@ db.once('open', function callback () {
   //var data = db.collection('FoodTruckVendorInfo').find();
   //console.log(data);
   console.log('hello');
+  Vendor.find(function(err,res) {
+    console.log(res); 
+  })
 
 
 
