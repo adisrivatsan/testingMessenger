@@ -117,12 +117,10 @@ request(options,function(error,body,response){
 }
  //welcomeMessage();
 
- var VendorSchema = mongoose.Schema({
-     Name: String,
-     Hour: String
- });
+ var VendorSchema = require('../schemas/vendorSchema');
 
- var Vendor = mongoose.model('Vendor', VendorSchema);
+
+ var Vendor = mongoose.model('VendorInfo', VendorSchema);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

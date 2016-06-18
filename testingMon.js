@@ -3,12 +3,69 @@ mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8
 
 var VendorSchema = mongoose.Schema({
     Name: String,
-    Hour: String
+    HourOfOperation: String,
+    Days: String,
+    Menu: [String],
+    CuisineType: String,
+    PhoneNumber: String,
+    Email: String,
+    Registration: String,
+    Other:[String],
+    LocationAddress: String,
+    Employees: [String],
+    Website: String,
+    Popularity: Number,
+    Wifi: Boolean
 });
 
-var Vendor = mongoose.model('Vendor', VendorSchema);
+var Vendor = mongoose.model('VendorInfo', VendorSchema);
 
-var Terry = new Vendor({ Name:'Terry', Hour: '10-11' });
+var Trivano = new Vendor({
+    Name: 'Trivano',
+    HourOfOperation: '10-3',
+    Days: 'M-F',
+    Menu: ['pizza','pasta'],
+    CuisineType: 'italian',
+    PhoneNumber: '9786546633',
+    Email: 'trivano@seas.upenn.edu',
+    Registration: '',
+    Other:[''],
+    LocationAddress: '',
+    Employees: [''],
+    Website: '',
+    Popularity: '',
+    Wifi: true
+});
+
+var AmericanExpierence = new Vendor({
+  Name: 'American Expierence',
+  HourOfOperation: '7-5',
+  Days: 'M-S',
+  Menu: ['Cheese Stake','bagel'],
+  CuisineType: 'American',
+  PhoneNumber: '5589746622',
+  Email: 'ame@seas.upenn.edu',
+  Registration: '',
+  Other:[''],
+  LocationAddress: '',
+  Employees: [''],
+  Website: '',
+  Popularity: '',
+  Wifi: true
+});
+
+/* expamle update
+
+Vendor.update({Name:'Trivano'}, {Days:'M-F'}, {multi:false}, function(err) {
+  console.log(err);
+  db.close();
+}) */
+
+/* example save
+  Vendor.find(function(err,ven) {
+  console.log(ven);
+  })
+*/
 
 var store = [];
 store.push({'hi':'hello'});
@@ -21,13 +78,6 @@ db.once('open', function callback () {
   //console.log(data);
   console.log('hello');
 
-  Vendor.find(function (err, ven) {
-  //if (err) return console.error(err);
-  //console.log(ven);
-  store.push(ven);
-  //console.log(store);
-  module.exports = ven;
-  db.close();
-})
+
 
 });
