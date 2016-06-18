@@ -132,7 +132,7 @@ db.once('open', function callback () {
   console.log('hello');
 
   Vendor.find(function (err, ven) {
-    console.log(ven + '!!!!!!!');
+    console.log(ven[0] + '!!!!!!!');
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
 
@@ -144,12 +144,10 @@ db.once('open', function callback () {
           text = event.message.text;
           console.log(event.message.seq);
 
-
-
           if(text == 'hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' +ven[0]);
-          } else if(text == 'hey' || 'welcome') {
+          } else if(text == 'hey' || text == 'welcome') {
             testView(sender, introView);
           }
 
