@@ -92,7 +92,7 @@ db.once('open', function callback () {
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' + nameArray);
-            sendTextMessage(sender,'yo baby' + specificFoodTruck('Trivano'));
+            sendTextMessage(sender,'yo baby' + specificFoodTruck('Trivano').HourOfOperation);
           } else if(text == 'hey' || text == 'welcome') {
             testView(sender, introView);
           }
