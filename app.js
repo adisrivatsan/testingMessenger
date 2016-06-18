@@ -1,5 +1,4 @@
-var express = require("express");
- var app = express();
+var app = express();
  var port = process.env.PORT || 3000;
  var bodyParser = require('body-parser');
  var request = require('request');
@@ -39,7 +38,7 @@ var express = require("express");
 var introView = require('./Views/introView');
 var arrFunc = require('./sendingMessages/templateSend');
 var sendTextMessage = arrFunc[0];
-var testView = arrFunc[1]; 
+var testView = arrFunc[1];
 
 
  app.get('/webhook/', function (req, res) {
@@ -52,10 +51,10 @@ var testView = arrFunc[1];
 
  //welcomeMessage();
 
- var VendorSchema = require('./schemas/vendorSchema');
+var VendorSchema = require('./schemas/vendorSchema');
 
 
- var Vendor = mongoose.model('VendorInfo', VendorSchema);
+var Vendor = mongoose.model('VendorInfo', VendorSchema);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -78,9 +77,13 @@ db.once('open', function callback () {
           text = event.message.text;
           console.log(event.message.seq);
 
+          var nameArray = _.map(ven,function (num) {
+            return num.Name;
+          })
+
           if(text == 'hello') {
             sendTextMessage(sender,'you said hello');
-            sendTextMessage(sender,'yo baby' + ven[0].Name);
+            sendTextMessage(sender,'yo baby' + nameArray);
           } else if(text == 'hey' || text == 'welcome') {
             testView(sender, introView);
           }
