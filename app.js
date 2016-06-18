@@ -146,7 +146,7 @@ db.once('open', function callback () {
 
           if(text == 'hello') {
             sendTextMessage(sender,'you said hello');
-            sendTextMessage(sender,'yo baby' +ven[0]);
+            sendTextMessage(sender,'yo baby' +ven[0].Name);
           } else if(text == 'hey' || text == 'welcome') {
             testView(sender, introView);
           }
