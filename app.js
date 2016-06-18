@@ -89,7 +89,7 @@ db.once('open', function callback () {
           }
 
 
-          if(text == 'hello') {
+          if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' + nameArray);
             sendTextMessage(sender,'yo baby' + specificFoodTruck('Trivano'));
