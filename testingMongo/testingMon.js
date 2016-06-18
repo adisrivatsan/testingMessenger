@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var _ = require('underscore');
 mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
 
 var VendorSchema = mongoose.Schema({
@@ -78,7 +79,16 @@ db.once('open', function callback () {
   //console.log(data);
   console.log('hello');
   Vendor.find(function(err,res) {
-    console.log(res); 
+    var specificFoodTruck = function (foodTruckName){
+      var item = _.find(res,function(num) {
+        //console.log(num);
+        return num.Name == foodTruckName;
+      })
+      return item;
+    }
+    console.log(specificFoodTruck('Trivano'));
+
+    db.close();
   })
 
 

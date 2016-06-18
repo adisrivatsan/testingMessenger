@@ -82,7 +82,7 @@ db.once('open', function callback () {
             return num.Name;
           })
           var specificFoodTruck = function(foodTruckName) {
-            var item = _.find(function(num) {
+            var item = _.find(ven,function(num) {
               return num.Name == foodTruckName;
             })
             return item;
