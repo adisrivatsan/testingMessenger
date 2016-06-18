@@ -117,7 +117,7 @@ request(options,function(error,body,response){
 }
  //welcomeMessage();
 
- var VendorSchema = require('../schemas/vendorSchema');
+ var VendorSchema = require('./schemas/vendorSchema');
 
 
  var Vendor = mongoose.model('VendorInfo', VendorSchema);
