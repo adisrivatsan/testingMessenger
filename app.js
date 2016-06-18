@@ -132,7 +132,7 @@ db.once('open', function callback () {
   console.log('hello');
 
   Vendor.find(function (err, ven) {
-    //console.log(ven + '!!!!!!!');
+    console.log(ven + '!!!!!!!');
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
 
