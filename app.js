@@ -84,8 +84,8 @@ db.once('open', function callback () {
         if (event.message && event.message.text) {
           text = event.message.text;
           console.log(event.message.seq);
-          sendTextMessage(sender,'wow' + holyText);
-          sendTextMessage(sender, 'wow' + inSingleFoodTruck); 
+          //sendTextMessage(sender,'wow' + holyText);
+          sendTextMessage(sender, 'wow' + inSingleFoodTruck);
 
           var nameArray = _.map(ven,function (num) {
             return num.Name;
@@ -109,9 +109,10 @@ db.once('open', function callback () {
               testView(sender, bundle[0]);
               testView(sender,bundle[1]);
               holyText = select;
+              sendTextMessage(sender, 'yes' + holyText); 
               inSingleFoodTruck = true;
           } else if(inSingleFoodTruck) {
-            console.log(holyText.Menu);
+            //console.log(holyText.Menu);
             if(text =='Menu') {
               var menuItems = holyText.Menu;
               for(item in menuItems) {
