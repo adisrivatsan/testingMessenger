@@ -95,16 +95,30 @@ db.once('open', function callback () {
             return item;
           }
 
+          var select = specificFoodTruck(text);
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' + nameArray);
             sendTextMessage(sender,'yo baby' + specificFoodTruck('Trivano').HourOfOperation);
-          } else if(text == 'hey' || text == 'welcome') {
+          } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
             testView(sender, introView);
-          } else if(specificFoodTruck(text)){
+          } else if(select){
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               testView(sender, bundle[0]);
               testView(sender,bundle[1]);
+              inSingleFoodTruck = true;
+          } else if(inSingleFoodTruck) {
+            if('Menu') {
+              var menuItems = select.Menu;
+              for(item in menuItems) {
+                sendTextMessage(sender, '' + item.Name + ' ' + item.Price);
+              }
+              sendTextMessage(sender, 'Please type what you want to order');
+              inSingleFoodTruck = false;
+            } else if('Order') {
+              sendTextMessage(sender, 'Please type in your order');
+              inSingleFoodTruck = false;
+            }
           }
 
         }

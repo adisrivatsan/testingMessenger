@@ -6,7 +6,8 @@ var VendorSchema = mongoose.Schema({
     Name: String,
     HourOfOperation: String,
     Days: String,
-    Menu: [String],
+    Menu: [{Name:String,
+            Price: Number}],
     CuisineType: String,
     PhoneNumber: String,
     Email: String,
@@ -68,6 +69,16 @@ Vendor.update({Name:'Trivano'}, {Days:'M-F'}, {multi:false}, function(err) {
   })
 */
 
+var menuTemp = {
+  Menu : [{
+    Name: 'Bagel',
+    Price: 3
+  },{
+    Name: 'Cheese Stake',
+    Price:8
+  }]
+};
+
 var store = [];
 store.push({'hi':'hello'});
 
@@ -78,18 +89,12 @@ db.once('open', function callback () {
   //var data = db.collection('FoodTruckVendorInfo').find();
   //console.log(data);
   console.log('hello');
-  Vendor.find(function(err,res) {
-    var specificFoodTruck = function (foodTruckName){
-      var item = _.find(res,function(num) {
-        //console.log(num);
-        return num.Name == foodTruckName;
-      })
-      return item;
-    }
-    console.log(specificFoodTruck('Trivano'));
 
-    db.close();
+  Vendor.find(function(err,ven) {
+    console.log(ven[1].Menu);
   })
+
+
 
 
 
