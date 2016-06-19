@@ -111,7 +111,7 @@ db.once('open', function callback () {
               testView(sender,bundle);
               inSingleFoodTruck = true;
           } else if(inSingleFoodTruck) {
-            sendTextMessage(sender, 'hello ' + req.body.postback.payload);
+
 
             //console.log(holyText.Menu);
             /*if(text =='Menu') {
@@ -128,6 +128,7 @@ db.once('open', function callback () {
               inSingleFoodTruck = false;
             }*/
           }
+          sendTextMessage(sender, 'hello ' + req.body.postback.payload);
           //console.log('this is bool' + inSingleFoodTruck);
 
         }
