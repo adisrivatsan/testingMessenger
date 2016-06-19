@@ -63,6 +63,9 @@ var Vendor = mongoose.model('VendorInfo', VendorSchema);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
+//states
+var inSingleFoodTruck = false;
+
 
 db.once('open', function callback () {
   //var data = db.collection('FoodTruckVendorInfo').find();
@@ -100,7 +103,8 @@ db.once('open', function callback () {
             testView(sender, introView);
           } else if(specificFoodTruck(text)){
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              testView(sender, bundle[0]).then(testView(sender,bundle[1]));
+              testView(sender, bundle[0]);
+              testView(sender,bundle[1]);
           }
 
         }
