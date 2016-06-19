@@ -101,9 +101,9 @@ db.once('open', function callback () {
           } else if(text == 'hey' || text == 'welcome') {
             testView(sender, introView);
           } else if(specificFoodTruck(text)){
-              var bundle = singleFoodTruck(text,'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwikxIrCg7PNAhXBWx4KHb34B9oQjRwIBw&url=http%3A%2F%2Fwww.ns-sc.org%2Fevents-calendar%2Fnssc-food-truck-fridays-schedule&psig=AFQjCNHP27vbEleMtk3mRDWyQ9MANFOsNA&ust=1466389176298441');
+              var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               testView(sender, bundle[0]);
-              testView(sender,bundle[1]); 
+              testView(sender,bundle[1]);
           }
 
         }

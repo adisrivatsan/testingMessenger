@@ -24,7 +24,7 @@ var singleFoodTruck = function (name, imageURL) {
                 }]
             }
         }
-      }
+      }; 
     var bundle = [image,button];
     return bundle;
 };
