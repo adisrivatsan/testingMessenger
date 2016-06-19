@@ -1,31 +1,27 @@
 var singleFoodTruck = function (name, imageURL) {
-    var image = {
-        attachment: {
-            type: "image",
-            payload: {
-                url: imageURL
+  var messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": name,
+                    "subtitle": "Element #1 of an hscroll",
+                    "image_url": imageURL,
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Menu",
+                        "payload":"Menu"
+                    }, {
+                        "type": "postback",
+                        "title": "Order",
+                        "payload": "Order"
+                    }],
+                }],
+
             }
         }
-    };
-    var button = {
-        attachment: {
-            type: "template",
-            payload: {
-                template_type: "button",
-                text: name,
-                buttons: [{
-                    type: "postback",
-                    title: "Menu",
-                    payload: "this is Adi"
-                }, {
-                    type: "postback",
-                    title: "Order",
-                    payload: "this is Adi"
-                }]
-            }
-        }
-      }; 
-    var bundle = [image,button];
-    return bundle;
-};
+    }
+    return messageData;
+}
 module.exports = singleFoodTruck;
