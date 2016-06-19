@@ -102,8 +102,10 @@ db.once('open', function callback () {
             testView(sender, introView);
           } else if(specificFoodTruck(text)){
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              Q.all(testView(sender, bundle[0]),
-              testView(sender,bundle[1])); 
+              Q.all([testView(sender, bundle[0])]).done(function() {
+                  testView(sender,bundle[1]); 
+              })
+
           }
 
         }
