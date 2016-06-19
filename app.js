@@ -65,7 +65,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 //states
 var inSingleFoodTruck = false;
-
+var holyText = '';
 
 db.once('open', function callback () {
   //var data = db.collection('FoodTruckVendorInfo').find();
@@ -106,10 +106,11 @@ db.once('open', function callback () {
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               testView(sender, bundle[0]);
               testView(sender,bundle[1]);
+              holyText = text;
               inSingleFoodTruck = true;
           } else if(inSingleFoodTruck) {
             if('Menu') {
-              var menuItems = select.Menu;
+              var menuItems = holyText.Menu;
               for(item in menuItems) {
                 sendTextMessage(sender, '' + item.Name + ' ' + item.Price);
               }
