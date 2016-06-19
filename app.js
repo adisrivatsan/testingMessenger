@@ -131,6 +131,10 @@ db.once('open', function callback () {
           //console.log('this is bool' + inSingleFoodTruck);
 
         }
+        else if(event.postback) {
+          var payload = event.postback.payload;
+          sendTextMessage(sender,payload); 
+        }
       }
       res.sendStatus(200);
     });
