@@ -76,7 +76,7 @@ db.once('open', function callback () {
     //console.log(ven[0] + '!!!!!!!');
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
-      console.log(req.payload); 
+      console.log('This is the payload !!!!  ' +req.payload); 
 
       for (i = 0; i < messaging_events.length; i++) {
         event = messaging_events[i];
