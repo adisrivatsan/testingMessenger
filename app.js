@@ -110,15 +110,10 @@ db.once('open', function callback () {
               //testView(sender, bundle[0]);
               testView(sender,bundle);
               inSingleFoodTruck = true;
-          } else if(messaging_events[0].postback) {
-            var payload = event.postback.payload;
-            sendTextMessage(sender, 'in postback');
-            if(payload) {
-              sendTextMessage(sender,'hey yes '+ payload);
-            }
+          } else if(inSingleFoodTruck) {
 
             //console.log(holyText.Menu);
-            /*if(text =='Menu') {
+            if(text =='Menu') {
               var menuItems = holyText.Menu;
               console.log(holyText);
               for (var i = 0; i < menuItems.length; i++) {
@@ -130,7 +125,7 @@ db.once('open', function callback () {
             } else if(text == 'Order') {
               sendTextMessage(sender, 'Please type in your order');
               inSingleFoodTruck = false;
-            }*/
+            }
           }
 
           //console.log('this is bool' + inSingleFoodTruck);
