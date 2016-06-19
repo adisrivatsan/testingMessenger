@@ -84,7 +84,7 @@ db.once('open', function callback () {
           text = event.message.text;
           console.log(event.message.seq);
           //sendTextMessage(sender,'wow' + holyText);
-          sendTextMessage(sender, 'wow' + inSingleFoodTruck);
+          //sendTextMessage(sender, 'wow' + inSingleFoodTruck);
 
           var nameArray = _.map(ven,function (num) {
             return num.Name;
@@ -116,7 +116,7 @@ db.once('open', function callback () {
               var menuItems = holyText.Menu;
               console.log(holyText);
               for (var i = 0; i < menuItems.length; i++) {
-                sendTextMessage(sender, '' + menuItems[i].Name + ' ' +
+                sendTextMessage(sender, '' + menuItems[i].Name + ': ' +
                 menuItems[i].Price);
               }
               sendTextMessage(sender, 'Please type what you want to order');
