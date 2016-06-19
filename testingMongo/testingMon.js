@@ -85,17 +85,13 @@ store.push({'hi':'hello'});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-  //var data = db.collection('FoodTruckVendorInfo').find();
-  //console.log(data);
-  console.log('hello');
+db.once('open', function callback() {
+    //var data = db.collection('FoodTruckVendorInfo').find();
+    //console.log(data);
+    console.log('hello');
 
-  Vendor.find(function(err,ven) {
-    console.log(ven);
-  })
-
-
-
-
+    Vendor.find(function(err, ven) {
+        console.log(ven);
+    })
 
 });

@@ -111,8 +111,10 @@ db.once('open', function callback () {
               testView(sender,bundle);
               inSingleFoodTruck = true;
           } else if(inSingleFoodTruck) {
+            sendTextMessage(sender, 'hello ' + req.body.postback.payload);
+
             //console.log(holyText.Menu);
-            if(text =='Menu') {
+            /*if(text =='Menu') {
               var menuItems = holyText.Menu;
               console.log(holyText);
               for (var i = 0; i < menuItems.length; i++) {
@@ -124,7 +126,7 @@ db.once('open', function callback () {
             } else if(text == 'Order') {
               sendTextMessage(sender, 'Please type in your order');
               inSingleFoodTruck = false;
-            }
+            }*/
           }
           //console.log('this is bool' + inSingleFoodTruck);
 

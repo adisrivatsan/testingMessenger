@@ -3,13 +3,15 @@ var VendorSchema = mongoose.Schema({
     Name: String,
     HourOfOperation: String,
     Days: String,
-    Menu: [{Name:String,
-            Price: Number}],
+    Menu: [{
+        Name: String,
+        Price: Number
+    }],
     CuisineType: String,
     PhoneNumber: String,
     Email: String,
     Registration: String,
-    Other:[String],
+    Other: [String],
     LocationAddress: String,
     Employees: [String],
     Website: String,
