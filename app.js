@@ -117,7 +117,7 @@ db.once('open', function callback () {
             if(text =='Menu') {
               var menuItems = holyText.Menu;
 
-              sendTextMessage(sender, 'ah' + holyText);
+              sendTextMessage(sender, 'ah' + holyText.Name);
 
               sendTextMessage(sender, 'Please type what you want to order');
               inSingleFoodTruck = false;

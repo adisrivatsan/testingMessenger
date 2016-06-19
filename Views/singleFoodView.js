@@ -6,7 +6,7 @@ var singleFoodTruck = function (name, imageURL) {
                 "template_type": "generic",
                 "elements": [{
                     "title": name,
-                    "subtitle": "Element #1 of an hscroll",
+                    "subtitle": "Food Truck To Order",
                     "image_url": imageURL,
                     "buttons": [{
                         "type": "postback",
