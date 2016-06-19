@@ -6,7 +6,7 @@ var app = express();
  var fs = require('fs');
  var pg = require('pg');
  var _ = require('underscore');
- var q = require('q');
+ var Q = require('q');
 
  var mongoose = require('mongoose');
  mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
@@ -102,8 +102,8 @@ db.once('open', function callback () {
             testView(sender, introView);
           } else if(specificFoodTruck(text)){
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              testView(sender, bundle[0]);
-              testView(sender,bundle[1]);
+              Q.all(testView(sender, bundle[0]),
+              testView(sender,bundle[1])); 
           }
 
         }
