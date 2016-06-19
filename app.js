@@ -74,7 +74,7 @@ db.once('open', function callback () {
 
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
-      console.log('This is the payload !!!!  ' + JSON.stringify(req.body));
+      console.log('This is the payload !!!!  ' + JSON.stringify(req.body.postback.payload));
 
       for (i = 0; i < messaging_events.length; i++) {
         event = messaging_events[i];
@@ -85,7 +85,7 @@ db.once('open', function callback () {
           console.log(event.message.seq);
           //sendTextMessage(sender,'wow' + holyText);
           //sendTextMessage(sender, 'wow' + inSingleFoodTruck);
-          sendTextMessage(sender, 'hello ' + JSON.stringify(req.body.postback.payload));
+          //sendTextMessage(sender, 'hello ' + JSON.stringify(req.body.postback.payload));
           var nameArray = _.map(ven,function (num) {
             return num.Name;
           })
