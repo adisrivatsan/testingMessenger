@@ -10,7 +10,7 @@ var IntroViewButton = {
                 payload: "this is Adi"
             }, {
                 type: "postback",
-                title: "Specific Food Truck",
+                title: "Cuisine Food Truck",
                 payload: "this is Adi"
             }, {
                 type: "postback",

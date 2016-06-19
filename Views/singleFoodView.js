@@ -1,4 +1,4 @@
-var singleFoodTruck = function(name, imageURL) {
+var singleFoodTruck = function (name, imageURL) {
     var image = {
         attachment: {
             type: "image",
@@ -6,8 +6,8 @@ var singleFoodTruck = function(name, imageURL) {
                 url: imageURL
             }
         }
-    }
-    var button =
+    };
+    var button = {
         attachment: {
             type: "template",
             payload: {
@@ -24,7 +24,8 @@ var singleFoodTruck = function(name, imageURL) {
                 }]
             }
         }
+      }
     var bundle = [image,button];
     return bundle;
 };
-module.exports = singleFoodTruck; 
+module.exports = singleFoodTruck;
