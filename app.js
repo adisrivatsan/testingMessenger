@@ -65,7 +65,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 //states
 var inSingleFoodTruck = false;
-var holyText = '';
+var holyText = {};
 
 db.once('open', function callback () {
   //var data = db.collection('FoodTruckVendorInfo').find();
@@ -117,7 +117,7 @@ db.once('open', function callback () {
             if(text =='Menu') {
               var menuItems = holyText.Menu;
 
-              sendTextMessage(sender, '' + holyText);
+              sendTextMessage(sender, 'ah' + holyText);
 
               sendTextMessage(sender, 'Please type what you want to order');
               inSingleFoodTruck = false;
