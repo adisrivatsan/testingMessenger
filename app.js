@@ -109,7 +109,7 @@ db.once('open', function callback () {
               holyText = select;
               inSingleFoodTruck = true;
           } else if(inSingleFoodTruck) {
-            console.log(holyText);
+            console.log(holyText.Menu);
             if(text =='Menu') {
               var menuItems = holyText.Menu;
               for(item in menuItems) {
@@ -122,7 +122,7 @@ db.once('open', function callback () {
               inSingleFoodTruck = false;
             }
           }
-          console.log('this is bool' + inSingleFoodTruck); 
+          console.log('this is bool' + inSingleFoodTruck);
 
         }
       }
