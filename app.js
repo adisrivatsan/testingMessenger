@@ -110,9 +110,9 @@ db.once('open', function callback () {
               //testView(sender, bundle[0]);
               testView(sender,bundle);
               inSingleFoodTruck = true;
-          } else if(req.body.postback) {
-            var payload = req.body.postback.payload;
-            sendTextMessage(sender, 'in postback'); 
+          } else if(req.body.entry.messaging.postback) {
+            var payload = req.body.entry.messaging.postback.payload;
+            sendTextMessage(sender, 'in postback');
             if(payload) {
               sendTextMessage(sender,'hey yes '+ payload);
             }
