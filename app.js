@@ -115,9 +115,10 @@ db.once('open', function callback () {
             if(text =='Menu') {
               var menuItems = holyText.Menu;
               console.log(holyText);
-
-              sendTextMessage(sender, 'ah' + holyText.Menu);
-
+              for (var i = 0; i < menuItems.length; i++) {
+                sendTextMessage(sender, '' + menuItems[i].Name + ' ' +
+                menuItems[i].Price);
+              }
               sendTextMessage(sender, 'Please type what you want to order');
               inSingleFoodTruck = false;
             } else if(text == 'Order') {
