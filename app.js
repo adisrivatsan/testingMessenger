@@ -85,7 +85,7 @@ db.once('open', function callback () {
           console.log(event.message.seq);
           //sendTextMessage(sender,'wow' + holyText);
           //sendTextMessage(sender, 'wow' + inSingleFoodTruck);
-          sendTextMessage(sender, 'hello ' + req.body.postback.payload);
+          //sendTextMessage(sender, 'hello ' + req.body.postback.payload);
           var nameArray = _.map(ven,function (num) {
             return num.Name;
           })
