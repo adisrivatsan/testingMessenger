@@ -68,12 +68,10 @@ var inSingleFoodTruck = false;
 var holyText = {};
 
 db.once('open', function callback () {
-  //var data = db.collection('FoodTruckVendorInfo').find();
-  //console.log(data);
-  console.log('hello');
+
 
   Vendor.find(function (err, ven) {
-    //console.log(ven[0] + '!!!!!!!');
+
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
       console.log('This is the payload !!!!  ' + JSON.stringify(req.body));
@@ -116,7 +114,7 @@ db.once('open', function callback () {
             //console.log(holyText.Menu);
             if(text =='Menu') {
               var menuItems = holyText.Menu;
-              console.log(holyText); 
+              console.log(holyText);
 
               sendTextMessage(sender, 'ah' + holyText.Menu);
 

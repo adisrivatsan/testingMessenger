@@ -91,7 +91,7 @@ db.once('open', function callback () {
   console.log('hello');
 
   Vendor.find(function(err,ven) {
-    console.log(ven[1].Menu);
+    console.log(ven);
   })
 
 
