@@ -11,11 +11,11 @@ var singleFoodTruck = function (name, imageURL) {
                     "buttons": [{
                         "type": "postback",
                         "title": "Menu",
-                        "payload":"Menu"
+                        "payload":name + " Menu"
                     }, {
                         "type": "postback",
                         "title": "Order",
-                        "payload": "Order"
+                        "payload": name + " Order"
                     }],
                 }],
 

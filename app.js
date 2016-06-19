@@ -126,7 +126,7 @@ db.once('open', function callback () {
               inSingleFoodTruck = false;
             }
           }
-          console.log('this is bool' + inSingleFoodTruck);
+          //console.log('this is bool' + inSingleFoodTruck);
 
         }
       }
