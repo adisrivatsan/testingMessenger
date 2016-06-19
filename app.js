@@ -76,6 +76,7 @@ db.once('open', function callback () {
     //console.log(ven[0] + '!!!!!!!');
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
+      console.log(req.payload); 
 
       for (i = 0; i < messaging_events.length; i++) {
         event = messaging_events[i];
@@ -109,7 +110,7 @@ db.once('open', function callback () {
               testView(sender, bundle[0]);
               testView(sender,bundle[1]);
               holyText = select;
-              sendTextMessage(sender, 'yes' + holyText); 
+              sendTextMessage(sender, 'yes' + holyText);
               inSingleFoodTruck = true;
           } else if(inSingleFoodTruck) {
             //console.log(holyText.Menu);
