@@ -75,7 +75,7 @@ db.once('open', function callback () {
       var messaging_events = req.body.entry[0].messaging;
 
       for (i = 0; i < messaging_events.length; i++) {
-        event = messaging_events[0];
+        event = messaging_events[i];
         console.log('event ' + event);
         sender = event.sender.id;
         if (event.message && event.message.text) {
@@ -91,8 +91,6 @@ db.once('open', function callback () {
             })
             return item;
           }
-
-
 
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
