@@ -107,10 +107,10 @@ db.once('open', function callback () {
             testView(sender, introView);
           } else if(select){
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              testView(sender, bundle[0]);
-              testView(sender,bundle[1]);
               holyText = select;
               sendTextMessage(sender, 'yes' + holyText);
+              testView(sender, bundle[0]);
+              testView(sender,bundle[1]);
               inSingleFoodTruck = true;
           } else if(inSingleFoodTruck) {
             //console.log(holyText.Menu);
