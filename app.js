@@ -110,7 +110,7 @@ db.once('open', function callback () {
               //testView(sender, bundle[0]);
               testView(sender,bundle);
               inSingleFoodTruck = true;
-          } else if(event.postback) {
+          } else if(messaging_events[0].postback) {
             var payload = event.postback.payload;
             sendTextMessage(sender, 'in postback');
             if(payload) {
