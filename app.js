@@ -106,17 +106,17 @@ db.once('open', function callback () {
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               testView(sender, bundle[0]);
               testView(sender,bundle[1]);
-              holyText = text;
+              holyText = select;
               inSingleFoodTruck = true;
           } else if(inSingleFoodTruck) {
-            if('Menu') {
+            if(text =='Menu') {
               var menuItems = holyText.Menu;
               for(item in menuItems) {
                 sendTextMessage(sender, '' + item.Name + ' ' + item.Price);
               }
               sendTextMessage(sender, 'Please type what you want to order');
               inSingleFoodTruck = false;
-            } else if('Order') {
+            } else if(text == 'Order') {
               sendTextMessage(sender, 'Please type in your order');
               inSingleFoodTruck = false;
             }
