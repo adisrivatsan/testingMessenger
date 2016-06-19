@@ -76,7 +76,7 @@ db.once('open', function callback () {
     //console.log(ven[0] + '!!!!!!!');
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
-      console.log('This is the payload !!!!  ' + JSON.stringify(req.body)); 
+      console.log('This is the payload !!!!  ' + JSON.stringify(req.body));
 
       for (i = 0; i < messaging_events.length; i++) {
         event = messaging_events[i];
@@ -116,9 +116,9 @@ db.once('open', function callback () {
             //console.log(holyText.Menu);
             if(text =='Menu') {
               var menuItems = holyText.Menu;
-              for(item in menuItems) {
-                sendTextMessage(sender, '' + item.Name + ' ' + item.Price);
-              }
+
+              sendTextMessage(sender, '' + holyText);
+
               sendTextMessage(sender, 'Please type what you want to order');
               inSingleFoodTruck = false;
             } else if(text == 'Order') {
