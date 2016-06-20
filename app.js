@@ -132,16 +132,34 @@ db.once('open', function callback () {
 
         }
         else if(event.postback) {
+          var specificFoodTruck = function(foodTruckName) {
+            var item = _.find(ven,function(num) {
+              return num.Name == foodTruckName;
+            })
+            return item;
+          }
           var payload = event.postback.payload;
-          sendTextMessage(sender,payload); 
+          var split = payload.split(' ');
+          var name = split[0];
+          var specification = split[1];
+          var foodTruck = specificFoodTruck(name);
+          if(specification == 'Menu') {
+            var menuItems = foodTruck.Menu;
+            //console.log(holyText);
+            for (var i = 0; i < menuItems.length; i++) {
+              sendTextMessage(sender, '' + menuItems[i].Name + ': ' +
+              menuItems[i].Price);
+            }
+          }
         }
       }
       res.sendStatus(200);
     });
     db.close();
 })
-
 });
+
+
 
 
 
