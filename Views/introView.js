@@ -26,4 +26,4 @@ var messageData = {
       }
   }
 
-module.exports = IntroViewButton;
+module.exports = messageData;
