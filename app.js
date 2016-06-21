@@ -36,7 +36,7 @@ var app = express();
 
 //requestVendorInfo();
 
-var introView = require('./Views/testView');
+var introView = require('./Views/introView');
 var arrFunc = require('./sendingMessages/templateSend');
 var sendTextMessage = arrFunc[0];
 var testView = arrFunc[1];
