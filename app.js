@@ -152,7 +152,7 @@ db.once('open', function callback () {
             }
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
-          } else if(specification == 'Area' || specification == 'Cuisine' || specification == 'Open') {
+          } else if(payload == 'Area' || payload == 'Cuisine' || payload == 'Open') {
             //var mdata = multiView(ven);
             sendTextMessage(sender,'in postback');
             //testView(sender,mdata);
