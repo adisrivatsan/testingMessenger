@@ -6,7 +6,7 @@ var multiView = function (farr) {
     var button = {
       "type" : "postback",
       "title": farr[i].Name,
-      "postback": farr[i].Name
+      "payload": farr[i].Name
     }
     buttonArr.push(Object.assign({},button));
   }
