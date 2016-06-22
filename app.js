@@ -153,8 +153,9 @@ db.once('open', function callback () {
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
           } else if(specification == 'Area' || specification == 'Cuisine' || specification == 'Open') {
-            var mdata = multiView(ven);
-            testView(sender,mdata); 
+            //var mdata = multiView(ven);
+            sendTextMessage(sender,'in postback');
+            //testView(sender,mdata);
           }
         }
       }
