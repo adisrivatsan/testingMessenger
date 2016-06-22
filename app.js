@@ -51,7 +51,7 @@ var testView = arrFunc[1];
 
 
 var singleFoodTruck = require('./Views/singleFoodView');
-
+var multiView = require('./Views/MultiFoodTruckView');
 
  //welcomeMessage();
 
@@ -152,6 +152,9 @@ db.once('open', function callback () {
             }
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
+          } else if(specification == 'Area' || specification == 'Cuisine' || specification == 'Open') {
+            var mdata = multiView(ven);
+            testView(sender,mdata); 
           }
         }
       }
