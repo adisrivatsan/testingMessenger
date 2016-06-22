@@ -17,8 +17,8 @@ var multiView = function (farr) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": 'What would you like Today?',
-                    "subtitle": "Click to see our options",
+                    "title": 'Food Truck Options',
+                    "subtitle": "Click on one",
                     "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
                     "buttons": buttonArr
                 }],
