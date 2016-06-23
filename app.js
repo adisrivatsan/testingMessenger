@@ -158,7 +158,7 @@ db.once('open', function callback () {
             sendTextMessage(sender,'in postback');
             testView(sender,mdata);
           } else if(select) {
-              var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
+              var bundle = singleFoodTruck(payload,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               holyText = select;
               sendTextMessage(sender, 'yes' + holyText);
               //testView(sender, bundle[0]);
