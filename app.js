@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
- var port = process.env.PORT || 3000;
+ var port = process.env.PORT || 5000;
  var bodyParser = require('body-parser');
  var request = require('request');
  var fs = require('fs');
@@ -139,6 +139,7 @@ db.once('open', function callback () {
             return item;
           }
           var payload = event.postback.payload;
+          var select = specificFoodTruck(payload);
           var split = payload.split(' ');
           var name = split[0];
           var specification = split[1];
@@ -156,7 +157,14 @@ db.once('open', function callback () {
             var mdata = multiView(ven);
             sendTextMessage(sender,'in postback');
             testView(sender,mdata);
+          } else if(select) {
+              var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
+              holyText = select;
+              sendTextMessage(sender, 'yes' + holyText);
+              //testView(sender, bundle[0]);
+              testView(sender,bundle);
           }
+
         }
       }
       res.sendStatus(200);
