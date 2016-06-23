@@ -140,7 +140,7 @@ db.once('open', function callback () {
           }
           var payload = event.postback.payload;
           var select = specificFoodTruck(payload);
-          var split = payload.split(' ');
+          var split = payload.split('\t');
           var name = split[0];
           var specification = split[1];
           var foodTruck = specificFoodTruck(name);
