@@ -52,10 +52,13 @@ var testView = arrFunc[1];
 
 var singleFoodTruck = require('./Views/singleFoodView');
 var multiView = require('./Views/MultiFoodTruckView');
-
+var rView = require('./Views/recietView');
+var singleRView = require('./Views/singleFoodRecietView');
+var readyCheckout = require('./Views/readToCheckOut');
  //welcomeMessage();
 
-
+var holyText = {};
+var cart = [];
 //mongo Set up
 var VendorSchema = require('./schemas/vendorSchema');
 
@@ -64,8 +67,8 @@ var Vendor = mongoose.model('VendorInfo', VendorSchema);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 //states
-var inSingleFoodTruck = false;
-var holyText = {};
+//var inSingleFoodTruck = false;
+
 
 db.once('open', function callback () {
 
@@ -96,6 +99,7 @@ db.once('open', function callback () {
             return item;
           }
 
+
           var select = specificFoodTruck(text);
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
@@ -110,7 +114,14 @@ db.once('open', function callback () {
               //testView(sender, bundle[0]);
               testView(sender,bundle);
               //inSingleFoodTruck = true;
-          } else if(inSingleFoodTruck) {
+          } else if(holyText.Menu) {
+            var item = _.find(holyText.Menu, function(num) {
+              return num.Name == text;
+            })
+            cart.push(item);
+            testView(sender,readyCheckout); 
+
+
 
             //console.log(holyText.Menu);
           /*  if(text =='Menu') {
@@ -163,6 +174,11 @@ db.once('open', function callback () {
               sendTextMessage(sender, 'yes' + holyText);
               //testView(sender, bundle[0]);
               testView(sender,bundle);
+
+          } else if(payload == 'Order') {
+            sendTextMessage(sender, 'Please Type in next order');
+          } else if (payload =='CheckOut') {
+
           }
 
         }
