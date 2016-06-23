@@ -23,3 +23,19 @@ FoodTruckName
  {"id":"1768741990005872"},
  "timestamp":1466601193344,
  "postback":{"payload":"Cuisine"}}
+
+
+ //console.log(holyText.Menu);
+/*  if(text =='Menu') {
+   var menuItems = holyText.Menu;
+   console.log(holyText);
+   for (var i = 0; i < menuItems.length; i++) {
+     sendTextMessage(sender, '' + menuItems[i].Name + ': ' +
+     menuItems[i].Price);
+   }
+   sendTextMessage(sender, 'Please type what you want to order');
+   inSingleFoodTruck = false;
+ } else if(text == 'Order') {
+   sendTextMessage(sender, 'Please type in your order');
+   inSingleFoodTruck = false;
+ } */

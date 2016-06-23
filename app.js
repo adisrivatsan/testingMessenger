@@ -77,7 +77,7 @@ db.once('open', function callback () {
 
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
-      console.log('holy text ' + holyText); 
+      //console.log('holy text ' + holyText);
       console.log('This is the payload !!!!  ' + JSON.stringify(messaging_events[0]));
 
       for (i = 0; i < messaging_events.length; i++) {
@@ -119,25 +119,11 @@ db.once('open', function callback () {
             var item = _.find(holyText.Menu, function(num) {
               return num.Name == text;
             })
-            cart.push(item);
-            testView(sender,readyCheckout);
+            if(item) {
+              cart.push(item);
+              testView(sender,readyCheckout);
+            }
 
-
-
-            //console.log(holyText.Menu);
-          /*  if(text =='Menu') {
-              var menuItems = holyText.Menu;
-              console.log(holyText);
-              for (var i = 0; i < menuItems.length; i++) {
-                sendTextMessage(sender, '' + menuItems[i].Name + ': ' +
-                menuItems[i].Price);
-              }
-              sendTextMessage(sender, 'Please type what you want to order');
-              inSingleFoodTruck = false;
-            } else if(text == 'Order') {
-              sendTextMessage(sender, 'Please type in your order');
-              inSingleFoodTruck = false;
-            } */
           }
 
           //console.log('this is bool' + inSingleFoodTruck);
