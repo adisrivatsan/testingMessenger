@@ -22,7 +22,8 @@ var recieptFunc = function(menuItems,recipient_name) {
               template_type: "receipt",
               recipient_name: recipient_name,
               order_number: "300",
-              currency: "AED",
+              order_url:'http://thumbs.dreamstime.com/z/thank-you-choosing-us-banner-design-over-white-background-46977269.jpg',
+              currency: "USD",
               payment_method: "credit",
               elements: food,
               summary: {
