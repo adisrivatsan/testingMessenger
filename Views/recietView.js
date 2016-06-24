@@ -7,7 +7,8 @@ var recieptFunc = function(menuItems,recipient_name) {
 
       var sampleObj = {
         title: menuItems[i].Name,
-        price: menuItems[i].Price
+        price: menuItems[i].Price,
+        image_url:'http://thumbs.dreamstime.com/z/thank-you-choosing-us-banner-design-over-white-background-46977269.jpg'
       }
       totalPrice = totalPrice + menuItems[i].Price;
       food.push(Object.assign({},sampleObj));
@@ -22,7 +23,6 @@ var recieptFunc = function(menuItems,recipient_name) {
               template_type: "receipt",
               recipient_name: recipient_name,
               order_number: "300",
-              order_url:'http://thumbs.dreamstime.com/z/thank-you-choosing-us-banner-design-over-white-background-46977269.jpg',
               currency: "USD",
               payment_method: "credit",
               elements: food,
