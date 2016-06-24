@@ -122,6 +122,7 @@ db.once('open', function callback () {
             if(item) {
               cart.push(item);
               testView(sender,readyCheckout);
+              sendTextMessage(sender,"Item" + item);
             }
 
           }
