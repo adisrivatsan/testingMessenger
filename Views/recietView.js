@@ -24,14 +24,14 @@ var recieptFunc = function(menuItems,recipient_name) {
               order_number: "300",
               currency: "AED",
               payment_method: "credit",
-              elements: [food],
+              elements: food,
               summary: {
                   total_cost: totalPrice
               }
           }
       }
   };
-  return recieptTest; 
+  return recieptTest;
 }
 
 module.exports = recieptFunc;
