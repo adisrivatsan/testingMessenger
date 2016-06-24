@@ -122,7 +122,7 @@ db.once('open', function callback () {
             if(item) {
               cart.push(item);
               testView(sender,readyCheckout);
-              sendTextMessage(sender,"Item" + item);
+              //sendTextMessage(sender,"Item" + item);
             }
 
           }
@@ -166,7 +166,9 @@ db.once('open', function callback () {
           } else if(payload == 'Order') {
             sendTextMessage(sender, 'Please Type in next order');
           } else if (payload =='CheckOut') {
-
+            var view = rView(cart,holyText.Name);
+            testView(sender,view);
+            holyText = {};
           }
 
         }
