@@ -1,0 +1,123 @@
+{
+  "_args": [
+    [
+      "wkhtmltox",
+      "/Users/adityasrivatsan/Documents/JavaScript/testing properties"
+    ]
+  ],
+  "_from": "wkhtmltox@*",
+  "_id": "wkhtmltox@1.0.7",
+  "_inCache": true,
+  "_location": "/wkhtmltox",
+  "_nodeVersion": "0.10.26",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/wkhtmltox-1.0.7.tgz_1463349275111_0.5190099282190204"
+  },
+  "_npmUser": {
+    "email": "linuxgeek@gmail.com",
+    "name": "tcort"
+  },
+  "_npmVersion": "3.8.6",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "wkhtmltox",
+    "raw": "wkhtmltox",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/wkhtmltox/-/wkhtmltox-1.0.7.tgz",
+  "_shasum": "3b4034eca048bd6414314801a5e69223ea7362be",
+  "_shrinkwrap": null,
+  "_spec": "wkhtmltox",
+  "_where": "/Users/adityasrivatsan/Documents/JavaScript/testing properties",
+  "author": {
+    "email": "linuxgeek@gmail.com",
+    "name": "Thomas Cort"
+  },
+  "bugs": {
+    "url": "https://github.com/tcort/wkhtmltox/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.12.0",
+    "slang": "^0.3.0"
+  },
+  "description": "high performance access to `wkhtmltopdf` and `wkhtmltoimage` from node.js.",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "3b4034eca048bd6414314801a5e69223ea7362be",
+    "tarball": "https://registry.npmjs.org/wkhtmltox/-/wkhtmltox-1.0.7.tgz"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "gitHead": "6a5d127c48659a88bcbfbe51f07bacccbef702cf",
+  "homepage": "https://github.com/tcort/wkhtmltox",
+  "installable": true,
+  "jshintConfig": {
+    "bitwise": true,
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "globals": {
+      "after": false,
+      "afterEach": false,
+      "before": false,
+      "beforeEach": false,
+      "describe": false,
+      "it": false
+    },
+    "globalstrict": true,
+    "immed": true,
+    "indent": 4,
+    "moz": true,
+    "newcap": false,
+    "noarg": true,
+    "node": true,
+    "noempty": true,
+    "nonew": true,
+    "smarttabs": true,
+    "strict": true,
+    "trailing": true,
+    "undef": true,
+    "validthis": true
+  },
+  "keywords": [
+    "conversion",
+    "html",
+    "image",
+    "pdf",
+    "wkhtmltoimage",
+    "wkhtmltopdf"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "tcort",
+      "email": "linuxgeek@gmail.com"
+    }
+  ],
+  "name": "wkhtmltox",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tcort/wkhtmltox.git"
+  },
+  "scripts": {
+    "pretest": "jshint lib test ./index.js",
+    "test": "mocha -R spec"
+  },
+  "version": "1.0.7"
+}

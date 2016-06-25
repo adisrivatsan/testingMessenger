@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "stable"
+addons:
+  apt:
+    sources:
+    - pov-wkhtmltopdf
+    packages:
+    - wkhtmltopdf
+before_install:
+  - wkhtmltopdf -V
+sudo: false
