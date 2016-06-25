@@ -2,7 +2,7 @@ var imageTest = {
     attachment: {
         type: "image",
         payload: {
-            url: "../PagePicture/foo.jpg"
+            url: "file:///Users/adityasrivatsan/Documents/JavaScript/testing%20properties/atom%20trail/PagePicture/foo.jpg"
         }
     }
 }
