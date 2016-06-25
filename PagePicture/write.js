@@ -1,5 +1,5 @@
 var fs = require('fs');
-var str = fs.readFileSync("foo.html","utf-8");
+var str = fs.readFileSync("./PagePicture/foo.html","utf-8");
 
 var convert = require('./testConvert');
 
