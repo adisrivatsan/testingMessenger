@@ -6,7 +6,7 @@ var convert = require('./testConvert');
 
 var resName = [{
   Name: 'Pizza',
-  Price: 40
+  Price: 43
 }, {
   Name: 'Lettuce',
   Price:30
@@ -51,5 +51,5 @@ var addName = function(htmlString,Name) {
   //fs.writeFileSync("other.html", combine);
 }
 
-//writeToHtml('Trivano',resName,convert);
+writeToHtml('Trivano',resName,convert);
 module.exports = writeToHtml;

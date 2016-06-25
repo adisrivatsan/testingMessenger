@@ -56,6 +56,9 @@ var rView = require('./Views/recietView');
 var singleRView = require('./Views/singleFoodRecietView');
 var readyCheckout = require('./Views/readToCheckOut');
  //welcomeMessage();
+var pictureModule = require('./PagePicture/write.js');
+var convert = require('./PagePicture/testConvert.js');
+var testPicView = require('./Views/sampleImageView');
 
 var holyText = {};
 var cart = [];
@@ -146,10 +149,14 @@ db.once('open', function callback () {
           if(specification == 'Menu') {
             var menuItems = foodTruck.Menu;
             //console.log(holyText);
-            for (var i = 0; i < menuItems.length; i++) {
+            /*for (var i = 0; i < menuItems.length; i++) {
               sendTextMessage(sender, '' + menuItems[i].Name + ': ' +
               menuItems[i].Price);
-            }
+            } */
+            //pictureModule(name,menuItems,convert);
+            testView(sender,testPicView); 
+
+
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
           } else if(payload == 'Area' || payload == 'Cuisine' || payload == 'Open') {
