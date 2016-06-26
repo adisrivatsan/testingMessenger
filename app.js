@@ -134,7 +134,7 @@ db.once('open', function callback () {
               //sendTextMessage(sender,"Item" + item);
             }
 
-          } else if(foodTruckCuisine) {
+          } else if(foodTruckCuisine.length !=0) {
             var mdata = multiView(foodTruckCuisine);
             testView(sender,mdata);
           }
