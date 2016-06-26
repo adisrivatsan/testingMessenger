@@ -17,7 +17,8 @@ var VendorSchema = mongoose.Schema({
     Employees: [String],
     Website: String,
     Popularity: Number,
-    Wifi: Boolean
+    Wifi: Boolean,
+    ZipCode: String
 });
 
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
@@ -89,9 +90,14 @@ db.once('open', function callback() {
     //var data = db.collection('FoodTruckVendorInfo').find();
     //console.log(data);
     console.log('hello');
+    /*Vendor.update({Name:'American Expierence'}, {ZipCode:'19105', LocationAddress:'37th and Walnut'}, {multi:false}, function(err) {
+      console.log(err);
+      console.log('working');
+      db.close();
+    }) */
 
     Vendor.find(function(err, ven) {
-        console.log(ven[1].Menu);
+        console.log(ven);
     })
 
 });

@@ -77,6 +77,12 @@ db.once('open', function callback () {
 
 
   Vendor.find(function (err, ven) {
+    var cuisine = function (type) {
+      var list =  _.filter(ven, function(num) {
+      return num.CuisineType == type;
+    })
+    return list;
+  }
 
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
@@ -103,7 +109,7 @@ db.once('open', function callback () {
             return item;
           }
 
-
+          var foodTruckCuisine = cuisine(text);
           var select = specificFoodTruck(text);
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
@@ -128,6 +134,9 @@ db.once('open', function callback () {
               //sendTextMessage(sender,"Item" + item);
             }
 
+          } else if(foodTruckCuisine) {
+            var mdata = multiView(ven);
+            testView(sender,mdata);
           }
 
           //console.log('this is bool' + inSingleFoodTruck);
@@ -159,10 +168,12 @@ db.once('open', function callback () {
 
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
-          } else if(payload == 'Area' || payload == 'Cuisine' || payload == 'Open') {
+          } else if(payload == 'Area'|| payload == 'Open') {
             var mdata = multiView(ven);
             //sendTextMessage(sender,'in postback');
             testView(sender,mdata);
+          } else if(payload == 'Cuisine') {
+            sendTextMessage(sender,'please enter cuisine');
           } else if(select) {
               var bundle = singleFoodTruck(payload,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               holyText = select;
