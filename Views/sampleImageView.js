@@ -6,3 +6,5 @@ var imageTest = {
         }
     }
 }
+
+module.exports = imageTest;

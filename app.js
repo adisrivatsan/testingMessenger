@@ -154,7 +154,7 @@ db.once('open', function callback () {
               menuItems[i].Price);
             } */
             //pictureModule(name,menuItems,convert);
-            testView(sender,testPicView); 
+            testView(sender,testPicView);
 
 
           } else if(specification =='Order') {
