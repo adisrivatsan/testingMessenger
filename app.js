@@ -135,7 +135,7 @@ db.once('open', function callback () {
             }
 
           } else if(foodTruckCuisine) {
-            var mdata = multiView(ven);
+            var mdata = multiView(foodTruckCuisine);
             testView(sender,mdata);
           }
 
