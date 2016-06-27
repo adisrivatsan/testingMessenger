@@ -16,6 +16,10 @@ var singleFoodTruck = function (name, imageURL) {
                         "type": "postback",
                         "title": "Order",
                         "payload": name + "\tOrder"
+                    }, {
+                      "type" : "postback",
+                      "title" : "Address",
+                      "payload": name + "\tAddress"
                     }],
                 }],
 

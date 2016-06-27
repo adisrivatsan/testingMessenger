@@ -168,6 +168,9 @@ db.once('open', function callback () {
 
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
+          } else if(specification == 'Address') {
+            sendTextMessage(sender,foodTruck.LocationAddress);
+
           } else if(payload == 'Area'|| payload == 'Open') {
             var mdata = multiView(ven);
             //sendTextMessage(sender,'in postback');
