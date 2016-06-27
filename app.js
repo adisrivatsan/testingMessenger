@@ -173,7 +173,6 @@ db.once('open', function callback () {
 
           } else if(payload == 'Area'|| payload == 'Open') {
             var mdata = multiView(ven);
-            //sendTextMessage(sender,'in postback');
             testView(sender,mdata);
           } else if(payload == 'Cuisine') {
             sendTextMessage(sender,'please enter cuisine');
