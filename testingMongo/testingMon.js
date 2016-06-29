@@ -98,7 +98,7 @@ db.once('open', function callback() {
     })  */
 
     Vendor.find(function(err, ven) {
-        console.log(ven);
-    }) 
+        console.log(ven[0].ImageUrl);
+    })
 
 });

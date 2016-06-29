@@ -157,13 +157,14 @@ db.once('open', function callback () {
           var specification = split[1];
           var foodTruck = specificFoodTruck(name);
           if(specification == 'Menu') {
-            var menuItems = foodTruck.Menu;
+            //var menuItems = foodTruck.Menu;
             //console.log(holyText);
             /*for (var i = 0; i < menuItems.length; i++) {
               sendTextMessage(sender, '' + menuItems[i].Name + ': ' +
               menuItems[i].Price);
             } */
             //pictureModule(name,menuItems,convert);
+            sendTextMessage(sender,foodTruck.Name); 
             if(foodTruck.ImageUrl) {
               sendTextMessage(sender,'in url');
               testView(sender,testPicView(foodTruck.ImageUrl));
