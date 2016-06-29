@@ -165,6 +165,7 @@ db.once('open', function callback () {
             } */
             //pictureModule(name,menuItems,convert);
             if(foodTruck.ImageUrl) {
+              sendTextMessage(sender,'in url');
               testView(sender,testPicView(foodTruck.ImageUrl));
             } else {
               testView(sender,testPicView('http://www.petakids.com/wp-content/uploads/2015/04/Bunny-Outside.jpg'));

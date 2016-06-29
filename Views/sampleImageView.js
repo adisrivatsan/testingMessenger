@@ -3,7 +3,7 @@ var imageTest = function(givenUrl) {
       attachment: {
         type: "image",
         payload: {
-            url: givenURl
+            url: givenUrl
         }
     }
   }
