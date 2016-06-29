@@ -164,7 +164,7 @@ db.once('open', function callback () {
               menuItems[i].Price);
             } */
             //pictureModule(name,menuItems,convert);
-            sendTextMessage(sender,foodTruck.Name); 
+            sendTextMessage(sender,foodTruck.ImageUrl); 
             if(foodTruck.ImageUrl) {
               sendTextMessage(sender,'in url');
               testView(sender,testPicView(foodTruck.ImageUrl));
