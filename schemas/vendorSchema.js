@@ -16,7 +16,9 @@ var VendorSchema = mongoose.Schema({
     Employees: [String],
     Website: String,
     Popularity: Number,
-    Wifi: Boolean
+    Wifi: Boolean,
+    ImageUrl: String,
+    ZipCode: String
 });
 
 module.exports = VendorSchema;
