@@ -164,7 +164,12 @@ db.once('open', function callback () {
               menuItems[i].Price);
             } */
             //pictureModule(name,menuItems,convert);
-            testView(sender,testPicView);
+            if(foodTruck.ImageUrl) {
+              testView(sender,testPicView(foodTruck.ImageUrl));
+            } else {
+              testView(sender,testPicView('http://www.petakids.com/wp-content/uploads/2015/04/Bunny-Outside.jpg'));
+            }
+
 
 
           } else if(specification =='Order') {

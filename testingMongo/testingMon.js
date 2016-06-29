@@ -18,7 +18,8 @@ var VendorSchema = mongoose.Schema({
     Website: String,
     Popularity: Number,
     Wifi: Boolean,
-    ZipCode: String
+    ZipCode: String,
+    ImageUrl: String
 });
 
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
@@ -90,14 +91,14 @@ db.once('open', function callback() {
     //var data = db.collection('FoodTruckVendorInfo').find();
     //console.log(data);
     console.log('hello');
-    /*Vendor.update({Name:'American Expierence'}, {ZipCode:'19105', LocationAddress:'37th and Walnut'}, {multi:false}, function(err) {
+  /*  Vendor.update({Name:'Trivano'}, {ImageUrl: 'https://imagesdb.herokuapp.com/foodTruck/Trivano'}, {multi:false}, function(err) {
       console.log(err);
       console.log('working');
       db.close();
-    }) */
+    })  */
 
     Vendor.find(function(err, ven) {
         console.log(ven);
-    })
+    }) 
 
 });

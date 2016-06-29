@@ -1,10 +1,13 @@
-var imageTest = {
-    attachment: {
+var imageTest = function(givenUrl) {
+    var message = {
+      attachment: {
         type: "image",
         payload: {
-            url: "https://imagesdb.herokuapp.com/testImage"
+            url: givenURl
         }
     }
+  }
+    return message;
 }
 
 module.exports = imageTest;
