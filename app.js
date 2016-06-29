@@ -135,7 +135,7 @@ db.once('open', function callback () {
             }
 
           } else if(foodTruckCuisine.length !=0) {
-            //sendTextMessage(sender, 'In the cuisine'); 
+            //sendTextMessage(sender, 'In the cuisine');
             var mdata = multiView(foodTruckCuisine);
             testView(sender,mdata);
           }
