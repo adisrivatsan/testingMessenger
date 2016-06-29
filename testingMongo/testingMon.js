@@ -91,14 +91,14 @@ db.once('open', function callback() {
     //var data = db.collection('FoodTruckVendorInfo').find();
     //console.log(data);
     console.log('hello');
-  /*  Vendor.update({Name:'Trivano'}, {ImageUrl: 'https://imagesdb.herokuapp.com/foodTruck/Trivano'}, {multi:false}, function(err) {
+    /*Vendor.update({Name:'Trivano'}, {HourOfOperation: '7-17'}, {multi:false}, function(err) {
       console.log(err);
       console.log('working');
       db.close();
-    })  */
+    }) */
 
     Vendor.find(function(err, ven) {
-        console.log(ven[0].ImageUrl);
+        console.log(ven);
     })
 
 });

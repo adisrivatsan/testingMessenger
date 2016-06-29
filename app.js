@@ -164,7 +164,7 @@ db.once('open', function callback () {
               menuItems[i].Price);
             } */
             //pictureModule(name,menuItems,convert);
-            sendTextMessage(sender,foodTruck.ImageUrl); 
+            sendTextMessage(sender,foodTruck.ImageUrl);
             if(foodTruck.ImageUrl) {
               sendTextMessage(sender,'in url');
               testView(sender,testPicView(foodTruck.ImageUrl));
@@ -179,9 +179,26 @@ db.once('open', function callback () {
           } else if(specification == 'Address') {
             sendTextMessage(sender,foodTruck.LocationAddress);
 
-          } else if(payload == 'Area'|| payload == 'Open') {
+          } else if(payload == 'Area') {
             var mdata = multiView(ven);
             testView(sender,mdata);
+          } else if(payload=='Open') {
+
+            var foodTruckOpen = _.filter(ven,function(num) {
+              var d = new Date();
+              var hours = num.HourOfOperation;
+              var split = hours.split('-');
+              var start = split[0];
+              var end = split[1];
+              var current = d.getHours();
+              return (start < current) && (current<end);
+            })
+            var mdata = multiView(foodTruckOpen);
+            testView(sender,mdata);
+
+
+
+
           } else if(payload == 'Cuisine') {
             sendTextMessage(sender,'please enter cuisine');
           } else if(select) {
