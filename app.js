@@ -193,8 +193,13 @@ db.once('open', function callback () {
               var current = d.getHours();
               return (start < current) && (current<end);
             })
-            var mdata = multiView(foodTruckOpen);
-            testView(sender,mdata);
+            if(foodTruckOpen.length >0) {
+              var mdata = multiView(foodTruckOpen);
+              testView(sender,mdata);
+            } else {
+              sendTextMessage(sender,'no food trucks open');
+            }
+
 
 
 
