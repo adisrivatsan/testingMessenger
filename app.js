@@ -182,6 +182,8 @@ db.once('open', function callback () {
           } else if(payload == 'Area') {
             var mdata = multiView(ven);
             testView(sender,mdata);
+            //sendTextMessage(sender, 'please enter your zip code');
+
           } else if(payload=='Open') {
 
             var foodTruckOpen = _.filter(ven,function(num) {
