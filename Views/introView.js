@@ -23,19 +23,19 @@ var messageData = {
               }, {
                 "title": "Continue",
                 "subtitle": "hello",
-                "image_url": 'http://thumbs.dreamstime.com/z/hungry-munchies-fast-food-cartoon-illustration-thinking-man-30676401.jpg',
+                "image_url": 'http://wp.streetwise.co/wp-content/uploads//2014/09/unnamed-213.jpg',
                 "buttons": [{
                     "type": "postback",
-                    "title": "Food Trucks In Area",
-                    "payload":"Area"
+                    "title": "Best Quality",
+                    "payload":"BQuality"
                 }, {
                     "type": "postback",
-                    "title": "Sort By Cuisine",
-                    "payload": "Cuisine"
+                    "title": "Shortest Line",
+                    "payload": "SLine"
                 }, {
                     "type": "postback",
-                    "title": "Open Food Trucks",
-                    "payload": "Open"
+                    "title": "Bang for your buck",
+                    "payload": "BBuck"
                 }]
               }],
 
