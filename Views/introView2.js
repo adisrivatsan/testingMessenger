@@ -22,7 +22,7 @@ var messageData = {
                   }],
               }, {
                 "title": "Food Type",
-                "image_url": 'http://thumbs.dreamstime.com/z/hungry-munchies-fast-food-cartoon-illustration-thinking-man-30676401.jpg',
+                "image_url": 'http://www.ezyhealth.com/magazine/wp-content/uploads/2015/03/iStock_000046272610_Large.jpg',
                 "buttons": [{
                     "type": "postback",
                     "title": "Philly Specials",
