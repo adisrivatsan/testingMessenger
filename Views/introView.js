@@ -6,7 +6,7 @@ var messageData = {
               "elements": [{
                   "title": 'What would you like Today?',
                   "subtitle": "Click to see our options",
-                  "image_url": 'http://thumbs.dreamstime.com/z/hungry-munchies-fast-food-cartoon-illustration-thinking-man-30676401.jpg',
+                  "image_url": 'http://wp.streetwise.co/wp-content/uploads//2014/09/unnamed-213.jpg',
                   "buttons": [{
                       "type": "postback",
                       "title": "Food Trucks In Area",
@@ -23,7 +23,7 @@ var messageData = {
               }, {
                 "title": "Continue",
                 "subtitle": "hello",
-                "image_url": 'http://wp.streetwise.co/wp-content/uploads//2014/09/unnamed-213.jpg',
+                "image_url": 'http://thumbs.dreamstime.com/z/hungry-munchies-fast-food-cartoon-illustration-thinking-man-30676401.jpg',
                 "buttons": [{
                     "type": "postback",
                     "title": "Best Quality",
