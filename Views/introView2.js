@@ -21,8 +21,7 @@ var messageData = {
                       "payload": "BBuck"
                   }],
               }, {
-                "title": "Cuisine",
-                "subtitle": "hello",
+                "title": "Food Type",
                 "image_url": 'http://thumbs.dreamstime.com/z/hungry-munchies-fast-food-cartoon-illustration-thinking-man-30676401.jpg',
                 "buttons": [{
                     "type": "postback",
