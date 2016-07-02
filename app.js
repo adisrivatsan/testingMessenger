@@ -59,7 +59,7 @@ var readyCheckout = require('./Views/readToCheckOut');
 var pictureModule = require('./PagePicture/write.js');
 var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
-var mulViewTopRated = require('./Views/mutliViewTopRated');
+var mulViewTopRated = require('./Views/multiViewTopRated');
 
 
 var holyText = {};
@@ -191,7 +191,7 @@ db.once('open', function callback () {
 
           } else if(payload=='TRated') {
             var mdata = mulViewTopRated(ven);
-            testView(sender,mdata); 
+            testView(sender,mdata);
 
           } else if(payload=='Open') {
 
