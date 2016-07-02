@@ -33,7 +33,7 @@ var messageData = {
                     "payload": "HFood"
                 }, {
                     "type": "postback",
-                    "title": "Enter your own cuisine",
+                    "title": "Enter cuisine",
                     "payload": "OC"
                 }
               ]

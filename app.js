@@ -86,8 +86,7 @@ db.once('open', function callback () {
 
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
-      //console.log('holy text ' + holyText);
-      console.log('This is the payload !!!!  ' + JSON.stringify(messaging_events[0]));
+
 
       for (i = 0; i < messaging_events.length; i++) {
         event = messaging_events[i];
@@ -96,9 +95,7 @@ db.once('open', function callback () {
         if (event.message && event.message.text) {
           text = event.message.text;
           console.log(event.message.seq);
-          //sendTextMessage(sender,'wow' + holyText);
-          //sendTextMessage(sender, 'wow' + inSingleFoodTruck);
-          //sendTextMessage(sender, 'hello ' + JSON.stringify(req.body.postback.payload));
+
           var nameArray = _.map(ven,function (num) {
             return num.Name;
           })
@@ -141,6 +138,7 @@ db.once('open', function callback () {
           }
 
           //console.log('this is bool' + inSingleFoodTruck);
+          //button handling
 
         }
         else if(event.postback) {
@@ -183,6 +181,11 @@ db.once('open', function callback () {
             var mdata = multiView(ven);
             testView(sender,mdata);
             //sendTextMessage(sender, 'please enter your zip code');
+
+
+          } else if(payload=='TRated' || payload=='SLine'|| payload=='BBuck') {
+            var mdata = multiView(ven);
+            testView(sender,mdata);
 
           } else if(payload=='Open') {
 
