@@ -59,6 +59,8 @@ var readyCheckout = require('./Views/readToCheckOut');
 var pictureModule = require('./PagePicture/write.js');
 var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
+var mulViewTopRated = require('./Views/mutliViewTopRated');
+
 
 var holyText = {};
 var cart = [];
@@ -183,9 +185,13 @@ db.once('open', function callback () {
             //sendTextMessage(sender, 'please enter your zip code');
 
 
-          } else if(payload=='TRated' || payload=='SLine'|| payload=='BBuck') {
+          } else if(payload=='SLine'|| payload=='BBuck') {
             var mdata = multiView(ven);
             testView(sender,mdata);
+
+          } else if(payload=='TRated') {
+            var mdata = mulViewTopRated(ven);
+            testView(sender,mdata); 
 
           } else if(payload=='Open') {
 
@@ -204,9 +210,6 @@ db.once('open', function callback () {
             } else {
               sendTextMessage(sender,'no food trucks open');
             }
-
-
-
 
 
           } else if(payload == 'Cuisine') {
