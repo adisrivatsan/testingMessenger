@@ -156,6 +156,15 @@ db.once('open', function callback () {
           var name = split[0];
           var specification = split[1];
           var foodTruck = specificFoodTruck(name);
+          var foodTruckOpen = _.filter(ven,function(num) {
+            var d = new Date();
+            var hours = num.HourOfOperation;
+            var split = hours.split('-');
+            var start = split[0];
+            var end = split[1];
+            var current = d.getHours();
+            return (start < current) && (current<end);
+          })
           if(specification == 'Menu') {
             //var menuItems = foodTruck.Menu;
             //console.log(holyText);
@@ -179,7 +188,8 @@ db.once('open', function callback () {
           } else if(specification == 'Address') {
             sendTextMessage(sender,foodTruck.LocationAddress);
 
-          } else if(payload == 'Area') {
+          }
+          else if(payload == 'Area') {
             var mdata = multiView(ven);
             testView(sender,mdata);
             //sendTextMessage(sender, 'please enter your zip code');
@@ -189,21 +199,15 @@ db.once('open', function callback () {
             var mdata = multiView(ven);
             testView(sender,mdata);
 
-          } else if(payload=='TRated') {
+          }
+          else if(payload=='TRated') {
+            //display top five rated.
+            vendorArr = [];
+            
             var mdata = mulViewTopRated(ven);
             testView(sender,mdata);
 
           } else if(payload=='Open') {
-
-            var foodTruckOpen = _.filter(ven,function(num) {
-              var d = new Date();
-              var hours = num.HourOfOperation;
-              var split = hours.split('-');
-              var start = split[0];
-              var end = split[1];
-              var current = d.getHours();
-              return (start < current) && (current<end);
-            })
             if(foodTruckOpen.length >0) {
               var mdata = multiView(foodTruckOpen);
               testView(sender,mdata);

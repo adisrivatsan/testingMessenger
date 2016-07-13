@@ -5,7 +5,7 @@ mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8
 var VendorSchema = mongoose.Schema({
     Name: String,
     HourOfOperation: String,
-    Days: String,
+    DayOfOperation: String,
     Menu: [{Name:String,
             Price: Number}],
     CuisineType: String,
@@ -99,6 +99,7 @@ db.once('open', function callback() {
 
     Vendor.find(function(err, ven) {
         console.log(ven);
+        console.log(ven[1].Menu);
     })
 
 });
