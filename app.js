@@ -84,21 +84,28 @@ Vendor.find(function (err, ven) {
         if (event.message && event.message.text) {
           text = event.message.text;
           console.log(event.message.seq);
-          console.log('hey ' + event);
-          
 
+          // given list of food truck will get names of all food trucks
           var nameArray = _.map(ven,function (num) {
             return num.Name;
           })
-          var specificFoodTruck = function(foodTruckName) {
+
+          //given food truck name gives you entire food truck object
+          var specificFoodTruck = function(foodTruckName) {0
             var item = _.find(ven,function(num) {
               return num.Name == foodTruckName;
             })
             return item;
           }
 
+          //List of food trucks with a given cuisine
           var foodTruckCuisine = cuisine(text);
           var select = specificFoodTruck(text);
+
+          //Hard-coded text sample(for testing)
+          //First ELIF: Shows the intro view
+          //Second ELIF: If input is a foodtruck it takes user to given foodtruck view
+          //Third ELIF: If the input is a cuisine then return an array of food trucks
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' + nameArray);
@@ -108,20 +115,10 @@ Vendor.find(function (err, ven) {
           } else if(select){
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               holyText = select;
-              sendTextMessage(sender, 'yes' + holyText);
+              //sendTextMessage(sender, 'yes' + holyText);
               //testView(sender, bundle[0]);
               testView(sender,bundle);
               //inSingleFoodTruck = true;
-          } else if(holyText.Menu) {
-            var item = _.find(holyText.Menu, function(num) {
-              return num.Name == text;
-            })
-            if(item) {
-              cart.push(item);
-              testView(sender,readyCheckout);
-              //sendTextMessage(sender,"Item" + item);
-            }
-
           } else if(foodTruckCuisine.length !=0) {
             //sendTextMessage(sender, 'In the cuisine');
             var mdata = multiView(foodTruckCuisine);
@@ -132,13 +129,17 @@ Vendor.find(function (err, ven) {
           //button handling
 
         }
+        //button handling()
         else if(event.postback) {
+          //gets the name of a cuisine and shows a view
+          //MAKE THIS FUCKING FUNCTION GLOBAL PLEASE YOU PIECE OF SHIT
           var specificFoodTruck = function(foodTruckName) {
             var item = _.find(ven,function(num) {
               return num.Name == foodTruckName;
             })
             return item;
           }
+          //
           var payload = event.postback.payload;
           var select = specificFoodTruck(payload);
           var split = payload.split('\t');
