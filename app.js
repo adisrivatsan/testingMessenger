@@ -1,40 +1,25 @@
+//Libraries
 var express = require('express');
 var app = express();
- var port = process.env.PORT || 5000;
- var bodyParser = require('body-parser');
- var request = require('request');
- var fs = require('fs');
- var pg = require('pg');
- var _ = require('underscore');
- var Q = require('q');
+var port = process.env.PORT || 5000;
+var bodyParser = require('body-parser');
+var request = require('request');
+var fs = require('fs');
+var pg = require('pg');
+var _ = require('underscore');
+var Q = require('q');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
 
- var mongoose = require('mongoose');
- mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
-
-
- app.use(express.static(__dirname));
- app.use(express.static(__dirname + '/Website'));
-
-
- app.use(bodyParser.json());
-
- app.get("/", function (req,res) {
+//set up
+app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/Website'));
+app.use(bodyParser.json());
+app.get("/", function (req,res) {
  	res.sendFile(__dirname + '/Website/index.html');
  })
 
- app.get("/read", function (req,res) {
-   console.log(req.body + 'initial');
-   var prevText = fs.readFileSync("sample.txt", "UTF-8");
-   fs.writeFileSync("sample.txt",prevText + 'wow');
-   console.log(req.body);
-   var sampleText = fs.readFileSync("sample.txt", "UTF-8");
-   console.log('yo yo yo yo ' + sampleText);
-   //res.send('working');
- })
-
-//setup vendor information
-
-//requestVendorInfo();
+ //views
 
 var introView = require('./Views/introView2');
 var arrFunc = require('./sendingMessages/templateSend');
@@ -42,6 +27,7 @@ var sendTextMessage = arrFunc[0];
 var testView = arrFunc[1];
 
 
+//messenger bot set up
  app.get('/webhook/', function (req, res) {
    if (req.query['hub.verify_token'] === '<validation_token>') {
      res.send(req.query['hub.challenge']);
@@ -49,7 +35,7 @@ var testView = arrFunc[1];
    res.send('Error, wrong validation token');
  })
 
-
+//importing files
 var singleFoodTruck = require('./Views/singleFoodView');
 var multiView = require('./Views/MultiFoodTruckView');
 var rView = require('./Views/recietView');
@@ -61,24 +47,23 @@ var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
 var mulViewTopRated = require('./Views/multiViewTopRated');
 
-
+//data set up.
 var holyText = {};
 var cart = [];
-//mongo Set up
+
+
+//set up schema
 var VendorSchema = require('./schemas/vendorSchema');
-
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
-
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-//states
-//var inSingleFoodTruck = false;
 
-
+//open database
 db.once('open', function callback () {
 
-
-  Vendor.find(function (err, ven) {
+//list of vendors
+Vendor.find(function (err, ven) {
+    // function input: type of cuisine and returns list of food trucks
     var cuisine = function (type) {
       var list =  _.filter(ven, function(num) {
       return num.CuisineType == type;
@@ -86,17 +71,21 @@ db.once('open', function callback () {
     return list;
   }
 
+//Listens for incoming actions from the user
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
 
-
+      //Loops through all the user messages
       for (i = 0; i < messaging_events.length; i++) {
         event = messaging_events[i];
         console.log('event ' + event);
         sender = event.sender.id;
+        //listening for text
         if (event.message && event.message.text) {
           text = event.message.text;
           console.log(event.message.seq);
+          console.log('hey ' + event);
+          
 
           var nameArray = _.map(ven,function (num) {
             return num.Name;
@@ -203,7 +192,7 @@ db.once('open', function callback () {
           else if(payload=='TRated') {
             //display top five rated.
             vendorArr = [];
-            
+
             var mdata = mulViewTopRated(ven);
             testView(sender,mdata);
 
