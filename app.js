@@ -9,6 +9,8 @@ var pg = require('pg');
 var _ = require('underscore');
 var Q = require('q');
 var mongoose = require('mongoose');
+var geocoder = require('geocoder');
+
 mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
 
 //set up
@@ -107,6 +109,12 @@ Vendor.find(function (err, ven) {
           var foodTruckCuisine = cuisine(text);
           var select = getFTGivenName(text);
 
+          geocoder.geocode(text, function(err,data) {
+            if(!err) {
+              sendTextMessage(sender,'this works');
+            }
+          })
+
           //Hard-coded text sample(for testing)
           //First ELIF: Shows the intro view
           //Second ELIF: If input is a foodtruck it takes user to given foodtruck view
@@ -116,6 +124,7 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'yo baby' + nameArray);
             sendTextMessage(sender,'yo baby' + getFTGivenName(ven,'Trivano').HourOfOperation);
           } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
+            sendTextMessage(sender,'Please enter your zip code for accurate location');
             testView(sender, introView);
           } else if(select){
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
@@ -149,13 +158,7 @@ Vendor.find(function (err, ven) {
             return (start < current) && (current<end);
           })
           if(specification == 'Menu') {
-            //var menuItems = foodTruck.Menu;
-            //console.log(holyText);
-            /*for (var i = 0; i < menuItems.length; i++) {
-              sendTextMessage(sender, '' + menuItems[i].Name + ': ' +
-              menuItems[i].Price);
-            } */
-            //pictureModule(name,menuItems,convert);
+
             sendTextMessage(sender,foodTruck.ImageUrl);
             if(foodTruck.ImageUrl) {
               sendTextMessage(sender,'in url');

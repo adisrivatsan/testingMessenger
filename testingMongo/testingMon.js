@@ -2,28 +2,17 @@ var mongoose = require('mongoose');
 var _ = require('underscore');
 mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
 
-var VendorSchema = mongoose.Schema({
-    Name: String,
-    HourOfOperation: String,
-    DayOfOperation: String,
-    Menu: [{Name:String,
-            Price: Number}],
-    CuisineType: String,
-    PhoneNumber: String,
-    Email: String,
-    Registration: String,
-    Other:[String],
-    LocationAddress: String,
-    Employees: [String],
-    Website: String,
-    Popularity: Number,
-    Wifi: Boolean,
-    ZipCode: String,
-    ImageUrl: String
-});
+
+var schemaOfVendor = require('../schemas/vendorSchema');
+
+
+
+
+var VendorSchema = schemaOfVendor;
 
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
 
+//examples
 var Trivano = new Vendor({
     Name: 'Trivano',
     HourOfOperation: '10-3',
@@ -99,7 +88,7 @@ db.once('open', function callback() {
 
     Vendor.find(function(err, ven) {
         console.log(ven);
-        console.log(ven[1].Menu);
+        //console.log(ven[1].Menu);
     })
 
 });
