@@ -23,8 +23,24 @@ app.get("/", function (req,res) {
 
 var introView = require('./Views/introView2');
 var arrFunc = require('./sendingMessages/templateSend');
+
+//functions: to be added to.
 var sendTextMessage = arrFunc[0];
 var testView = arrFunc[1];
+
+//to be moved to a different file. Collection needs Name property.
+var getNameArray = function(collection) {
+  return _.map(collection,function (num) {
+    return num.Name;
+  });
+}
+var getFTGivenName = function(collection,foodTruckName) {
+  return _.find(collection,function(num) {
+    return num.Name == foodTruckName;
+  })
+}
+
+
 
 
 //messenger bot set up
@@ -41,7 +57,6 @@ var multiView = require('./Views/MultiFoodTruckView');
 var rView = require('./Views/recietView');
 var singleRView = require('./Views/singleFoodRecietView');
 var readyCheckout = require('./Views/readToCheckOut');
- //welcomeMessage();
 var pictureModule = require('./PagePicture/write.js');
 var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
@@ -86,21 +101,11 @@ Vendor.find(function (err, ven) {
           console.log(event.message.seq);
 
           // given list of food truck will get names of all food trucks
-          var nameArray = _.map(ven,function (num) {
-            return num.Name;
-          })
-
-          //given food truck name gives you entire food truck object
-          var specificFoodTruck = function(foodTruckName) {0
-            var item = _.find(ven,function(num) {
-              return num.Name == foodTruckName;
-            })
-            return item;
-          }
+          var nameArray = getNameArray(ven);
 
           //List of food trucks with a given cuisine
           var foodTruckCuisine = cuisine(text);
-          var select = specificFoodTruck(text);
+          var select = getFTGivenName(text);
 
           //Hard-coded text sample(for testing)
           //First ELIF: Shows the intro view
@@ -109,14 +114,12 @@ Vendor.find(function (err, ven) {
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' + nameArray);
-            sendTextMessage(sender,'yo baby' + specificFoodTruck('Trivano').HourOfOperation);
+            sendTextMessage(sender,'yo baby' + getFTGivenName(ven,'Trivano').HourOfOperation);
           } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
             testView(sender, introView);
           } else if(select){
               var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               holyText = select;
-              //sendTextMessage(sender, 'yes' + holyText);
-              //testView(sender, bundle[0]);
               testView(sender,bundle);
               //inSingleFoodTruck = true;
           } else if(foodTruckCuisine.length !=0) {
@@ -125,27 +128,17 @@ Vendor.find(function (err, ven) {
             testView(sender,mdata);
           }
 
-          //console.log('this is bool' + inSingleFoodTruck);
-          //button handling
-
         }
         //button handling()
         else if(event.postback) {
-          //gets the name of a cuisine and shows a view
-          //MAKE THIS FUCKING FUNCTION GLOBAL PLEASE YOU PIECE OF SHIT
-          var specificFoodTruck = function(foodTruckName) {
-            var item = _.find(ven,function(num) {
-              return num.Name == foodTruckName;
-            })
-            return item;
-          }
-          //
+
+          //Variables related to the button press
           var payload = event.postback.payload;
-          var select = specificFoodTruck(payload);
+          var select = getFTGivenName(ven,payload);
           var split = payload.split('\t');
           var name = split[0];
           var specification = split[1];
-          var foodTruck = specificFoodTruck(name);
+          var foodTruck = getFTGivenName(ven,name);
           var foodTruckOpen = _.filter(ven,function(num) {
             var d = new Date();
             var hours = num.HourOfOperation;
@@ -172,7 +165,7 @@ Vendor.find(function (err, ven) {
             }
 
 
-
+          //TO BE CLEANED
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
           } else if(specification == 'Address') {
