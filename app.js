@@ -109,11 +109,7 @@ Vendor.find(function (err, ven) {
           var foodTruckCuisine = cuisine(text);
           var select = getFTGivenName(text);
 
-          geocoder.geocode(text, function(err,data) {
-            if(!err) {
-              sendTextMessage(sender,'this works');
-            }
-          })
+
 
           //Hard-coded text sample(for testing)
           //First ELIF: Shows the intro view
@@ -132,7 +128,7 @@ Vendor.find(function (err, ven) {
               testView(sender,bundle);
               //inSingleFoodTruck = true;
           } else if(foodTruckCuisine.length !=0) {
-            //sendTextMessage(sender, 'In the cuisine');
+            
             var mdata = multiView(foodTruckCuisine);
             testView(sender,mdata);
           }
