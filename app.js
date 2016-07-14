@@ -107,7 +107,7 @@ Vendor.find(function (err, ven) {
 
           //List of food trucks with a given cuisine
           var foodTruckCuisine = cuisine(text);
-          var select = getFTGivenName(text);
+          var select = getFTGivenName(ven,text);
 
 
 
@@ -128,7 +128,6 @@ Vendor.find(function (err, ven) {
               testView(sender,bundle);
               //inSingleFoodTruck = true;
           } else if(foodTruckCuisine.length !=0) {
-            
             var mdata = multiView(foodTruckCuisine);
             testView(sender,mdata);
           }
