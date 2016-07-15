@@ -13,6 +13,7 @@ var CustSchema = mongoose.Schema({
     Email: String, //Email of user
     FavoriteStops: [String], //Favorite vendor destination (saves 10 of them)
     SenderID: String, //Specific sender address for the Facebook Bot
+    UsualLocations:[String] // the top 5 typical location the customer orders from
 });
 
 module.exports = CustSchema;

@@ -109,6 +109,11 @@ Vendor.find(function (err, ven) {
           var foodTruckCuisine = cuisine(text);
           var select = getFTGivenName(ven,text);
 
+          geocoder.geocode(text,function(err,data) {
+            if(!err) {
+              
+            }
+          })
 
 
           //Hard-coded text sample(for testing)
