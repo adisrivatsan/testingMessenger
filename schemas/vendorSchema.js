@@ -13,7 +13,11 @@ var VendorSchema = mongoose.Schema({
     DaysOfOperation: String, //Days of operation
     Menu: [{ //Menu of the items the company sells
         Name: String, //Name of the product
-        Price: Number //Price of the product
+        Price: Number, //Price of the product
+        Currency: String, //Currency of Price
+        TimesOrder: Number, //Number of times this object was ordered in a week
+        PictureURL: String, //Image URL of the food item
+        PictureFile: String, //Path of image for foodtruck
     }],
     VendorCuisineType: String, //Type of cuisine the vendor serves
     AccountType: String, //Either Vendor or Customer
