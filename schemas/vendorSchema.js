@@ -11,14 +11,7 @@ var VendorSchema = mongoose.Schema({
     PublicPhone: String, //Company phone number
     HourOfOperation: String, //Hours of operation
     DaysOfOperation: String, //Days of operation
-    Menu: [{ //Menu of the items the company sells
-        Name: String, //Name of the product
-        Price: Number, //Price of the product
-        Currency: String, //Currency of Price
-        TimesOrder: Number, //Number of times this object was ordered in a week
-        PictureURL: String, //Image URL of the food item
-        PictureFile: String, //Path of image for foodtruck
-    }],
+    Menu: [String], //item object IDs
     VendorCuisineType: String, //Type of cuisine the vendor serves
     AccountType: String, //Either Vendor or Customer
     LocationAddress: String, //Address of company
@@ -28,12 +21,7 @@ var VendorSchema = mongoose.Schema({
     }],
     Website: String, //Website of the company
     PercentRating: Number, //Percent o fpeople who like the company
-    UserComments: [{ //Users comment on the vendor
-        UserName: String, //Name of the commentor
-        Comment: String, //Review of the foodtruck
-        Rating: Number, //user rating of the foodtruck
-        DateAdded: String, //Date the comment was added
-    }],
+    UserComments: [String], //User Comment IDs
     Wifi: Boolean, //Whether or not the foodtruck has access to wifi
     ImageUrl: String, //Food truck logo
     ZipCode: String, //Zipcode of truck
