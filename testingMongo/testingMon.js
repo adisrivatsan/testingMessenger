@@ -4,10 +4,6 @@ mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8
 
 
 var schemaOfVendor = require('../schemas/vendorSchema');
-
-
-
-
 var VendorSchema = schemaOfVendor;
 
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
@@ -80,7 +76,7 @@ db.once('open', function callback() {
     //var data = db.collection('FoodTruckVendorInfo').find();
     //console.log(data);
     console.log('hello');
-    /*Vendor.update({Name:'Trivano'}, {HourOfOperation: '7-17'}, {multi:false}, function(err) {
+/*    Vendor.update({Name:'Trivano'}, {Latitude: 20.1555554}, {multi:false}, function(err) {
       console.log(err);
       console.log('working');
       db.close();
@@ -88,6 +84,8 @@ db.once('open', function callback() {
 
     Vendor.find(function(err, ven) {
         console.log(ven);
+      //  console.log(ven[1].Latitude + 2);
+
         //console.log(ven[1].Menu);
     })
 

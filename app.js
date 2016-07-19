@@ -42,8 +42,31 @@ var getFTGivenName = function(collection,foodTruckName) {
   })
 }
 
+//gets open food trucks.
+var foodTruckOpen = _.filter(collection,function(num) {
+  var d = new Date();
+  var hours = num.HourOfOperation;
+  var split = hours.split('-');
+  var start = split[0];
+  var end = split[1];
+  var current = d.getHours();
+  return (start < current) && (current<end);
+})
 
-
+var geoGraphicallyCloseVendors = function(lat,long) {
+  var incChange = 0.02;
+  var upperLat = lat + incChange;
+  var lowerLat = lat - incChange;
+  var upperLong = long + incChange;
+  var lowerLong = long - incChange;
+    _.filter(collection,function(num) {
+      var insideLat = Math.max(upperLat,lowerLat) > num.Latitude && num.Latitude >
+      Math.min(upperLat,lowerLat);
+      var insideLong = Math.max(upperLong,lowerLong) > num.Longitude && num.Longitude >
+      Math.min(upperLong,lowerLong);
+      return insideLat && insideLong;
+    })
+}
 
 //messenger bot set up
  app.get('/webhook/', function (req, res) {
@@ -111,7 +134,7 @@ Vendor.find(function (err, ven) {
 
           geocoder.geocode(text,function(err,data) {
             if(!err) {
-              
+
             }
           })
 
@@ -148,15 +171,7 @@ Vendor.find(function (err, ven) {
           var name = split[0];
           var specification = split[1];
           var foodTruck = getFTGivenName(ven,name);
-          var foodTruckOpen = _.filter(ven,function(num) {
-            var d = new Date();
-            var hours = num.HourOfOperation;
-            var split = hours.split('-');
-            var start = split[0];
-            var end = split[1];
-            var current = d.getHours();
-            return (start < current) && (current<end);
-          })
+
           if(specification == 'Menu') {
 
             sendTextMessage(sender,foodTruck.ImageUrl);

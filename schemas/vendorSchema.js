@@ -15,6 +15,8 @@ var VendorSchema = mongoose.Schema({
     VendorCuisineType: String, //Type of cuisine the vendor serves
     AccountType: String, //Either Vendor or Customer
     LocationAddress: String, //Address of company
+    Latitude:Number, //Latitude of Address
+    Longitutde:Number,//Longitude of Address
     Employees: [{ //List of Employees in the company
             Name: String, //Name of employee
             NowWorking: Boolean, //Whether or not the current employee is working right now
