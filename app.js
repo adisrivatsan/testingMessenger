@@ -43,16 +43,19 @@ var getFTGivenName = function(collection,foodTruckName) {
 }
 
 //gets open food trucks.
-var foodTruckOpen = _.filter(collection,function(num) {
-  var d = new Date();
-  var hours = num.HourOfOperation;
-  var split = hours.split('-');
-  var start = split[0];
-  var end = split[1];
-  var current = d.getHours();
-  return (start < current) && (current<end);
-})
+var foodTruckOpen = function(collection) {
+  return _.filter(collection,function(num) {
+    var d = new Date();
+    var hours = num.HourOfOperation;
+    var split = hours.split('-');
+    var start = split[0];
+    var end = split[1];
+    var current = d.getHours();
+    return (start < current) && (current<end);
+  })
+}
 
+//gets Geographicall Close Food Trucks
 var geoGraphicallyCloseVendors = function(lat,long) {
   var incChange = 0.02;
   var upperLat = lat + incChange;
@@ -67,6 +70,47 @@ var geoGraphicallyCloseVendors = function(lat,long) {
       return insideLat && insideLong;
     })
 }
+
+
+//need To TEST
+
+
+//template filtering algo
+var templateFilter = function(limit, property,collection) {
+  var collec = [];
+  var meter = 1000;
+   _.filter(collection, function(num) {
+    if(collec.length == limit) {
+      for (var i = 0; i < collec.length; i++) {
+        if(collec[i].metric == meter) {
+          collec[i] = {modID: num._id, metric: num[property]};
+          if(meter> num[property]) {
+            meter = num[property];
+          }
+        }
+      }
+    } else {
+      collec.push({modID: num._id, metric: num[property]});
+      if(meter > num[property]) {
+        meter = num[property];
+      }
+    }
+
+  })
+  return collec;
+}
+
+//top rated food trucks
+var topRatedFoodTrucks = templateFilter(5,'PercentRating');
+//top 5 shortest Lines
+var shortestLineFoodTruck = templateFilter(5, 'LineLength');
+
+var cheapestFoodTruck = templateFilter(5,'AvgPrice');
+
+var healthyFoodTruck = templateFilter(5,'AvgCalorieCount');
+
+
+
 
 //messenger bot set up
  app.get('/webhook/', function (req, res) {
@@ -203,7 +247,7 @@ Vendor.find(function (err, ven) {
           }
           else if(payload=='TRated') {
             //display top five rated.
-            vendorArr = [];
+
 
             var mdata = mulViewTopRated(ven);
             testView(sender,mdata);

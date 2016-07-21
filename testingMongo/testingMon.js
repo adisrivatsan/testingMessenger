@@ -5,8 +5,11 @@ mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8
 
 var schemaOfVendor = require('../schemas/vendorSchema');
 var VendorSchema = schemaOfVendor;
+var customerSchema = require('../schemas/customerSchema');
 
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
+var Customer = mongoose.model('CustomerInfo',customerSchema);
+
 
 //examples
 var Trivano = new Vendor({
@@ -43,6 +46,11 @@ var AmericanExpierence = new Vendor({
   Wifi: true
 });
 
+var Adi = new Customer({
+  FirstName:'Adi'
+});
+
+
 /* expamle update
 
 Vendor.update({Name:'Trivano'}, {Days:'M-F'}, {multi:false}, function(err) {
@@ -54,6 +62,10 @@ Vendor.update({Name:'Trivano'}, {Days:'M-F'}, {multi:false}, function(err) {
   Vendor.find(function(err,ven) {
   console.log(ven);
   })
+  Example Add
+  Data.save(function(err,data){
+  console.log('is working');
+})
 */
 
 var menuTemp = {
@@ -76,17 +88,21 @@ db.once('open', function callback() {
     //var data = db.collection('FoodTruckVendorInfo').find();
     //console.log(data);
     console.log('hello');
-/*    Vendor.update({Name:'Trivano'}, {Latitude: 20.1555554}, {multi:false}, function(err) {
+  /* Vendor.update({Name:'Trivano'}, {Latitude: 23.5}, {multi:false}, function(err) {
       console.log(err);
       console.log('working');
-      db.close();
+
     }) */
 
     Vendor.find(function(err, ven) {
-        console.log(ven);
-      //  console.log(ven[1].Latitude + 2);
+        Customer.find(function(err,cust){
+          console.log(ven);
+          db.close(); 
+        })
 
-        //console.log(ven[1].Menu);
     })
+
+
+
 
 });

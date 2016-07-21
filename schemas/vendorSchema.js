@@ -27,7 +27,12 @@ var VendorSchema = mongoose.Schema({
     Wifi: Boolean, //Whether or not the foodtruck has access to wifi
     ImageUrl: String, //Food truck logo
     ZipCode: String, //Zipcode of truck
-    Delivery: Boolean //Does the company have delivery
+    Delivery: Boolean, //Does the company have delivery
+    SenderID:String, //For facebook to send messages to vendors.
+    LineLength:Number, //Length of a line at a given time.
+    OrderID: [String], // String of order IDS.
+    AvgPrice: Number,
+    AvgCalorieCount:Number //Number of Average Calories in the Food. 
 });
 
 module.exports = VendorSchema;

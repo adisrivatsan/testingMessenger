@@ -34,7 +34,7 @@ var messageData = {
                 }, {
                     "type": "postback",
                     "title": "Enter cuisine",
-                    "payload": "OC"
+                    "payload": "cuisine"
                 }
               ]
               }],
