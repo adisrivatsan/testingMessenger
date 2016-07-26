@@ -136,6 +136,10 @@ db.once('open', function callback () {
 
 //list of vendors
 Vendor.find(function (err, ven) {
+  Item.find(function(err,item) {
+
+
+
     // function input: type of cuisine and returns list of food trucks
     var cuisine = function (type) {
       var list =  _.filter(ven, function(num) {
@@ -207,9 +211,7 @@ Vendor.find(function (err, ven) {
 
           if(specification == 'Menu') {
             sendTextMessage(sender,'in menu');
-            Item.find(function(err,item) {
-              sendTextMessage(sender, 'ahh' + item[0].Name);
-            })
+            sendTextMessage(sender,item[0].Name); 
 
           //TO BE CLEANED
           } else if(specification =='Order') {
@@ -255,6 +257,7 @@ Vendor.find(function (err, ven) {
       res.sendStatus(200);
     });
     db.close();
+})
 })
 });
 
