@@ -220,8 +220,8 @@ Vendor.find(function (err, ven) {
           var name = split[0];
           var specification = split[1];
           var foodTruck = getFTGivenName(ven,name);
-          if(select) {
-            sendTextMessage(sender,'this is select' + select);
+          if(chosenFoodTruck) {
+            sendTextMessage(sender,'this is select' + chosenFoodTruck);
           }
 
 
