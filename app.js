@@ -42,6 +42,12 @@ var getFTGivenName = function(collection,foodTruckName) {
   })
 }
 
+var getFTGivenID = function(collection,foodTruckId) {
+  return _.find(collection,function(num) {
+    return num._id == foodTruckId;
+  })
+}
+
 //gets open food trucks.
 var foodTruckOpen = function(collection) {
   return _.filter(collection,function(num) {
@@ -191,7 +197,7 @@ Vendor.find(function (err, ven) {
 
           //Variables related to the button press
           var payload = event.postback.payload;
-          var select = getFTGivenName(ven,payload);
+          var select = getFTGivenID(ven,payload);
           var split = payload.split('\t');
           var name = split[0];
           var specification = split[1];
@@ -227,27 +233,15 @@ Vendor.find(function (err, ven) {
 
           }
           else if(payload=='TRated') {
-            //display top five rated.
-
 
             var mdata = mulViewTopRated(ven);
             testView(sender,mdata);
 
-          } else if(payload=='Open') {
-            if(foodTruckOpen.length >0) {
-              var mdata = multiView(foodTruckOpen);
-              testView(sender,mdata);
-            } else {
-              sendTextMessage(sender,'no food trucks open');
-            }
-
-
           } else if(payload == 'Cuisine') {
             sendTextMessage(sender,'please enter cuisine');
           } else if(select) {
-              var bundle = singleFoodTruck(payload,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              holyText = select;
-              sendTextMessage(sender, 'yes' + holyText);
+              var bundle = singleFoodTruck(select.VendorName,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
+              sendTextMessage(sender, 'yes');
               //testView(sender, bundle[0]);
               testView(sender,bundle);
 
