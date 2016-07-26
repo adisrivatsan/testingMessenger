@@ -3,12 +3,15 @@ var multiView = function (farr) {
   var buttonArr = [];
 
   for (var i = 0; i < farr.length; i++) {
-    var button = {
-      "type" : "postback",
-      "title": farr[i].VendorName,
-      "payload": farr[i].VendorName
+    if(farr[i].VendorName) {
+      var button = {
+        "type" : "postback",
+        "title": farr[i].VendorName,
+        "payload": farr[i].VendorName
+      }
+      buttonArr.push(Object.assign({},button));
     }
-    buttonArr.push(Object.assign({},button));
+
   }
 
   var messageData = {
