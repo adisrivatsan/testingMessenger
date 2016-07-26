@@ -223,12 +223,12 @@ Vendor.find(function (err, ven) {
 
           if(specification == 'Menu') {
             sendTextMessage(sender,'in menu');
-            if(select) {
+            if(chosenFoodTruck) {
               var itemMenu = _.map(select.Menu,function(ele) {
                 return getItemGivenID(item,ele);
               })
               var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
-              testView(sender,bundle); 
+              testView(sender,bundle);
 
             } else {
               sendTextMessage(sender,'click on a food Truck first');
