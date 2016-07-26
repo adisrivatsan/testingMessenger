@@ -141,7 +141,7 @@ Vendor.find(function (err, ven) {
       var list =  _.filter(ven, function(num) {
       return num.CuisineType == type;
     })
-    return list;
+      return list;
   }
 
 //Listens for incoming actions from the user
@@ -206,7 +206,7 @@ Vendor.find(function (err, ven) {
           var foodTruck = getFTGivenName(ven,name);
 
           if(specification == 'Menu') {
-            sendTextMessage(sender,'in menu'); 
+            sendTextMessage(sender,'in menu');
             Item.find(function(err,item) {
               sendTextMessage(sender, 'ahh' + item[0].Name);
             })
