@@ -48,6 +48,12 @@ var getFTGivenID = function(collection,foodTruckId) {
   })
 }
 
+var getItemGivenID = function(collection,ItemID) {
+  return _.find(collection,function(num) {
+    return num._id == ItemID;
+  })
+}
+
 //gets open food trucks.
 var foodTruckOpen = function(collection) {
   return _.filter(collection,function(num) {
@@ -78,9 +84,6 @@ var geoGraphicallyCloseVendors = function(lat,long) {
 }
 
 
-//need To TEST
-
-
 //template filtering algo
 var templateFilter = function(limit, property,collection) {
   var sortList = _.sortBy(collection,property);
@@ -108,7 +111,7 @@ var healthyFoodTruck = templateFilter(5,'AvgCalorieCount');
  })
 
 //importing files
-var singleFoodTruck = require('./Views/singleFoodView');
+var singleFoodView = require('./Views/singleFoodView');
 var multiView = require('./Views/MultiFoodTruckView');
 var rView = require('./Views/recietView');
 var singleRView = require('./Views/singleFoodRecietView');
@@ -117,9 +120,10 @@ var pictureModule = require('./PagePicture/write.js');
 var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
 var mulViewTopRated = require('./Views/multiViewTopRated');
+var multiItemView = require('./Views/multiItemView');
 
 //data set up.
-var holyText = {};
+var chosenFoodTruck = {};
 var cart = [];
 
 
@@ -128,6 +132,10 @@ var VendorSchema = require('./schemas/vendorSchema');
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
 var ItemSchema = require('./schemas/ItemSchema');
 var Item = mongoose.model('ItemInfo',ItemSchema);
+var CustomerSchema = require('./schemas/customerSchema');
+var Customer = mongoose.model('ItemInfo',ItemSchema);
+var OrderSchema = require('./schemas/OrderSchema');
+var Order = mongoose.model('ItemInfo',ItemSchema);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
@@ -137,6 +145,10 @@ db.once('open', function callback () {
 //list of vendors
 Vendor.find(function (err, ven) {
   Item.find(function(err,item) {
+    Customer.find(function(err,cus) {
+      Order.find(function(err,ord){
+
+
 
 
 
@@ -188,8 +200,8 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'Please enter your zip code for accurate location');
             testView(sender, introView);
           } else if(select){
-              var bundle = singleFoodTruck(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              holyText = select;
+              var bundle = singleFoodView(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
+              chosenFoodTruck = select;
               testView(sender,bundle);
               //inSingleFoodTruck = true;
           } else if(foodTruckCuisine.length !=0) {
@@ -211,9 +223,19 @@ Vendor.find(function (err, ven) {
 
           if(specification == 'Menu') {
             sendTextMessage(sender,'in menu');
-            sendTextMessage(sender,item[0].Name); 
+            if(select) {
+              var itemMenu = _.map(select.Menu,function(ele) {
+                return getItemGivenID(item,ele);
+              })
+              var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
+              testView(sender,bundle); 
 
-          //TO BE CLEANED
+            } else {
+              sendTextMessage(sender,'click on a food Truck first');
+            }
+
+
+
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
           } else if(specification == 'Address') {
@@ -233,23 +255,23 @@ Vendor.find(function (err, ven) {
           }
           else if(payload=='TRated') {
 
-            var mdata = mulViewTopRated(ven);
+            var mdata = multiView(ven);
             testView(sender,mdata);
 
           } else if(payload == 'Cuisine') {
             sendTextMessage(sender,'please enter cuisine');
           } else if(select) {
-              var bundle = singleFoodTruck(select.VendorName,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              sendTextMessage(sender, 'yes');
-              //testView(sender, bundle[0]);
+              var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
+              //sendTextMessage(sender, 'yes');
+              chosenFoodTruck = select;
               testView(sender,bundle);
 
           } else if(payload == 'Order') {
             sendTextMessage(sender, 'Please Type in next order');
           } else if (payload =='CheckOut') {
-            var view = rView(cart,holyText.Name);
+            var view = rView(cart,chosenFoodTruck.Name);
             testView(sender,view);
-            holyText = {};
+            chosenFoodTruck = {};
           }
 
         }
@@ -257,6 +279,8 @@ Vendor.find(function (err, ven) {
       res.sendStatus(200);
     });
     db.close();
+})
+})
 })
 })
 });

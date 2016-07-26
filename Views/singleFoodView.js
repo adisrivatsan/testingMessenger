@@ -1,25 +1,25 @@
-var singleFoodTruck = function (name, imageURL) {
+var singleFoodTruck = function (obj, imageURL) {
   var messageData = {
         "attachment": {
             "type": "template",
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": name,
+                    "title": obj.VendorName,
                     "subtitle": "Food Truck To Order",
                     "image_url": imageURL,
                     "buttons": [{
                         "type": "postback",
                         "title": "Menu",
-                        "payload":name + "\tMenu"
+                        "payload":obj._id + "\tMenu"
                     }, {
                         "type": "postback",
                         "title": "Order",
-                        "payload": name + "\tOrder"
+                        "payload": obj._id + "\tOrder"
                     }, {
                       "type" : "postback",
                       "title" : "Address",
-                      "payload": name + "\tAddress"
+                      "payload": obj._id + "\tAddress"
                     }],
                 }],
 
