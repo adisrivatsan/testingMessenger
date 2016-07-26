@@ -3,7 +3,7 @@ var multiView = function (truckObj,property,titleText,imageUrl) {
   var buttonArr = [];
 
   for (var i = 0; i < farr.length; i++) {
-    if(truckObj[i][property]]) {
+    if(truckObj[i][property]) {
       var button = {
         "type" : "postback",
         "title": farr[i][property],
