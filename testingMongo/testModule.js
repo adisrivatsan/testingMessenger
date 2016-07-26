@@ -28,24 +28,15 @@ var requestVendorInfo = function() {
 
 }
 
-var templateFilter = function(limit, property,collection) {
-  var sortList = _.sortBy(collection,property);
-  var segment = _.first(sortList,limit);
-  return segment;
-}
-var collession = [{_id:'Adi', LineLength: 14},
-{_id:'Dur', LineLength: 14},
-{_id:'Abi', LineLength: 56},
-{_id:'Lacha', LineLength: 3},
-{_id:'D', LineLength: 24},
-{_id:'E', LineLength: 3},
-{_id:'F', LineLength: 7},
-{_id:'G', LineLength: 10},
-{_id:'H', LineLength: 1}];
+var testSet = new Set();
+testSet.add(1);
+testSet.add(2);
+testSet.add(3);
+testSet.add(1);
+var iterator = Array.from(testSet);
+console.log(iterator);
 
-var arr = [];
-console.log(arr[0]);
-console.log(templateFilter(5,'LineLength',collession));
+
 
 
 //console.log(templateFilter(5,'LineLength',collession));

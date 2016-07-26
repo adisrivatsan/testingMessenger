@@ -227,6 +227,11 @@ Vendor.find(function (err, ven) {
               var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
                 return getItemGivenID(item,ele);
               })
+              var repeatCategory = _.map(chosenFoodTruck.Menu,function(ele) {
+                return ele.Category;
+              })
+              var uniqCategory = _.uniq(repeatCategory);
+
               var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
               testView(sender,bundle);
 
