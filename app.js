@@ -126,6 +126,8 @@ var cart = [];
 //set up schema
 var VendorSchema = require('./schemas/vendorSchema');
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
+var ItemSchema = require('./schemas/ItemSchema');
+var Item = mongoose.model('ItemInfo',ItemSchema);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
@@ -204,15 +206,9 @@ Vendor.find(function (err, ven) {
           var foodTruck = getFTGivenName(ven,name);
 
           if(specification == 'Menu') {
-
-            sendTextMessage(sender,foodTruck.ImageUrl);
-            if(foodTruck.ImageUrl) {
-              sendTextMessage(sender,'in url');
-              testView(sender,testPicView(foodTruck.ImageUrl));
-            } else {
-              testView(sender,testPicView('http://www.petakids.com/wp-content/uploads/2015/04/Bunny-Outside.jpg'));
-            }
-
+            Item.find(function(err,item) {
+              sendTextMessage(sender, 'ahh' + item[0].Name); 
+            })
 
           //TO BE CLEANED
           } else if(specification =='Order') {
