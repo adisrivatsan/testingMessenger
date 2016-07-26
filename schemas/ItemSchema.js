@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var ItemSchema = mongoose.Schema({
-  { //Items the company sells
+   //Items the company sells
       Name: String, //Name of the product
       Price: Number, //Price of the product
       Currency: String, //Currency of Price
@@ -13,7 +13,6 @@ var ItemSchema = mongoose.Schema({
         Price: String, //price of Add On
         Description: String //description of Add On
       }]
-  }
-});
+  })
 
 module.exports = ItemSchema;

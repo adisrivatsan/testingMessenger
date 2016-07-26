@@ -1,7 +1,4 @@
-var x = function(user) {
-  module.exports = user;
-}
-x('baby');
+var _ = require('underscore');
 
 var vendorInfo = [];
 var requestVendorInfo = function() {
@@ -30,3 +27,25 @@ var requestVendorInfo = function() {
   })
 
 }
+
+var templateFilter = function(limit, property,collection) {
+  var sortList = _.sortBy(collection,property);
+  var segment = _.first(sortList,limit);
+  return segment;
+}
+var collession = [{_id:'Adi', LineLength: 14},
+{_id:'Dur', LineLength: 14},
+{_id:'Abi', LineLength: 56},
+{_id:'Lacha', LineLength: 3},
+{_id:'D', LineLength: 24},
+{_id:'E', LineLength: 3},
+{_id:'F', LineLength: 7},
+{_id:'G', LineLength: 10},
+{_id:'H', LineLength: 1}];
+
+var arr = [];
+console.log(arr[0]);
+console.log(templateFilter(5,'LineLength',collession));
+
+
+//console.log(templateFilter(5,'LineLength',collession));

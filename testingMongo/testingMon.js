@@ -6,10 +6,13 @@ mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8
 var schemaOfVendor = require('../schemas/vendorSchema');
 var VendorSchema = schemaOfVendor;
 var customerSchema = require('../schemas/customerSchema');
+var ItemSchema = require('../schemas/ItemSchema');
+var OrderSchema = require('../schemas/OrderSchema');
 
 var Vendor = mongoose.model('VendorInfo', VendorSchema);
 var Customer = mongoose.model('CustomerInfo',customerSchema);
-
+var Item = mongoose.model('ItemInfo',ItemSchema);
+var Order = mongoose.model('OrderInfo',OrderSchema);
 
 //examples
 var Trivano = new Vendor({
@@ -46,10 +49,83 @@ var AmericanExpierence = new Vendor({
   Wifi: true
 });
 
+var SandwitchShop = new Vendor({
+  AccountOwnerFirstName:'john',
+  AccountOwnerLastName:'smith',
+  VendorName:'SandwitchShop',
+  PublicEmail:'',
+  OwnerEmail:'',
+  OwnerWorkPhone:'',
+  OwnerCell:'',
+  OwnerCell2:'',
+  PublicPhone:'',
+  HourOfOperation:'1-24',
+  DaysOfOperation:'',
+  Menu:['5796ddc799aa38eb09dff044','5796de4a35db14480adb3b2d'],
+  VendorCuisineType:'',
+  AccountType:'',
+  LocationAddress:'',
+  ZipCode:'',
+  Employees:'',
+  Website:'',
+  PercentRating:0,
+  UserComments:'',
+  Wifi:'',
+  ImageUrl:'',
+  Delivery:'',
+  OrderID:'',
+  SenderID:'',
+  LineLength:4
+})
+
 var Adi = new Customer({
-  FirstName:'Adi'
+  FirstName:'Adi',
+  LastName:'Srivat',
+  Email:'',
+  FavoriteStops:['5796e1b374480c450b0d6ce6'],
+  SenderID:'',
+  UsualLocations:'',
+  OrderIDs:[]
 });
 
+var FirstOrder = new Order({
+  FoodItemIDs:['5796ddc799aa38eb09dff044'],
+  VendorID:['5796ddc799aa38eb09dff044'],
+  Price:5,
+  Currency:'USD',
+  DatePurchased:'',
+  TimePurchased:'',
+  EmployeeName:'',
+  CustomerID:['5796e2b4f75b63880badfdee'],
+  Comments:''
+})
+
+
+//sample Item
+
+var sampleItem = new Item({
+  Name:'Eggsalad Sandwitch',
+  Price:7,
+  Currency:'USD',
+  TimesOrder:4,
+  PictureURL:'',
+  PictureFile:'',
+  Category:'Sandwitch',
+  PossibleAddOns:[{
+    Name: 'lettuce',
+    Price:0.5
+  }, {
+    Name: 'cheese',
+    Price:0.8
+  }]
+});
+
+
+
+
+/* sampleItem.save(function(err,data){
+  console.log('this is working');
+});
 
 /* expamle update
 
@@ -94,13 +170,17 @@ db.once('open', function callback() {
 
     }) */
 
-    Vendor.find(function(err, ven) {
+   Item.find(function(err,data) {
+      console.log(data[0]._id);
+    })
+
+  /*  Vendor.find(function(err, ven) {
         Customer.find(function(err,cust){
           console.log(ven);
-          db.close(); 
+          db.close();
         })
 
-    })
+    }) */
 
 
 

@@ -77,29 +77,10 @@ var geoGraphicallyCloseVendors = function(lat,long) {
 
 //template filtering algo
 var templateFilter = function(limit, property,collection) {
-  var collec = [];
-  var meter = 1000;
-   _.filter(collection, function(num) {
-    if(collec.length == limit) {
-      for (var i = 0; i < collec.length; i++) {
-        if(collec[i].metric == meter) {
-          collec[i] = {modID: num._id, metric: num[property]};
-          if(meter> num[property]) {
-            meter = num[property];
-          }
-        }
-      }
-    } else {
-      collec.push({modID: num._id, metric: num[property]});
-      if(meter > num[property]) {
-        meter = num[property];
-      }
-    }
-
-  })
-  return collec;
+  var sortList = _.sortBy(collection,property);
+  var segment = _.first(sortList,limit);
+  return segment;
 }
-
 //top rated food trucks
 var topRatedFoodTrucks = templateFilter(5,'PercentRating');
 //top 5 shortest Lines
