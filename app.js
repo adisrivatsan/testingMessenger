@@ -226,7 +226,6 @@ Vendor.find(function (err, ven) {
           if(specification == 'Menu') {
             sendTextMessage(sender,'in menu');
             var chosenFoodTruck = getFTGivenID(ven,id);
-            sendTextMessage(sender,'chosenFoodTruck' + chosenFoodTruck.VendorName);
             if(chosenFoodTruck) {
               var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
                 return getItemGivenID(item,ele);
