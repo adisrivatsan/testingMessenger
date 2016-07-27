@@ -28,13 +28,8 @@ var requestVendorInfo = function() {
 
 }
 
-var testSet = new Set();
-testSet.add(1);
-testSet.add(2);
-testSet.add(3);
-testSet.add(1);
-var iterator = Array.from(testSet);
-console.log(iterator);
+var testArr = [1,2,4,5,1,1,2,3];
+console.log(_.uniq(testArr));
 
 
 
