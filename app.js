@@ -121,10 +121,9 @@ var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
 var mulViewTopRated = require('./Views/multiViewTopRated');
 var multiItemView = require('./Views/multiItemView');
-
+var specialButtonView = require('./Views/specialButtonView');
 //data set up.
-var chosenFoodTruck = {};
-var cart = [];
+
 
 
 //set up schema
@@ -201,7 +200,8 @@ Vendor.find(function (err, ven) {
             testView(sender, introView);
           } else if(select){
               var bundle = singleFoodView(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              chosenFoodTruck = select;
+              //chosenFoodTruck = select;
+
               testView(sender,bundle);
               //inSingleFoodTruck = true;
           } else if(foodTruckCuisine.length !=0) {
@@ -217,16 +217,15 @@ Vendor.find(function (err, ven) {
           var payload = event.postback.payload;
           var select = getFTGivenID(ven,payload);
           var split = payload.split('\t');
-          var name = split[0];
+          var id = split[0];
           var specification = split[1];
           var foodTruck = getFTGivenName(ven,name);
-          if(chosenFoodTruck) {
-            sendTextMessage(sender,'this is select' + chosenFoodTruck.VendorName);
-          }
+
 
 
           if(specification == 'Menu') {
             sendTextMessage(sender,'in menu');
+            var chosenFoodTruck = getFTGivenID(id);
             if(chosenFoodTruck) {
               var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
                 return getItemGivenID(item,ele);
@@ -237,12 +236,12 @@ Vendor.find(function (err, ven) {
               var uniqCategory = _.uniq(repeatCategory);
 
               var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
-              testView(sender,bundle);
+              var bundle2 = specialButtonView(uniqCategory,'Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
+              testView(sender,bundle2);
 
             } else {
               sendTextMessage(sender,'click on a food Truck first');
             }
-
 
 
           } else if(specification =='Order') {
@@ -272,7 +271,7 @@ Vendor.find(function (err, ven) {
           } else if(select) {
               var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               //sendTextMessage(sender, 'yes');
-              chosenFoodTruck = select;
+              //chosenFoodTruck = select;
               testView(sender,bundle);
 
           } else if(payload == 'Order') {
@@ -280,7 +279,7 @@ Vendor.find(function (err, ven) {
           } else if (payload =='CheckOut') {
             var view = rView(cart,chosenFoodTruck.Name);
             testView(sender,view);
-            chosenFoodTruck = {};
+            //chosenFoodTruck = {};
           }
 
         }
