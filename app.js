@@ -237,7 +237,11 @@ Vendor.find(function (err, ven) {
 
               var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
               var bundle2 = specialButtonView(uniqCategory,'Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
-              testView(sender,bundle2);
+              sendTextMessage(sender,'debug' + uniqCategory);
+              sendTextMessage(sender,'debug' + repeatCategory);
+              sendTextMessage(sender,'debug' + itemMenu);
+
+              //testView(sender,bundle2);
 
             } else {
               sendTextMessage(sender,'click on a food Truck first');
