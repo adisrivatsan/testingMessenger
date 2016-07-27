@@ -219,7 +219,7 @@ Vendor.find(function (err, ven) {
           var split = payload.split('\t');
           var id = split[0];
           var specification = split[1];
-          var foodTruck = getFTGivenName(ven,name);
+          //var foodTruck = getFTGivenName(ven,name);
 
 
 
