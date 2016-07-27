@@ -230,7 +230,7 @@ Vendor.find(function (err, ven) {
               var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
                 return getItemGivenID(item,ele);
               })
-              var repeatCategory = _.map(chosenFoodTruck.Menu,function(ele) {
+              var repeatCategory = _.map(itemMenu,function(ele) {
                 return ele.Category;
               })
               var uniqCategory = _.uniq(repeatCategory);
