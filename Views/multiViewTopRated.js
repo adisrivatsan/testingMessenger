@@ -17,8 +17,7 @@ var multiView = function (farr) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": 'Food Truck Options',
-                    "subtitle": "Click on one",
+                    "title": 'Food Truck Near You',
                     "image_url": 'http://previews.123rf.com/images/arcady31/arcady311007/arcady31100700060/7466256-Top-rated-stamp-Stock-Photo-best.jpg',
                     "buttons": buttonArr
                 }],
