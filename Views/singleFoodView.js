@@ -22,6 +22,6 @@ var singleFoodTruck = function (obj, imageURL) {
             }
         }
     }
-    return messageData;
+    return messageData; //send data out
 }
 module.exports = singleFoodTruck;
