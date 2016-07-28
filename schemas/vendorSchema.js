@@ -32,7 +32,8 @@ var VendorSchema = mongoose.Schema({
     LineLength:Number, //Length of a line at a given time.
     OrderID: [String], // String of order IDS.
     AvgPrice: Number,
-    AvgCalorieCount:Number //Number of Average Calories in the Food. 
+    AvgCalorieCount:Number, //Number of Average Calories in the Food.,
+    Description:String
 });
 
 module.exports = VendorSchema;
