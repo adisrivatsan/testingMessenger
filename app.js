@@ -121,7 +121,7 @@ var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
 var mulViewTopRated = require('./Views/multiViewTopRated');
 var multiItemView = require('./Views/multiItemView');
-var specialButtonView = require('./Views/specialButtonView');
+var categoryView = require('./Views/specialButtonView');
 //data set up.
 
 
@@ -196,7 +196,7 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'yo baby' + nameArray);
             sendTextMessage(sender,'yo baby' + getFTGivenName(ven,'Trivano').HourOfOperation);
           } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
-            sendTextMessage(sender,'Please enter your zip code for accurate location');
+            sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Parachute...Cut the line at Food Trucks near you');
             testView(sender, introView);
           } else if(select){
               var bundle = singleFoodView(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
@@ -216,9 +216,12 @@ Vendor.find(function (err, ven) {
           //Variables related to the button press
           var payload = event.postback.payload;
           var select = getFTGivenID(ven,payload);
-          var split = payload.split('\t');
-          var id = split[0];
-          var specification = split[1];
+          var Menusplit = payload.split('\t');
+          var id = Menusplit[0];
+          var specification = Menusplit[1];
+          var categorySplit = payload.split('*(7)');
+          var truckId = categorySplit[0];
+          var selectCategory = categorySplit[1];
           //var foodTruck = getFTGivenName(ven,name);
 
 
@@ -236,12 +239,24 @@ Vendor.find(function (err, ven) {
               var uniqCategory = _.uniq(repeatCategory);
 
               var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
-              var bundle2 = specialButtonView(uniqCategory,'Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
+              var bundle2 = specialButtonView(uniqCategory,chosenFoodTruck._id,'Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
               testView(sender,bundle2);
 
             } else {
               sendTextMessage(sender,'click on a food Truck first');
             }
+
+
+          } else if(selectCategory) {
+            var thisFoodTruck = getFTGivenID(ven,truckId);
+            var itemMenu = _.map(thisFoodTruck.Menu,function(ele) {
+              return getItemGivenID(item,ele);
+            })
+            var foodInCategory = _.filter(itemMenu,function(el) {
+              return el.Category === selectCategory;
+            })
+            //var bundle = multiItemView()
+
 
 
           } else if(specification =='Order') {

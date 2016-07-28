@@ -28,8 +28,8 @@ var requestVendorInfo = function() {
 
 }
 
-var testArr = [1,2,4,5,1,1,2,3];
-console.log(_.uniq(testArr));
+var testString = 'hi this is Aditya';
+console.log(testString.split('\t')); 
 
 
 
