@@ -21,7 +21,6 @@ var multiView = function (truckObj,property,titleText,imageUrl) {
                 "template_type": "generic",
                 "elements": [{
                     "title": titleText,
-                    "subtitle": "Click on one",
                     "image_url": imageUrl,
                     "buttons": buttonArr
                 }],
