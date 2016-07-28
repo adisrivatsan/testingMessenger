@@ -285,7 +285,7 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'please enter cuisine');
           } else if(select) {
               var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              sendTextMessage("description: " + select.Description); 
+              sendTextMessage("description: "); 
               testView(sender,bundle);
 
           } else if(payload == 'Order') {
