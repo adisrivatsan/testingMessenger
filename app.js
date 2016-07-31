@@ -119,8 +119,6 @@ var readyCheckout = require('./Views/readToCheckOut');
 var pictureModule = require('./PagePicture/write.js');
 var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
-var mulViewTopRated = require('./Views/multiViewTopRated');
-var multiItemView = require('./Views/multiItemView');
 var categoryView = require('./Views/specialButtonView');
 //data set up.
 
@@ -238,7 +236,7 @@ Vendor.find(function (err, ven) {
               })
               var uniqCategory = _.uniq(repeatCategory);
 
-              var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
+              //var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
               var bundle2 = categoryView(uniqCategory,chosenFoodTruck._id,'Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg','*(7)' +chosenFoodTruck._id);
               testView(sender,bundle2);
 
@@ -259,7 +257,7 @@ Vendor.find(function (err, ven) {
               return elem.Category;
             })
             var bundle = categoryView(foodNamesInCategory,thisFoodTruck._id,'Food Options','http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg','*(8)' + chosenFoodTruck._id);
-            testView(sender,bundle); 
+            testView(sender,bundle);
 
 
           } else if(specification =='Order') {
