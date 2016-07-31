@@ -239,7 +239,7 @@ Vendor.find(function (err, ven) {
               var uniqCategory = _.uniq(repeatCategory);
 
               var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
-              var bundle2 = specialButtonView(uniqCategory,chosenFoodTruck._id,'Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
+              var bundle2 = categoryView(uniqCategory,chosenFoodTruck._id,'Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg','*(7)' +chosenFoodTruck._id);
               testView(sender,bundle2);
 
             } else {
@@ -285,7 +285,7 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'please enter cuisine');
           } else if(select) {
               var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-              sendTextMessage(sender,"description: " + select.Description); 
+              sendTextMessage(sender,"description: " + select.Description);
               testView(sender,bundle);
 
           } else if(payload == 'Order') {

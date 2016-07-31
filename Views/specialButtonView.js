@@ -1,4 +1,4 @@
-var multiView = function (arr,fName,titleText,imageUrl) {
+var multiView = function (arr,fName,titleText,imageUrl,payloadTag) {
 
   var buttonArr = [];
 
@@ -7,7 +7,7 @@ var multiView = function (arr,fName,titleText,imageUrl) {
       var button = {
         "type" : "postback",
         "title": arr[i],
-        "payload": arr[i] +'*(7' + fName
+        "payload": arr[i] +payloadTag
       }
       buttonArr.push(Object.assign({},button));
     }
