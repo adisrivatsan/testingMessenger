@@ -255,8 +255,11 @@ Vendor.find(function (err, ven) {
             var foodInCategory = _.filter(itemMenu,function(el) {
               return el.Category === selectCategory;
             })
-            //var bundle = multiItemView()
-
+            var foodNamesInCategory = _.map(foodInCategory,function(elem) {
+              return elem.Category;
+            })
+            var bundle = categoryView(foodNamesInCategory,thisFoodTruck._id,'Food Options','http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg','*(8)' + chosenFoodTruck._id);
+            testView(sender,bundle); 
 
 
           } else if(specification =='Order') {
