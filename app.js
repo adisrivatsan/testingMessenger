@@ -215,7 +215,7 @@ Vendor.find(function (err, ven) {
 
           //Variables related to the button press
           var payload = event.postback.payload;
-          
+
           var select = getFTGivenID(ven,payload);
           var Menusplit = payload.split('\t');
           var id = Menusplit[0];
@@ -272,7 +272,7 @@ Vendor.find(function (err, ven) {
             //geting single item
           }
           //getting items
-          else if(itemTruck) {
+          else if(itemTruckId) {
               var givenItem = getItemGivenID(item,itemSelectId);
               var bundle = singleItemView(givenItem);
               sendGenericMessage(sender,itemTruckId,bundle);
