@@ -1,4 +1,4 @@
-var singleItem = function (obj,foodTrucktag, imageURL) {
+var singleItem = function (obj,foodTruckTag, imageURL) {
   var messageData = {
         "attachment": {
             "type": "template",
