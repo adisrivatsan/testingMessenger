@@ -274,8 +274,8 @@ Vendor.find(function (err, ven) {
           //getting items
           else if(itemTruckId) {
               var givenItem = getItemGivenID(item,itemSelectId);
-              var bundle = singleItemView(givenItem);
-              sendGenericMessage(sender,itemTruckId,bundle);
+              var bundle = singleItemView(givenItem,itemTruckId);
+              sendGenericMessage(sender,bundle);
 
           }
 
