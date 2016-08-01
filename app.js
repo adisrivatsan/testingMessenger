@@ -222,6 +222,8 @@ Vendor.find(function (err, ven) {
           var truckId = categorySplit[1];
           var selectCategory = categorySplit[0];
 
+          //items
+          var itemSplit = payload.split('*(8)');
 
 
 
@@ -257,9 +259,9 @@ Vendor.find(function (err, ven) {
               return el.Category === selectCategory;
             })
             var foodNamesInCategory = _.map(foodInCategory,function(elem) {
-              return elem.Category;
+              return elem.Name;
             })
-            var bundle = categoryView(foodNamesInCategory,thisFoodTruck._id,'Food Options','http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg','*(8)' + thisFoodTruck._id);
+            var bundle = categoryView(foodNamesInCategory,'Food Options','http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg','*(8)' + thisFoodTruck._id);
             testView(sender,bundle);
 
 
