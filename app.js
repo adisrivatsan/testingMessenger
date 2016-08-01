@@ -219,8 +219,8 @@ Vendor.find(function (err, ven) {
 
           //categories
           var categorySplit = payload.split('*(7)');
-          var truckId = categorySplit[0];
-          var selectCategory = categorySplit[1];
+          var truckId = categorySplit[1];
+          var selectCategory = categorySplit[0];
 
 
 
@@ -246,7 +246,7 @@ Vendor.find(function (err, ven) {
             }
 
 
-          } else if(selectCategory) {
+          } else if(truckId) {
             var thisFoodTruck = getFTGivenID(ven,truckId);
             var itemMenu = _.map(thisFoodTruck.Menu,function(ele) {
               return getItemGivenID(item,ele);
@@ -286,7 +286,7 @@ Vendor.find(function (err, ven) {
           } else if(payload == 'Cuisine') {
             sendTextMessage(sender,'please enter cuisine');
 
-            
+
           } else if(select) {
               var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               sendTextMessage(sender,"description: " + select.Description);
