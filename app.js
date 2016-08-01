@@ -286,10 +286,11 @@ Vendor.find(function (err, ven) {
           else if(itemOrderId) {
             var givenItem = getItemGivenID(item,itemOrderId);
             if(task==='AddOrder') {
-              var bundle = flexiblePropertyView(givenItem.PossibleAddOns,'Name','_id','Add Ons',orderTruckId); 
-              sendGenericMessage()
+              var bundle = flexiblePropertyView(givenItem.PossibleAddOns,'Name','_id','Add Ons',orderTruckId);
+              sendGenericMessage(sender,bundle);
             }
             else if(task === 'back') {
+              var selectCategory = givenItem.Category;
               var thisFoodTruck = getFTGivenID(ven,orderTruckId);
               var itemMenu = _.map(thisFoodTruck.Menu,function(ele) {
                 return getItemGivenID(item,ele);
