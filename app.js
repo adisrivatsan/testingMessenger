@@ -227,7 +227,7 @@ Vendor.find(function (err, ven) {
 
           //items
           var itemSplit = payload.split('*(8)');
-          var itemTruck = itemSplit[1];
+          var itemTruckId = itemSplit[1];
           var itemSelectId = itemSplit[0];
 
           //geting the Menu
@@ -252,8 +252,10 @@ Vendor.find(function (err, ven) {
               sendTextMessage(sender,'click on a food Truck first');
             }
 
+
+          }
             //getting the Categories
-          } else if(truckId) {
+          else if(truckId) {
 
             var thisFoodTruck = getFTGivenID(ven,truckId);
             sendTextMessage(sender,thisFoodTruck._id);
@@ -267,16 +269,16 @@ Vendor.find(function (err, ven) {
             sendGenericMessage(sender,bundle);
 
             //geting single item
-          } else if(itemTruck) {
+          }
+          //getting items
+          else if(itemTruck) {
               var givenItem = getItemGivenID(item,itemSelectId);
-              sendTextMessage(sender,itemSelectId);
-              sendTextMessage(sender,givenItem.Name);
-              sendTextMessage(sender,givenItem.price);
-              sendTextMessage(sender,'Im in baby');
               var bundle = singleItemView(givenItem);
-              sendGenericMessage(sender,bundle);
+              sendGenericMessage(sender,itemTruckId,bundle);
 
-          } else if(specification =='Order') {
+          }
+
+          else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
           } else if(specification == 'Address') {
             sendTextMessage(sender,foodTruck.LocationAddress);

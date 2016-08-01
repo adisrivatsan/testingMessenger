@@ -1,4 +1,4 @@
-var singleItem = function (obj, imageURL) {
+var singleItem = function (obj,foodTrucktag, imageURL) {
   var messageData = {
         "attachment": {
             "type": "template",
@@ -9,11 +9,11 @@ var singleItem = function (obj, imageURL) {
                     "buttons": [{
                         "type": "postback",
                         "title": "Add To Order",
-                        "payload":"AddOrder" + "*(9)" + obj._id
+                        "payload":"AddOrder" + "*(9)" + obj._id+ '*(9)' + foodTruckTag
                     }, {
                         "type": "postback",
                         "title": "Go Back",
-                        "payload": "back" + "*(9)" + obj._id
+                        "payload": "back" + "*(9)" + obj._id + foodTruckTag
                     }],
                 }],
 
