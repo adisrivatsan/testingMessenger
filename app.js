@@ -28,7 +28,7 @@ var arrFunc = require('./sendingMessages/templateSend');
 
 //functions: to be added to.
 var sendTextMessage = arrFunc[0];
-var testView = arrFunc[1];
+var sendGenericMessage = arrFunc[1];
 
 //to be moved to a different file. Collection needs Name property.
 var getNameArray = function(collection) {
@@ -113,13 +113,13 @@ var healthyFoodTruck = templateFilter(5,'AvgCalorieCount');
 //importing files
 var singleFoodView = require('./Views/singleFoodView');
 var multiFoodTruckView = require('./Views/MultiFoodTruckView');
-var rView = require('./Views/recietView');
-var singleRView = require('./Views/singleFoodRecietView');
-var readyCheckout = require('./Views/readToCheckOut');
+//var rView = require('./Views/recietView');
+//var singleRView = require('./Views/singleFoodRecietView');
+//var readyCheckout = require('./Views/readToCheckOut');
 var pictureModule = require('./PagePicture/write.js');
 var convert = require('./PagePicture/testConvert.js');
-var testPicView = require('./Views/sampleImageView');
-var categoryView = require('./Views/specialButtonView');
+//var testPicView = require('./Views/sampleImageView');
+var categoryView = require('./Views/categoryView');
 //data set up.
 
 
@@ -194,16 +194,16 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'yo baby' + getFTGivenName(ven,'Trivano').HourOfOperation);
           } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
             sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Parachute...Cut the line at Food Trucks near you');
-            testView(sender, introView);
+            sendGenericMessage(sender, introView);
           } else if(select){
               var bundle = singleFoodView(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               //chosenFoodTruck = select;
 
-              testView(sender,bundle);
+              sendGenericMessage(sender,bundle);
               //inSingleFoodTruck = true;
           } else if(foodTruckCuisine.length !=0) {
             var mdata = multiFoodTruckView(foodTruckCuisine);
-            testView(sender,mdata);
+            sendGenericMessage(sender,mdata);
           }
 
         }
@@ -241,7 +241,7 @@ Vendor.find(function (err, ven) {
 
               //var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
               var bundle2 = categoryView(uniqCategory,chosenFoodTruck._id,'Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg','*(7)' +chosenFoodTruck._id);
-              testView(sender,bundle2);
+              sendGenericMessage(sender,bundle2);
 
             } else {
               sendTextMessage(sender,'click on a food Truck first');
@@ -262,7 +262,7 @@ Vendor.find(function (err, ven) {
               return elem.Name;
             })
             var bundle = categoryView(foodNamesInCategory,'Food Options','http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg','*(8)' + thisFoodTruck._id);
-            testView(sender,bundle);
+            sendGenericMessage(sender,bundle);
 
 
           } else if(specification =='Order') {
@@ -273,19 +273,19 @@ Vendor.find(function (err, ven) {
           }
           else if(payload == 'Area') {
             var mdata = multiFoodTruckView(ven);
-            testView(sender,mdata);
+            sendGenericMessage(sender,mdata);
             //sendTextMessage(sender, 'please enter your zip code');
 
 
           } else if(payload=='SLine'|| payload=='BBuck') {
             var mdata = multiFoodTruckView(ven);
-            testView(sender,mdata);
+            sendGenericMessage(sender,mdata);
 
           }
           else if(payload=='TRated') {
 
             var mdata = multiFoodTruckView(ven);
-            testView(sender,mdata);
+            sendGenericMessage(sender,mdata);
 
           } else if(payload == 'Cuisine') {
             sendTextMessage(sender,'please enter cuisine');
@@ -294,13 +294,13 @@ Vendor.find(function (err, ven) {
           } else if(select) {
               var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               sendTextMessage(sender,"description: " + select.Description);
-              testView(sender,bundle);
+              sendGenericMessage(sender,bundle);
 
           } else if(payload == 'Order') {
             sendTextMessage(sender, 'Please Type in next order');
           } else if (payload =='CheckOut') {
             var view = rView(cart,chosenFoodTruck.Name);
-            testView(sender,view);
+            sendGenericMessage(sender,view);
             //chosenFoodTruck = {};
           }
 
