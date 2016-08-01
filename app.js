@@ -121,6 +121,7 @@ var convert = require('./PagePicture/testConvert.js');
 //var testPicView = require('./Views/sampleImageView');
 var categoryView = require('./Views/categoryView');
 var flexiblePropertyView = require('./Views/FlexiblePropertyView');
+var singleItemView = require('./Views/singleItemView');
 
 //data set up.
 
@@ -226,9 +227,10 @@ Vendor.find(function (err, ven) {
 
           //items
           var itemSplit = payload.split('*(8)');
+          var itemTruck = itemSplit[1];
+          var itemSelectId = itemSplit[0];
 
-
-
+          //geting the Menu
           if(specification == 'Menu') {
             sendTextMessage(sender,'in menu');
             var chosenFoodTruck = getFTGivenID(ven,id);
@@ -250,7 +252,7 @@ Vendor.find(function (err, ven) {
               sendTextMessage(sender,'click on a food Truck first');
             }
 
-
+            //getting the Categories
           } else if(truckId) {
 
             var thisFoodTruck = getFTGivenID(ven,truckId);
@@ -264,6 +266,11 @@ Vendor.find(function (err, ven) {
             var bundle = flexiblePropertyView(foodInCategory,'Name','_id', 'List Of Items','*(8)' + thisFoodTruck._id,'http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg');
             sendGenericMessage(sender,bundle);
 
+            //geting single item
+          } else if(itemTruck) {
+              var givenItem = getItemGivenID(itemSelectId);
+              var bundle = singleItemView(givenItem);
+              sendGenericMessage(sender,bundle);
 
           } else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
