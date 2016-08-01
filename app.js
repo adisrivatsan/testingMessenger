@@ -268,7 +268,7 @@ Vendor.find(function (err, ven) {
 
             //geting single item
           } else if(itemTruck) {
-              var givenItem = getItemGivenID(itemSelectId);
+              var givenItem = getItemGivenID(item,itemSelectId);
               sendTextMessage(sender,itemSelectId);
               sendTextMessage(sender,givenItem.Name);
               sendTextMessage(sender,givenItem.price);
