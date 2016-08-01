@@ -249,7 +249,7 @@ Vendor.find(function (err, ven) {
           } else if(truckId) {
 
             var thisFoodTruck = getFTGivenID(ven,truckId);
-            sendTextMessage(sender,thisFoodTruck._id); 
+            sendTextMessage(sender,thisFoodTruck._id);
             var itemMenu = _.map(thisFoodTruck.Menu,function(ele) {
               return getItemGivenID(item,ele);
             })
@@ -259,7 +259,7 @@ Vendor.find(function (err, ven) {
             var foodNamesInCategory = _.map(foodInCategory,function(elem) {
               return elem.Category;
             })
-            var bundle = categoryView(foodNamesInCategory,thisFoodTruck._id,'Food Options','http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg','*(8)' + chosenFoodTruck._id);
+            var bundle = categoryView(foodNamesInCategory,thisFoodTruck._id,'Food Options','http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg','*(8)' + thisFoodTruck._id);
             testView(sender,bundle);
 
 
