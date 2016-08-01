@@ -276,7 +276,6 @@ Vendor.find(function (err, ven) {
               var givenItem = getItemGivenID(item,itemSelectId);
               var bundle = singleItemView(givenItem,itemTruckId);
               sendGenericMessage(sender,bundle);
-
           }
 
           else if(specification =='Order') {
