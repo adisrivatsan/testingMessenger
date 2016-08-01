@@ -215,6 +215,7 @@ Vendor.find(function (err, ven) {
 
           //Variables related to the button press
           var payload = event.postback.payload;
+          sendTextMessage(sender,payload); 
           var select = getFTGivenID(ven,payload);
           var Menusplit = payload.split('\t');
           var id = Menusplit[0];
