@@ -1,4 +1,4 @@
-var multiView = function (arr,nameProperty,payloadProperty,titleText,imageUrl,foodTruckTag) {
+var multiView = function (arr,nameProperty,payloadProperty,titleText,foodTruckTag,imageUrl) {
 
   var buttonArr = [];
 
