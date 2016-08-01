@@ -29,7 +29,8 @@ var requestVendorInfo = function() {
 }
 
 var testString = 'hi this is Aditya';
-console.log(testString.split('\t')); 
+console.log(testString.split(' '));
+console.log(testString); 
 
 
 
