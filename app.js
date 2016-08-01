@@ -112,7 +112,7 @@ var healthyFoodTruck = templateFilter(5,'AvgCalorieCount');
 
 //importing files
 var singleFoodView = require('./Views/singleFoodView');
-var multiView = require('./Views/MultiFoodTruckView');
+var multiFoodTruckView = require('./Views/MultiFoodTruckView');
 var rView = require('./Views/recietView');
 var singleRView = require('./Views/singleFoodRecietView');
 var readyCheckout = require('./Views/readToCheckOut');
@@ -121,7 +121,6 @@ var convert = require('./PagePicture/testConvert.js');
 var testPicView = require('./Views/sampleImageView');
 var categoryView = require('./Views/specialButtonView');
 //data set up.
-
 
 
 //set up schema
@@ -203,7 +202,7 @@ Vendor.find(function (err, ven) {
               testView(sender,bundle);
               //inSingleFoodTruck = true;
           } else if(foodTruckCuisine.length !=0) {
-            var mdata = multiView(foodTruckCuisine);
+            var mdata = multiFoodTruckView(foodTruckCuisine);
             testView(sender,mdata);
           }
 
@@ -217,10 +216,12 @@ Vendor.find(function (err, ven) {
           var Menusplit = payload.split('\t');
           var id = Menusplit[0];
           var specification = Menusplit[1];
+
+          //categories
           var categorySplit = payload.split('*(7)');
           var truckId = categorySplit[0];
           var selectCategory = categorySplit[1];
-          //var foodTruck = getFTGivenName(ven,name);
+
 
 
 
@@ -267,23 +268,25 @@ Vendor.find(function (err, ven) {
 
           }
           else if(payload == 'Area') {
-            var mdata = multiView(ven);
+            var mdata = multiFoodTruckView(ven);
             testView(sender,mdata);
             //sendTextMessage(sender, 'please enter your zip code');
 
 
           } else if(payload=='SLine'|| payload=='BBuck') {
-            var mdata = multiView(ven);
+            var mdata = multiFoodTruckView(ven);
             testView(sender,mdata);
 
           }
           else if(payload=='TRated') {
 
-            var mdata = multiView(ven);
+            var mdata = multiFoodTruckView(ven);
             testView(sender,mdata);
 
           } else if(payload == 'Cuisine') {
             sendTextMessage(sender,'please enter cuisine');
+
+            
           } else if(select) {
               var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               sendTextMessage(sender,"description: " + select.Description);
