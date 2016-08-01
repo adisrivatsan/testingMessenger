@@ -231,6 +231,12 @@ Vendor.find(function (err, ven) {
           var itemTruckId = itemSplit[1];
           var itemSelectId = itemSplit[0];
 
+          //orderItem
+          var orderItem = payload.split('*(9)');
+          var task = orderItem[0];
+          var itemOrderId = orderItem[1];
+          var orderTruckId = orderItem[2];
+
           //geting the Menu
           if(specification == 'Menu') {
             sendTextMessage(sender,'in menu');
@@ -277,11 +283,30 @@ Vendor.find(function (err, ven) {
               var bundle = singleItemView(givenItem,itemTruckId);
               sendGenericMessage(sender,bundle);
           }
+          else if(itemOrderId) {
+            var givenItem = getItemGivenID(item,itemOrderId);
+            if(task==='AddOrder') {
+              var bundle = flexiblePropertyView(givenItem.PossibleAddOns,'Name','_id','Add Ons',orderTruckId); 
+              sendGenericMessage()
+            }
+            else if(task === 'back') {
+              var thisFoodTruck = getFTGivenID(ven,orderTruckId);
+              var itemMenu = _.map(thisFoodTruck.Menu,function(ele) {
+                return getItemGivenID(item,ele);
+              })
+              var foodInCategory = _.filter(itemMenu,function(el) {
+                return el.Category === selectCategory;
+              })
+              var bundle = flexiblePropertyView(foodInCategory,'Name','_id', 'List Of Items','*(8)' + thisFoodTruck._id,'http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg');
+              sendGenericMessage(sender,bundle);
+            }
+          }
 
           else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
           } else if(specification == 'Address') {
             sendTextMessage(sender,foodTruck.LocationAddress);
+
 
           }
           else if(payload == 'Area') {

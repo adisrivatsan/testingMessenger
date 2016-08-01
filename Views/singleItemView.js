@@ -13,7 +13,7 @@ var singleItem = function (obj,foodTruckTag, imageURL) {
                     }, {
                         "type": "postback",
                         "title": "Go Back",
-                        "payload": "back" + "*(9)" + obj._id + foodTruckTag
+                        "payload": "back" + "*(9)" + obj._id + '*(9)' + foodTruckTag
                     }],
                 }],
 

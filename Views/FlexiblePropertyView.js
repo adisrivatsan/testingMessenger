@@ -14,6 +14,7 @@ var multiView = function (arr,nameProperty,payloadProperty,titleText,foodTruckTa
 
   }
 
+if(imageUrl) {
   var messageData = {
         "attachment": {
             "type": "template",
@@ -29,6 +30,24 @@ var multiView = function (arr,nameProperty,payloadProperty,titleText,foodTruckTa
             }
         }
     }
+
+} else {
+  var messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": titleText,
+                    "subtitle": "Click on one",
+                    "buttons": buttonArr
+                }],
+
+            }
+        }
+    }
+
+}
 
     return messageData;
 
