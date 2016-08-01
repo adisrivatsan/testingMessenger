@@ -247,9 +247,9 @@ Vendor.find(function (err, ven) {
 
 
           } else if(truckId) {
-            sendTextMessage(sender,truckId);
-            var thisFoodTruck = getFTGivenID(ven,truckId);
 
+            var thisFoodTruck = getFTGivenID(ven,truckId);
+            sendTextMessage(sender,thisFoodTruck.VendorName);
             var itemMenu = _.map(thisFoodTruck.Menu,function(ele) {
               return getItemGivenID(item,ele);
             })
