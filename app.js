@@ -269,6 +269,10 @@ Vendor.find(function (err, ven) {
             //geting single item
           } else if(itemTruck) {
               var givenItem = getItemGivenID(itemSelectId);
+              sendTextMessage(sender,itemSelectId);
+              sendTextMessage(sender,givenItem.Name);
+              sendTextMessage(sender,givenItem.price);
+              sendTextMessage(sender,'Im in baby');
               var bundle = singleItemView(givenItem);
               sendGenericMessage(sender,bundle);
 
