@@ -12,7 +12,12 @@ var multiView = function (farr) {
       buttonArr.push(Object.assign({},button));
     }
 
-  }
+    var bArray1 =[];
+    var bArray2 =[];
+    var bArray3 =[];
+
+
+
 
   var messageData = {
         "attachment": {

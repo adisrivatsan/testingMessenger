@@ -35,6 +35,10 @@ var messageData = {
                     "type": "postback",
                     "title": "Cuisines",
                     "payload": "cuisine"
+                }, {
+                    "type": "postback",
+                    "title": "lalal",
+                    "payload": "lala"
                 }
               ]
               }],
