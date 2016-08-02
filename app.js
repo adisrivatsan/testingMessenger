@@ -223,8 +223,8 @@ Vendor.find(function (err, ven) {
               console.log('ahhhhhhhhhhhh ' + data);
             })
           } else if (text==='sample Image') {
-            var bundle = sampleImageView('http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
-            sendGenericMessage(sender,bundle); 
+            var bundle = imageView('http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
+            sendGenericMessage(sender,bundle);
           }
 
         }
