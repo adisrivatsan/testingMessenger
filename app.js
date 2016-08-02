@@ -174,7 +174,7 @@ Vendor.find(function (err, ven) {
           FirstName: 'Larry'
         });
         sampleSaveCustomer.save(function(err,data) {
-          sendTextMessage(sender,'this works');
+          console.log(err); 
         })
 
         //listening for text
