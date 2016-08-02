@@ -170,7 +170,7 @@ db.once('open', function callback() {
 
     }) */
 
-    
+
 
   /*  Vendor.find(function(err, ven) {
         Customer.find(function(err,cust){

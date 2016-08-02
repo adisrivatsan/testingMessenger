@@ -132,9 +132,9 @@ var Vendor = mongoose.model('VendorInfo', VendorSchema);
 var ItemSchema = require('./schemas/ItemSchema');
 var Item = mongoose.model('ItemInfo',ItemSchema);
 var CustomerSchema = require('./schemas/customerSchema');
-var Customer = mongoose.model('ItemInfo',ItemSchema);
+var Customer = mongoose.model('CustomerInfo',CustomerSchema);
 var OrderSchema = require('./schemas/OrderSchema');
-var Order = mongoose.model('ItemInfo',ItemSchema);
+var Order = mongoose.model('OrderInfo',OrderSchema);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
