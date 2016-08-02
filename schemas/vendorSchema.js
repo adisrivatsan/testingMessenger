@@ -33,7 +33,8 @@ var VendorSchema = mongoose.Schema({
     OrderID: [String], // String of order IDS.
     AvgPrice: Number,
     AvgCalorieCount:Number, //Number of Average Calories in the Food.,
-    Description:String
+    Description:String,
+    MenuUrl: String
 });
 
 module.exports = VendorSchema;
