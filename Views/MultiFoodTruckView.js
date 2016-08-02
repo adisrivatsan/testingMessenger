@@ -11,6 +11,7 @@ var multiView = function (farr) {
       }
       buttonArr.push(Object.assign({},button));
     }
+  }
 
     var bArray1 =[];
     var bArray2 =[];
