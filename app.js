@@ -201,7 +201,7 @@ Vendor.find(function (err, ven) {
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' + nameArray);
-            sendTextMessage(sender,'yo baby' + getFTGivenName(ven,'Trivano').HourOfOperation);
+            //sendTextMessage(sender,'yo baby' + getFTGivenName(ven,'Trivano').HourOfOperation);
           } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
             sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Parachute...Cut the line at Food Trucks near you');
             sendGenericMessage(sender, introView);
