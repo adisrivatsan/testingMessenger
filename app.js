@@ -122,6 +122,7 @@ var convert = require('./PagePicture/testConvert.js');
 var categoryView = require('./Views/categoryView');
 var flexiblePropertyView = require('./Views/FlexiblePropertyView');
 var singleItemView = require('./Views/singleItemView');
+var imageView = require('./Views/sampleImageView');
 
 //data set up.
 
@@ -221,6 +222,9 @@ Vendor.find(function (err, ven) {
             sampleSaveCustomer.save(function(err,data) {
               console.log('ahhhhhhhhhhhh ' + data);
             })
+          } else if (text==='sample Image') {
+            var bundle = sampleImageView('http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
+            sendGenericMessage(sender,bundle); 
           }
 
         }
