@@ -276,10 +276,10 @@ Vendor.find(function (err, ven) {
               var uniqCategory = _.uniq(repeatCategory);
               sendTextMessage(sender,'hello' + uniqCategory);
               var bundle = imageView(chosenFoodTruck.MenuUrl);
-              sendGenericMessage(sender,bundle); 
+              sendGenericMessage(sender,bundle);
               //var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
             //  var bundle2 = categoryView(uniqCategory,chosenFoodTruck.VendorName,'http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg','*(7)' +chosenFoodTruck._id);
-            //  sendGenericMessage(sender,bundle2);
+            //  sendGenericMessage(sender,bundle2); hello
 
             } else {
               sendTextMessage(sender,'click on a food Truck first');
