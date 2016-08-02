@@ -49,7 +49,6 @@ var multiView = function (farr) {
                   "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
                   "buttons": bArray2
                 }, {
-                  {
                     "title": 'Food Truck Options',
                     "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
                     "buttons": bArray3
