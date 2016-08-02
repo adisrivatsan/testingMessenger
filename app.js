@@ -171,9 +171,11 @@ Vendor.find(function (err, ven) {
 
         var sampleSaveCustomer = new Customer({
           SenderID: sender,
-          FirstName: 'Adi'
+          FirstName: 'Larry'
         });
-        sampleSaveCustomer.save(); 
+        sampleSaveCustomer.save(function(err,data) {
+          sendTextMessage(sender,'this works');
+        })
 
         //listening for text
         if (event.message && event.message.text) {
