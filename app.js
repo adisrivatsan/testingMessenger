@@ -163,13 +163,7 @@ Vendor.find(function (err, ven) {
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
 
-      var sampleSaveCustomer = new Customer({
-        FirstName: 'Larry'
-      });
 
-      sampleSaveCustomer.save(function(err,data) {
-        console.log('ahhhhhhhhhhhh ' + err); 
-      })
 
       //Loops through all the user messages
       for (i = 0; i < messaging_events.length; i++) {
@@ -219,6 +213,15 @@ Vendor.find(function (err, ven) {
           } else if(foodTruckCuisine.length !=0) {
             var mdata = multiFoodTruckView(foodTruckCuisine);
             sendGenericMessage(sender,mdata);
+          } else if(text==='saveCustomer') {
+            var sampleSaveCustomer = new Customer({
+              FirstName: 'Larry',
+              SenderID:sender
+            });
+
+            sampleSaveCustomer.save(function(err,data) {
+              console.log('ahhhhhhhhhhhh ' + err);
+            })
           }
 
         }
@@ -366,7 +369,7 @@ Vendor.find(function (err, ven) {
       }
       res.sendStatus(200);
     });
-    db.close();
+
 })
 })
 })
