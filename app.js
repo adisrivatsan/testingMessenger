@@ -163,19 +163,22 @@ Vendor.find(function (err, ven) {
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
 
+      var sampleSaveCustomer = new Customer({
+        FirstName: 'Larry'
+      });
+
+      sampleSaveCustomer.save(function(err,data) {
+        console.log('ahhhhhhhhhhhh ' + err); 
+      })
+
       //Loops through all the user messages
       for (i = 0; i < messaging_events.length; i++) {
         event = messaging_events[i];
         console.log('event ' + event);
         sender = event.sender.id;
 
-        var sampleSaveCustomer = new Customer({
-          SenderID: sender,
-          FirstName: 'Larry'
-        });
-        sampleSaveCustomer.save(function(err,data) {
-          console.log(err); 
-        })
+
+
 
         //listening for text
         if (event.message && event.message.text) {
