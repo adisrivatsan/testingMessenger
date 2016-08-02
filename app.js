@@ -339,6 +339,7 @@ Vendor.find(function (err, ven) {
           }
           else if(payload == 'Area') {
             var mdata = multiFoodTruckView(ven);
+            sendTextMessage(sender,ven.length); 
             sendGenericMessage(sender,mdata);
             //sendTextMessage(sender, 'please enter your zip code');
 
