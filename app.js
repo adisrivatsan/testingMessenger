@@ -168,6 +168,13 @@ Vendor.find(function (err, ven) {
         event = messaging_events[i];
         console.log('event ' + event);
         sender = event.sender.id;
+
+        var sampleSaveCustomer = new Customer({
+          SenderID: sender,
+          FirstName: 'Adi'
+        });
+        sampleSaveCustomer.save(); 
+
         //listening for text
         if (event.message && event.message.text) {
           text = event.message.text;
@@ -237,6 +244,12 @@ Vendor.find(function (err, ven) {
           var itemOrderId = orderItem[1];
           var orderTruckId = orderItem[2];
 
+          //Add Ons
+          var addonItem = payload.split('*(10)');
+          var addOnId = addonItem[0];
+          var addOnFT = addonItem[1];
+          var addonOGItem = addonItem[2];
+
           //geting the Menu
           if(specification == 'Menu') {
             sendTextMessage(sender,'in menu');
@@ -286,7 +299,7 @@ Vendor.find(function (err, ven) {
           else if(itemOrderId) {
             var givenItem = getItemGivenID(item,itemOrderId);
             if(task==='AddOrder') {
-              var bundle = flexiblePropertyView(givenItem.PossibleAddOns,'Name','_id','Add Ons',orderTruckId);
+              var bundle = flexiblePropertyView(givenItem.PossibleAddOns,'Name','_id','Add Ons','*(10)' + orderTruckId + '*(10)' + itemOrderId);
               sendGenericMessage(sender,bundle);
             }
             else if(task === 'back') {
@@ -302,6 +315,7 @@ Vendor.find(function (err, ven) {
               sendGenericMessage(sender,bundle);
             }
           }
+
 
           else if(specification =='Order') {
             sendTextMessage(sender, 'Please Type in your order');
