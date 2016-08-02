@@ -170,9 +170,7 @@ db.once('open', function callback() {
 
     }) */
 
-   Item.find(function(err,data) {
-      console.log(data[0]._id);
-    })
+    
 
   /*  Vendor.find(function(err, ven) {
         Customer.find(function(err,cust){

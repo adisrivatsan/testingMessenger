@@ -213,14 +213,13 @@ Vendor.find(function (err, ven) {
           } else if(foodTruckCuisine.length !=0) {
             var mdata = multiFoodTruckView(foodTruckCuisine);
             sendGenericMessage(sender,mdata);
-          } else if(text==='saveCustomer') {
+          } else if(text ==='saveCustomer') {
             var sampleSaveCustomer = new Customer({
               FirstName: 'Larry',
               SenderID:sender
             });
-
             sampleSaveCustomer.save(function(err,data) {
-              console.log('ahhhhhhhhhhhh ' + err);
+              console.log('ahhhhhhhhhhhh ' + data);
             })
           }
 
