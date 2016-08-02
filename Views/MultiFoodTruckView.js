@@ -52,8 +52,7 @@ var multiView = function (farr) {
                     "title": 'Food Truck Options',
                     "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
                     "buttons": bArray3
-                  }
-                }],
+                  }],
 
             }
         }
