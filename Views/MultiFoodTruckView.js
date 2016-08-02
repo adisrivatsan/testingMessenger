@@ -12,10 +12,25 @@ var multiView = function (farr) {
       buttonArr.push(Object.assign({},button));
     }
   }
-
     var bArray1 =[];
     var bArray2 =[];
     var bArray3 =[];
+    for (var i = 0; i < buttonArr.length; i++) {
+      if(bArray1.length === 0) {
+        bArray1.push(buttonArr[i]);
+      } else if (bArray2.length === 0) {
+        bArray2.push(buttonArr[i]);
+      } else if (bArray3.length === 0) {
+        bArray3.push(buttonArr[i]);
+      } else if(bArray1.length >= 3) {
+        bArray1.push(buttonArr[i]);
+      } else if (bArray2.length >= 3) {
+        bArray2.push(buttonArr[i]);
+      } else if (bArray3.length >=3) {
+        bArray3.push(buttonArr[i]);
+      }
+
+    }
 
 
 
@@ -28,7 +43,17 @@ var multiView = function (farr) {
                 "elements": [{
                     "title": 'Food Truck Options',
                     "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
-                    "buttons": buttonArr
+                    "buttons": bArray1
+                },{
+                  "title": 'Food Truck Options',
+                  "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
+                  "buttons": bArray2
+                }, {
+                  {
+                    "title": 'Food Truck Options',
+                    "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
+                    "buttons": bArray3
+                  }
                 }],
 
             }
