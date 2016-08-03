@@ -136,6 +136,10 @@ var imageView = require('./Views/sampleImageView');
 
 //data set up.
 
+//local hashes
+
+var custCurrentFoodTruck = [];
+
 
 //set up schema
 var VendorSchema = require('./schemas/vendorSchema');
@@ -184,12 +188,13 @@ Vendor.find(function (err, ven) {
 
         var nameArray = getNameArray(ven);
         var thisCustomer = getCustomerGivenSenderID(cus,sender);
-        if(!thisCustomer) {
+
+        /*if(!thisCustomer) {
           var newCust = new Customer({
             SenderID:sender
           });
           newCust.save(); //save
-        }
+        } */
 
 
 
@@ -288,9 +293,16 @@ Vendor.find(function (err, ven) {
               sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'type in your order. Example Order and format:',
               sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper',function() {
-                Customer.update({SenderID:sender},{CurrentVendor:chosenFoodTruck._id}, {multi:false},function(err) {
-                  console.log(err);
-                })
+                if(!custCurrentFoodTruck.CurrSendor) {
+                  custCurrentFoodTruck.push({CurrSendor:sendor,foodTruck:chosenFoodTruck._id});
+
+                } else {
+                  for (var j = 0; j < custCurrentFoodTruck.length; j++) {
+                    if(custCurrentFoodTruck[j].CurrSendor === sendor) {
+                      custCurrentFoodTruck[j].foodTruck = chosenFoodTruck._id; 
+                    }
+                  }
+                }
               })))
 
           }
