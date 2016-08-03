@@ -277,12 +277,12 @@ Vendor.find(function (err, ven) {
               sendTextMessage(sender,'hello' + uniqCategory);
               var bundle = imageView(chosenFoodTruck.MenuUrl);
               sendGenericMessage(sender,bundle);
+              sendTextMessage(sender, 'type in your order. Example Order and format:');
+              sendTextMessage(sender, '2 veggie sandwitches with siracha, salt and pepper'); 
               //var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
             //  var bundle2 = categoryView(uniqCategory,chosenFoodTruck.VendorName,'http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg','*(7)' +chosenFoodTruck._id);
             //  sendGenericMessage(sender,bundle2); hell
 
-            } else {
-              sendTextMessage(sender,'click on a food Truck first');
             }
 
 
@@ -339,7 +339,7 @@ Vendor.find(function (err, ven) {
           }
           else if(payload == 'Area') {
             var mdata = multiFoodTruckView(ven);
-            sendTextMessage(sender,ven.length); 
+            sendTextMessage(sender,ven.length);
             sendGenericMessage(sender,mdata);
             //sendTextMessage(sender, 'please enter your zip code');
 
