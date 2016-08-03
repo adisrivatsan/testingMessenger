@@ -103,6 +103,12 @@ var cheapestFoodTruck = templateFilter(5,'AvgPrice');
 
 var healthyFoodTruck = templateFilter(5,'AvgCalorieCount');
 
+var getCustomerGivenSenderID = function(collection,senderID) {
+  return _.find(collection, function(num) {
+    return num.SenderID == senderID;
+  })
+}
+
 
 
 
@@ -186,7 +192,8 @@ Vendor.find(function (err, ven) {
 
           // given list of food truck will get names of all food trucks
           var nameArray = getNameArray(ven);
-
+          var thisCustomer = getCustomerGivenSenderID(cus,sender);
+          sendTextMessage(sender,'name: ' + thisCustomer.FirstName); 
           //List of food trucks with a given cuisine
           var foodTruckCuisine = cuisine(text);
           var select = getFTGivenName(ven,text);
@@ -197,11 +204,7 @@ Vendor.find(function (err, ven) {
             }
           })
 
-
-          //Hard-coded text sample(for testing)
-          //First ELIF: Shows the intro view
-          //Second ELIF: If input is a foodtruck it takes user to given foodtruck view
-          //Third ELIF: If the input is a cuisine then return an array of food trucks
+          //text handling
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');
             sendTextMessage(sender,'yo baby' + nameArray);
@@ -284,8 +287,8 @@ Vendor.find(function (err, ven) {
               sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'type in your order. Example Order and format:',
               sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper',function() {
-                sendTextMessage(sender,'wow this works');
-              }))); 
+                //sendTextMessage(sender,'wow this works');
+              })));
 
 
 

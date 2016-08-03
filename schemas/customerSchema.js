@@ -10,7 +10,8 @@ var CustSchema = mongoose.Schema({
     Cart:[String], //id of items in the current cart.
     SenderID:String, //facebook sender ID
     StripeToken:String, //credit card token
-    StripeCustomerTok:String //stripe customer token
+    StripeCustomerTok:String, //stripe customer token
+    CurrentVendor:String //current Vendor ID.
 });
 
 module.exports = CustSchema;
