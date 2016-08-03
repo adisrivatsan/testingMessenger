@@ -30,6 +30,8 @@ var arrFunc = require('./sendingMessages/templateSend');
 //functions: to be added to.
 var sendTextMessage = arrFunc[0];
 var sendGenericMessage = arrFunc[1];
+var sendAsyncGeneric = arrFunc[2];
+var sendMessageAsync = arrFunc[3];
 
 //to be moved to a different file. Collection needs Name property.
 var getNameArray = function(collection) {
@@ -278,10 +280,10 @@ Vendor.find(function (err, ven) {
               var uniqCategory = _.uniq(repeatCategory);
             //  sendTextMessage(sender,'hello' + uniqCategory);
               var bundle = imageView(chosenFoodTruck.MenuUrl);
-              asyncron.series([sendGenericMessage(sender,bundle),
-              sendTextMessage(sender, 'type in your order. Example Order and format:'),
-            sendTextMessage(sender, '2 veggie sandwitches with siracha, salt and pepper')]);
-            
+              asyncron.series([sendAsyncGeneric(sender,bundle),
+              sendMessageAsync(sender, 'type in your order. Example Order and format:'),
+            sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper')]);
+
 
 
 

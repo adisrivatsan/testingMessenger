@@ -40,5 +40,35 @@ var testV = function testView (sender,messageJson) {
     }
   });
 }
-arrFunc = [sendText,testV];
+
+var testVasync = function testasync(sender,messageJson,callback) {
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageJson
+  }
+
+},callback);
+}
+
+var testMessageAsync = function messageAsync(sender,text,callback) {
+  var messageData = {
+    text:text
+  }
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData
+  }
+
+},callback);
+}
+
+arrFunc = [sendText,testV,testVasync,testMessageAsync];
 module.exports = arrFunc;
