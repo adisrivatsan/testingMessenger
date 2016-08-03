@@ -188,7 +188,7 @@ Vendor.find(function (err, ven) {
           var newCust = new Customer({
             SenderID:sender
           });
-          newCust.save(); //save  
+          newCust.save(); //save
         }
 
 
@@ -281,14 +281,16 @@ Vendor.find(function (err, ven) {
         //    sendTextMessage(sender,'in menu');
             var chosenFoodTruck = getFTGivenID(ven,id);
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
-            Customer.update({SenderID:sender},{CurrentVendor:chosenFoodTruck._id}, {multi:false},function(err) {
+
               sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'type in your order. Example Order and format:',
               sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper',function() {
-                //sendTextMessage(sender,'wow this works');
+                Customer.update({SenderID:sender},{CurrentVendor:chosenFoodTruck._id}, {multi:false},function(err) {
+                  console.log(err); 
+                }
               })));
             })
-            }
+
 
 
 
