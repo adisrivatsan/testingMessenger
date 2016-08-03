@@ -280,10 +280,17 @@ Vendor.find(function (err, ven) {
               var uniqCategory = _.uniq(repeatCategory);
             //  sendTextMessage(sender,'hello' + uniqCategory);
               var bundle = imageView(chosenFoodTruck.MenuUrl);
-              asyncron.series([sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper'),
-              sendAsyncGeneric(sender,bundle),
-              sendMessageAsync(sender, 'type in your order. Example Order and format:')
-            ]);
+
+              sendAsyncGeneric(sender,bundle,
+                sendMessageAsync(sender, 'type in your order. Example Order and format:',
+              sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper',function() {
+                sendTextMessage(sender,'wow this works');
+              }))); 
+
+
+
+
+
 
 
 
