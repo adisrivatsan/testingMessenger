@@ -291,7 +291,7 @@ Vendor.find(function (err, ven) {
             }
 
 
-          
+
             //getting the Categories
           else if(truckId) {
 
