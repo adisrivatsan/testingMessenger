@@ -182,6 +182,15 @@ Vendor.find(function (err, ven) {
         console.log('event ' + event);
         sender = event.sender.id;
 
+        var nameArray = getNameArray(ven);
+        var thisCustomer = getCustomerGivenSenderID(cus,sender);
+        if(!thisCustomer) {
+          var newCust = new Customer({
+            SenderID:sender
+          });
+          newCust.save();
+        }
+
 
 
 
@@ -191,9 +200,8 @@ Vendor.find(function (err, ven) {
           console.log(event.message.seq);
 
           // given list of food truck will get names of all food trucks
-          var nameArray = getNameArray(ven);
-          var thisCustomer = getCustomerGivenSenderID(cus,sender);
-          sendTextMessage(sender,'name: ' + thisCustomer.FirstName); 
+
+        //  sendTextMessage(sender,'name: ' + thisCustomer.FirstName);
           //List of food trucks with a given cuisine
           var foodTruckCuisine = cuisine(text);
           var select = getFTGivenName(ven,text);
@@ -273,39 +281,17 @@ Vendor.find(function (err, ven) {
         //    sendTextMessage(sender,'in menu');
             var chosenFoodTruck = getFTGivenID(ven,id);
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
-            if(chosenFoodTruck) {
-              var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
-                return getItemGivenID(item,ele);
-              })
-              var repeatCategory = _.map(itemMenu,function(ele) {
-                return ele.Category;
-              })
-              var uniqCategory = _.uniq(repeatCategory);
-            //  sendTextMessage(sender,'hello' + uniqCategory);
-              var bundle = imageView(chosenFoodTruck.MenuUrl);
-
+            Customer.update({SenderID:sender},{CurrentVendor:chosenFoodTruck._id}, {multi:false},function(err) {
               sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'type in your order. Example Order and format:',
               sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper',function() {
                 //sendTextMessage(sender,'wow this works');
               })));
-
-
-
-
-
-
-
-
-
-              //var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
-            //  var bundle2 = categoryView(uniqCategory,chosenFoodTruck.VendorName,'http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg','*(7)' +chosenFoodTruck._id);
-            //  sendGenericMessage(sender,bundle2); hell
-
+            })
             }
 
 
-          }
+          
             //getting the Categories
           else if(truckId) {
 

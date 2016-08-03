@@ -30,9 +30,19 @@ var requestVendorInfo = function() {
 
 var testString = 'hi this is Aditya';
 console.log(testString.split(' '));
-console.log(testString); 
+console.log(testString);
 
-
+/*
+if(chosenFoodTruck) {
+  var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
+    return getItemGivenID(item,ele);
+  })
+  var repeatCategory = _.map(itemMenu,function(ele) {
+    return ele.Category;
+  })
+  var uniqCategory = _.uniq(repeatCategory);
+//  sendTextMessage(sender,'hello' + uniqCategory);
+  var bundle = imageView(chosenFoodTruck.MenuUrl);
 
 
 //console.log(templateFilter(5,'LineLength',collession));
