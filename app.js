@@ -245,6 +245,13 @@ Vendor.find(function (err, ven) {
           } else if (text==='sample Image') {
             var bundle = imageView('http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
             sendGenericMessage(sender,bundle);
+          } else if (text==='display ftandsender'){
+             var senderRecord = _.find(custCurrentFoodTruck,function(num) {
+               return num.CurrSender === sender;
+             })
+             sendTextMessage(sender, 'senderID' + senderRecord.CurrSender);
+             sendTextMessage(sender, 'food truck' + senderRecord.foodTruck);
+
           }
 
         }
@@ -293,13 +300,13 @@ Vendor.find(function (err, ven) {
               sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'type in your order. Example Order and format:',
               sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper',function() {
-                if(!custCurrentFoodTruck.CurrSendor) {
-                  custCurrentFoodTruck.push({CurrSendor:sendor,foodTruck:chosenFoodTruck._id});
+                if(!custCurrentFoodTruck.CurrSender) {
+                  custCurrentFoodTruck.push({CurrSender:sender,foodTruck:chosenFoodTruck._id});
 
                 } else {
                   for (var j = 0; j < custCurrentFoodTruck.length; j++) {
-                    if(custCurrentFoodTruck[j].CurrSendor === sendor) {
-                      custCurrentFoodTruck[j].foodTruck = chosenFoodTruck._id; 
+                    if(custCurrentFoodTruck[j].CurrSender === sender) {
+                      custCurrentFoodTruck[j].foodTruck = chosenFoodTruck._id;
                     }
                   }
                 }
