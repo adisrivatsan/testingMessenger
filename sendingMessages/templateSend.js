@@ -41,4 +41,4 @@ var testV = function testView (sender,messageJson) {
   });
 }
 arrFunc = [sendText,testV];
-module.exports = arrFunc; 
+module.exports = arrFunc;

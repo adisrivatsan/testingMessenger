@@ -10,6 +10,7 @@ var _ = require('underscore');
 var Q = require('q');
 var mongoose = require('mongoose');
 var geocoder = require('geocoder');
+var asyncron = require('async');
 
 mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
 
@@ -36,6 +37,7 @@ var getNameArray = function(collection) {
     return num.Name;
   });
 }
+
 var getFTGivenName = function(collection,foodTruckName) {
   return _.find(collection,function(num) {
     return num.Name == foodTruckName;
@@ -263,9 +265,9 @@ Vendor.find(function (err, ven) {
 
           //geting the Menu
           if(specification == 'Menu') {
-            sendTextMessage(sender,'in menu');
+        //    sendTextMessage(sender,'in menu');
             var chosenFoodTruck = getFTGivenID(ven,id);
-            sendTextMessage(sender,chosenFoodTruck.VendorName);
+          //  sendTextMessage(sender,chosenFoodTruck.VendorName);
             if(chosenFoodTruck) {
               var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
                 return getItemGivenID(item,ele);
@@ -274,11 +276,15 @@ Vendor.find(function (err, ven) {
                 return ele.Category;
               })
               var uniqCategory = _.uniq(repeatCategory);
-              sendTextMessage(sender,'hello' + uniqCategory);
+            //  sendTextMessage(sender,'hello' + uniqCategory);
               var bundle = imageView(chosenFoodTruck.MenuUrl);
-              sendGenericMessage(sender,bundle);
-              sendTextMessage(sender, 'type in your order. Example Order and format:');
-              sendTextMessage(sender, '2 veggie sandwitches with siracha, salt and pepper'); 
+              asyncron.series([sendGenericMessage(sender,bundle),
+              sendTextMessage(sender, 'type in your order. Example Order and format:'),
+            sendTextMessage(sender, '2 veggie sandwitches with siracha, salt and pepper')]);
+            
+
+
+
               //var bundle = multiItemView(itemMenu,'Name','Options','http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg');
             //  var bundle2 = categoryView(uniqCategory,chosenFoodTruck.VendorName,'http://blogs.nordstrom.com/fashion/files/2016/06/barbecue-party-recipe-ideas-full-menu-entree-side-dish-dessert-drinks-700x700.jpg','*(7)' +chosenFoodTruck._id);
             //  sendGenericMessage(sender,bundle2); hell
