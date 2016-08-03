@@ -286,10 +286,12 @@ Vendor.find(function (err, ven) {
                 sendMessageAsync(sender, 'type in your order. Example Order and format:',
               sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper',function() {
                 Customer.update({SenderID:sender},{CurrentVendor:chosenFoodTruck._id}, {multi:false},function(err) {
-                  console.log(err); 
-                }
-              })));
-            })
+                  console.log(err);
+                })
+
+              })))
+            
+          }
 
 
 
