@@ -281,7 +281,7 @@ Vendor.find(function (err, ven) {
         //    sendTextMessage(sender,'in menu');
 
             var chosenFoodTruck = getFTGivenID(ven,id);
-            var bundle = sampleImageView(chosenFoodTruck.MenuUrl);
+            var bundle = imageView(chosenFoodTruck.MenuUrl);
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
 
 
