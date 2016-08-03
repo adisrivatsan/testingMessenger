@@ -22,11 +22,11 @@ var multiView = function (farr) {
         bArray2.push(buttonArr[i]);
       } else if (bArray3.length === 0) {
         bArray3.push(buttonArr[i]);
-      } else if(bArray1.length <= 3) {
+      } else if(bArray1.length <= 2) {
         bArray1.push(buttonArr[i]);
-      } else if (bArray2.length <= 3) {
+      } else if (bArray2.length <= 2) {
         bArray2.push(buttonArr[i]);
-      } else if (bArray3.length <=3) {
+      } else if (bArray3.length <=2) {
         bArray3.push(buttonArr[i]);
       }
 
