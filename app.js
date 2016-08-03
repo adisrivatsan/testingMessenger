@@ -188,7 +188,7 @@ Vendor.find(function (err, ven) {
           var newCust = new Customer({
             SenderID:sender
           });
-          newCust.save();
+          newCust.save(); //save  
         }
 
 
