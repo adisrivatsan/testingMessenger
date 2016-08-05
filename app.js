@@ -263,7 +263,26 @@ Vendor.find(function (err, ven) {
             sendGenericMessage(sender,webIntroView);
           } else if(text === 'reciept') {
             var bundle = rView(menuObj,'CheckOut');
-            sendGenericMessage(sender,bundle); 
+            sendGenericMessage(sender,bundle);
+            var buttonTest = {
+                attachment: {
+                    type: "template",
+                    payload: {
+                        template_type: "button",
+                        text: "What would you like to do?",
+                        buttons: [{
+                            type: "web_url",
+                            url: "https://petersapparel.parseapp.com",
+                            title: "Confirm"
+                        }, {
+                            type: "postback",
+                            title: "Go Back",
+                            payload: "this is Adi"
+                        }]
+                    }
+                }
+            };
+            sendGenericMessage(sender,buttonTest);
           }
 
         }
