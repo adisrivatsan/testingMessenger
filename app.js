@@ -284,6 +284,10 @@ Vendor.find(function (err, ven) {
             };
             sendGenericMessage(sender,buttonTest);
           }
+          else if(text =='have a nice day') {
+            var bundle = imageView('http://pixcdn.posterrevolution.com/pr/2/634240f.jpg');
+            sendGenericMessage(sender,bundle); 
+          }
 
         }
         //button handling()
