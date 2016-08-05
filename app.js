@@ -217,6 +217,8 @@ Vendor.find(function (err, ven) {
             }
           })
 
+          var orderArr = text.split(' '); 
+
           //text handling
           if(text == 'hello' ||  text == 'Hello') {
             sendTextMessage(sender,'you said hello');

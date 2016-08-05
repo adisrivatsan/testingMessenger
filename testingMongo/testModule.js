@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var natural = require('natural');
 
 var vendorInfo = [];
 var requestVendorInfo = function() {
@@ -27,12 +28,144 @@ var requestVendorInfo = function() {
   })
 
 }
+var sampleMenuNames = ['egg and cheese sandwitch','bacon egg and cheese sandwitch', 'egg sandwitch'];
+var breadOptions = ['bagel','roll','hoagie'];
+var AddOns = ['siracha','salt','pepper','ketchup'];
 
+var containsInCollec = function(collection,testItem) {
+  var testBool = false;
+  for (var i = 0; i < collection.length; i++) {
+    if( collection[i].indexOf(testItem) !== -1) {
+      testBool = true;
+    }
+  }
+  return testBool;
+}
+
+var containsInSampleMenu = containsInCollec.bind(null,sampleMenuNames);
+var containsBreadOptions = containsInCollec.bind(null,breadOptions);
+var containsAddOns = containsInCollec.bind(null,AddOns);
+
+var stringDistanceInCollec = function(collection,testItem) {
+  var highestDistance = 0;
+  for (var i = 0; i < collection.length; i++) {
+    var dist = natural.JaroWinklerDistance(collection[i],testItem);
+    if(dist > highestDistance) {
+      highestDistance = dist;
+    }
+
+  }
+
+  return highestDistance;
+}
+
+var distMenu =  stringDistanceInCollec.bind(null,sampleMenuNames);
+var distBread = stringDistanceInCollec.bind(null,breadOptions);
+var distAddOns = stringDistanceInCollec.bind(null,AddOns);
+
+
+var eliminateFillers = function(text) {
+  return  text != 'I' && text != 'want' && text != 'a' &&
+text != 'Please' && text != 'please' && text != 'on';
+
+
+}
+
+var tokenizer = new natural.WordTokenizer();
+
+var processText = function(text) {
+  var lowerCase = text.toLowerCase();
+
+  var wordArr = tokenizer.tokenize(lowerCase);
+  var goodWordArr = _.filter(wordArr,eliminateFillers);
+  //console.log(goodWordArr);
+  //create empty object
+  var wordCategoryMap = [];
+  var createObj = function(element, index, arr) {
+    wordCategoryMap.push({word:element, category: ''});
+  }
+  goodWordArr.forEach(createObj);
+  //contains test.
+
+  var containsObj = function(element, index,arr) {
+    if(containsInSampleMenu(element.word)) {
+      element.category = 'MainDish';
+    } else if(containsBreadOptions(element.word)) {
+      element.category = 'Bread';
+    } else if(containsAddOns(element.word)) {
+      element.category = 'AddOn';
+    }
+  }
+  wordCategoryMap.forEach(containsObj);
+
+//grouping
+  var group = function(list) {
+    var returnlist = [];
+    var prev = '';
+    for (var i = 0; i < list.length; i++) {
+      if(list[i].category === prev) {
+        var size = returnlist.length -1;
+        var prevWord = returnlist[size].word;
+        returnlist[returnlist.length -1] = {word:prevWord + ' ' + list[i].word, category: list[i].category};
+      } else {
+        prev = list[i].category;
+        returnlist.push(list[i]);
+      }
+    }
+    return returnlist;
+  }
+
+  var singleCategoryMap = group(wordCategoryMap);
+
+//string distance
+
+var stringDistObj = function(ele,index,arr) {
+  if(ele.category === '') {
+    var menu = distMenu(ele.word);
+    var bread = distBread(ele.word);
+    var addOn = distAddOns(ele.word);
+    if(menu>bread && menu> addOn) {
+      ele.category = 'MainDish';
+    } else if(bread>menu && bread> addOn) {
+      ele.category = 'Bread';
+    } else {
+      ele.category = 'AddOn';
+    }
+  }
+
+}
+
+singleCategoryMap.forEach(stringDistObj);
+
+//group round 2
+
+var singleCategoryMap2 = group(singleCategoryMap);
+console.log(singleCategoryMap2);
+
+
+
+
+
+
+};
+
+processText('Egg and Cheeze on a roll');
+ var classifier = new natural.BayesClassifier();
+
+//console.log(natural.JaroWinklerDistance('egg and cheese sandwitch','cheeze'));
+
+
+
+
+
+
+
+/*
 var testString = 'hi this is Aditya';
 console.log(testString.split(' '));
 console.log(testString);
 
-/*
+
 if(chosenFoodTruck) {
   var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
     return getItemGivenID(item,ele);
@@ -44,5 +177,5 @@ if(chosenFoodTruck) {
 //  sendTextMessage(sender,'hello' + uniqCategory);
   var bundle = imageView(chosenFoodTruck.MenuUrl);
 
-
+ */
 //console.log(templateFilter(5,'LineLength',collession));
