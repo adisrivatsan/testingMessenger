@@ -123,7 +123,7 @@ var getCustomerGivenSenderID = function(collection,senderID) {
 //importing files and Views
 var singleFoodView = require('./Views/singleFoodView');
 var multiFoodTruckView = require('./Views/MultiFoodTruckView');
-//var rView = require('./Views/recietView');
+var rView = require('./Views/recietView');
 //var singleRView = require('./Views/singleFoodRecietView');
 //var readyCheckout = require('./Views/readToCheckOut');
 var pictureModule = require('./PagePicture/write.js');
@@ -135,7 +135,7 @@ var singleItemView = require('./Views/singleItemView');
 var imageView = require('./Views/sampleImageView');
 var webIntroView = require('./Views/introViewWeb');
 var introView = require('./Views/introView2');
-
+var menuObj = [{Name:'Pizza', Price:5.5}, {Name:'Egg and Cheese', Price:2.5}];
 
 //data set up.
 
@@ -261,6 +261,8 @@ Vendor.find(function (err, ven) {
           } // sample pictures for web site
           else if(text=='intro') {
             sendGenericMessage(sender,webIntroView);
+          } else if(text === 'reciept') {
+            var bundle = rView(menuObj,'CheckOut'); 
           }
 
         }
