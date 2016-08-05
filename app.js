@@ -24,7 +24,7 @@ app.get("/", function (req,res) {
 
  //views
 
-var introView = require('./Views/introView2');
+
 var arrFunc = require('./sendingMessages/templateSend');
 
 //functions: to be added to.
@@ -120,7 +120,7 @@ var getCustomerGivenSenderID = function(collection,senderID) {
    res.send('Error, wrong validation token');
  })
 
-//importing files
+//importing files and Views
 var singleFoodView = require('./Views/singleFoodView');
 var multiFoodTruckView = require('./Views/MultiFoodTruckView');
 //var rView = require('./Views/recietView');
@@ -133,6 +133,9 @@ var categoryView = require('./Views/categoryView');
 var flexiblePropertyView = require('./Views/FlexiblePropertyView');
 var singleItemView = require('./Views/singleItemView');
 var imageView = require('./Views/sampleImageView');
+var webIntroView = require('./Views/introViewWeb');
+var introView = require('./Views/introView2');
+
 
 //data set up.
 
@@ -217,7 +220,8 @@ Vendor.find(function (err, ven) {
             }
           })
 
-          var orderArr = text.split(' '); 
+          var orderArr = text.split(' ');
+
 
           //text handling
           if(text == 'hello' ||  text == 'Hello') {
@@ -254,6 +258,9 @@ Vendor.find(function (err, ven) {
              sendTextMessage(sender, 'senderID' + senderRecord.CurrSender);
              sendTextMessage(sender, 'food truck' + senderRecord.foodTruck);
 
+          } // sample pictures for web site
+          else if(text=='intro') {
+            sendGenericMessage(sender,webIntroView);
           }
 
         }
