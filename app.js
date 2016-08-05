@@ -307,8 +307,8 @@ Vendor.find(function (err, ven) {
 
 
               sendAsyncGeneric(sender,bundle,
-                sendMessageAsync(sender, 'type in your order. Example Order and format:',
-              sendMessageAsync(sender, '2 veggie sandwitches with siracha, salt and pepper',function() {
+                sendMessageAsync(sender, 'type in your order number and your sides numbers, separated by spaces.',
+              sendMessageAsync(sender, 'Ex: 15 27 28',function() {
                 if(!custCurrentFoodTruck.CurrSender) {
                   custCurrentFoodTruck.push({CurrSender:sender,foodTruck:chosenFoodTruck._id});
 
