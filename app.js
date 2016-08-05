@@ -262,7 +262,8 @@ Vendor.find(function (err, ven) {
           else if(text=='intro') {
             sendGenericMessage(sender,webIntroView);
           } else if(text === 'reciept') {
-            var bundle = rView(menuObj,'CheckOut'); 
+            var bundle = rView(menuObj,'CheckOut');
+            sendGenericMessage(sender,bundle); 
           }
 
         }
