@@ -260,9 +260,20 @@ Vendor.find(function (err, ven) {
                 if(item) {
                   return item;
                 } else {
-                  
+                  return num;
                 }
             })
+            var addonArr = [];
+            for (var z = 0; z < selectedItems.length; z++) {
+              var singleItem = selectedItems[z];
+              if(singleItem.PossibleAddOns) {
+                addonArr = singleItem.PossibleAddOns;
+              } else {
+                selectedItems[z] = _.find(addonArr,function(num) {
+                  return num.MenuNumber === singleItem;
+                })
+              }
+            }
             var bundle = rView(selectItems,'testName');
             sendGenericMessage(sender,bundle);
           }

@@ -140,7 +140,7 @@ singleCategoryMap.forEach(stringDistObj);
 //group round 2
 
 var singleCategoryMap2 = group(singleCategoryMap);
-console.log(singleCategoryMap2);
+//console.log(singleCategoryMap2);
 
 
 
@@ -151,6 +151,7 @@ console.log(singleCategoryMap2);
 
 processText('Egg and Cheeze on a roll');
  var classifier = new natural.BayesClassifier();
+
 
 //console.log(natural.JaroWinklerDistance('egg and cheese sandwitch','cheeze'));
 
