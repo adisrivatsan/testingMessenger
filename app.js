@@ -246,7 +246,22 @@ Vendor.find(function (err, ven) {
           else if(record) {
             var foodTruckText = getFTGivenID(ven,record.foodTruck);
             sendTextMessage(sender,'in food truck' + foodTruckText.VendorName);
+            var itemMenu = _.map(foodTruckText.Menu,function(ele) {
+              return getItemGivenID(item,ele);
+            })
+            var listOfNumbers = text.split(' ');
+            var getMenuItemGivenNumber = function(number) {
+              return _.find(itemMenu,function(elem) {
+                return elem.ItemMenuNumber === number;
+              })
+            }
+            var selectItems = _.map(listOfNumbers,function(num) {
+              return getMenuItemGivenNumber(num);
+            })
+            var bundle = rView(selectItems,'testName');
+            sendGenericMessage(sender,bundle); 
           }
+
            else if(foodTruckCuisine.length !=0) {
             var mdata = multiFoodTruckView(foodTruckCuisine);
             sendGenericMessage(sender,mdata);

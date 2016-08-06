@@ -5,7 +5,6 @@ var messageData = {
               "template_type": "generic",
               "elements": [{
                   "title": 'What would you like Today?',
-                //  "subtitle": "Click to see our options",
                   "image_url": 'https://imagesdb.herokuapp.com/ft3',
                   "buttons": [{
                       "type": "postback",
