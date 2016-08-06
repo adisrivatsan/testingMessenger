@@ -112,7 +112,7 @@ var getCustomerGivenSenderID = function(collection,senderID) {
 
 
 //
-//messenger bot set up 
+//messenger bot set up
  app.get('/webhook/', function (req, res) {
    if (req.query['hub.verify_token'] === '<validation_token>') {
      res.send(req.query['hub.challenge']);
@@ -245,7 +245,7 @@ Vendor.find(function (err, ven) {
           }
           else if(record) {
             var foodTruckText = getFTGivenID(ven,record.foodTruck);
-            sendTextMessage(sender,'in food truck' + foodTruckText.VendorName);
+            //sendTextMessage(sender,'in food truck' + foodTruckText.VendorName);
             var itemMenu = _.map(foodTruckText.Menu,function(ele) {
               return getItemGivenID(item,ele);
             })
@@ -264,12 +264,12 @@ Vendor.find(function (err, ven) {
                 }
             })
             var addonArr = [];
-            for (var z = 0; z < selectedItems.length; z++) {
-              var singleItem = selectedItems[z];
+            for (var z = 0; z < selectItems.length; z++) {
+              var singleItem = selectItems[z];
               if(singleItem.PossibleAddOns) {
                 addonArr = singleItem.PossibleAddOns;
               } else {
-                selectedItems[z] = _.find(addonArr,function(num) {
+                selectItems[z] = _.find(addonArr,function(num) {
                   return num.MenuNumber === singleItem;
                 })
               }
