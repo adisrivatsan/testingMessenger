@@ -263,6 +263,8 @@ Vendor.find(function (err, ven) {
                   return num;
                 }
             })
+            console.log('ahhhhhhhh'); 
+            console.log(selectItems);
             var addonArr = [];
             for (var z = 0; z < selectItems.length; z++) {
               var singleItem = selectItems[z];
@@ -275,7 +277,7 @@ Vendor.find(function (err, ven) {
               }
             }
             var bundle = rView(selectItems,'testName');
-            sendGenericMessage(sender,bundle);
+            //sendGenericMessage(sender,bundle);
           }
 
            else if(foodTruckCuisine.length !=0) {
