@@ -10,7 +10,7 @@ var ItemSchema = mongoose.Schema({
       Category: String, //category of food that this item is in
       PossibleAddOns: [{
         Name: String, //name of Add On
-        Price: String, //price of Add On
+        Price: Number, //price of Add On
         Description: String, //description of Add On
         MenuNumber:String
       }],

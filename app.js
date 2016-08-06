@@ -278,7 +278,7 @@ Vendor.find(function (err, ven) {
             console.log('ahhhhhhhh');
             console.log(selectItems);
             var bundle = rView(selectItems,'testName');
-            //sendGenericMessage(sender,bundle);
+            sendGenericMessage(sender,bundle);
           }
 
            else if(foodTruckCuisine.length !=0) {
