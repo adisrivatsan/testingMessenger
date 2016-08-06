@@ -12,7 +12,8 @@ var ItemSchema = mongoose.Schema({
         Name: String, //name of Add On
         Price: String, //price of Add On
         Description: String //description of Add On
-      }]
+      }],
+      ItemMenuNumber: String
   })
 
 module.exports = ItemSchema;

@@ -214,13 +214,18 @@ Vendor.find(function (err, ven) {
           var foodTruckCuisine = cuisine(text);
           var select = getFTGivenName(ven,text);
 
+          var record = _.find(custCurrentFoodTruck,function(num) {
+            return num.CurrSender === sender;
+          })
+
+
           geocoder.geocode(text,function(err,data) {
             if(!err) {
 
             }
           })
 
-          var orderArr = text.split(' ');
+
 
 
           //text handling
@@ -237,7 +242,12 @@ Vendor.find(function (err, ven) {
 
               sendGenericMessage(sender,bundle);
               //inSingleFoodTruck = true;
-          } else if(foodTruckCuisine.length !=0) {
+          }
+          else if(record) {
+            var foodTruckText = getFTGivenID(record.foodTruck);
+            sendTextMessage(sender,'in food truck' + foodTruckText.VendorName); 
+          }
+           else if(foodTruckCuisine.length !=0) {
             var mdata = multiFoodTruckView(foodTruckCuisine);
             sendGenericMessage(sender,mdata);
           } else if(text ==='saveCustomer') {
@@ -286,10 +296,16 @@ Vendor.find(function (err, ven) {
           }
           else if(text =='have a nice day') {
             var bundle = imageView('http://pixcdn.posterrevolution.com/pr/2/634240f.jpg');
-            sendGenericMessage(sender,bundle); 
+            sendGenericMessage(sender,bundle);
           }
 
         }
+
+
+
+
+
+
         //button handling()
         else if(event.postback) {
 
