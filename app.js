@@ -244,8 +244,8 @@ Vendor.find(function (err, ven) {
               //inSingleFoodTruck = true;
           }
           else if(record) {
-            var foodTruckText = getFTGivenID(record.foodTruck);
-            sendTextMessage(sender,'in food truck' + foodTruckText.VendorName); 
+            var foodTruckText = getFTGivenID(ven,record.foodTruck);
+            sendTextMessage(sender,'in food truck' + foodTruckText.VendorName);
           }
            else if(foodTruckCuisine.length !=0) {
             var mdata = multiFoodTruckView(foodTruckCuisine);
