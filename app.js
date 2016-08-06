@@ -197,7 +197,7 @@ Vendor.find(function (err, ven) {
             SenderID:sender
           });
           newCust.save(); //save
-        } */
+        } */ //yes
 
 
 
