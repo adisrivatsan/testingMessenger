@@ -111,7 +111,7 @@ var getCustomerGivenSenderID = function(collection,senderID) {
 
 
 
-
+//
 //messenger bot set up
  app.get('/webhook/', function (req, res) {
    if (req.query['hub.verify_token'] === '<validation_token>') {
