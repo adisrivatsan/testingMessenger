@@ -11,7 +11,8 @@ var ItemSchema = mongoose.Schema({
       PossibleAddOns: [{
         Name: String, //name of Add On
         Price: String, //price of Add On
-        Description: String //description of Add On
+        Description: String, //description of Add On
+        MenuNumber:String
       }],
       ItemMenuNumber: String
   })

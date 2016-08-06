@@ -256,10 +256,15 @@ Vendor.find(function (err, ven) {
               })
             }
             var selectItems = _.map(listOfNumbers,function(num) {
-              return getMenuItemGivenNumber(num);
+              var item = getMenuItemGivenNumber(num);
+                if(item) {
+                  return item;
+                } else {
+                  
+                }
             })
             var bundle = rView(selectItems,'testName');
-            sendGenericMessage(sender,bundle); 
+            sendGenericMessage(sender,bundle);
           }
 
            else if(foodTruckCuisine.length !=0) {
