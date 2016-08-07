@@ -120,10 +120,10 @@ var getCustomerGivenSenderID = function(collection,senderID) {
    res.send('Error, wrong validation token');
  })
 
- //greeting test
+ //greeting test 
 
  request.post("https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADwfLzJvdoBAGM95GFRfHevcU4LiARXDc91sUGuqTZA6EvtS0nf76gdOUOQ996nqKDrBhwVclB2Sd7IAfnbK3zoCZBrbyL1ZAZBuwmsCuqXfZACx6jGI6LRnixvNXzAP6gcIA0YHPYSWlUZCxRGDvsAcORYZAKIoLmOJYyXhpbzQZDZD").form(
-   {setting_type:'greeting',greeting:{text:'hello welcome to fly by'}}); 
+   {setting_type:'greeting',greeting:{text:'hello welcome to fly by'}});
 
 //importing files and Views
 var singleFoodView = require('./Views/singleFoodView');
