@@ -277,6 +277,12 @@ Vendor.find(function (err, ven) {
             }
             //console.log('ahhhhhhhh');
             //console.log(selectItems);
+            selectItems = _.filter(selectItems, function(el) {
+              return el != 'undefined'; 
+            })
+            var namesOfItems = _.map(selectItems,function(num) {
+              return num.Name;
+            })
             var bundle = rView(selectItems,'testName');
             sendGenericMessage(sender,bundle);
             var decisionButton = {
