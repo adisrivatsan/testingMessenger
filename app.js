@@ -120,7 +120,7 @@ var getCustomerGivenSenderID = function(collection,senderID) {
    res.send('Error, wrong validation token');
  })
 
- //greeting test 
+ //greeting test
 
  request.post("https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAADwfLzJvdoBAGM95GFRfHevcU4LiARXDc91sUGuqTZA6EvtS0nf76gdOUOQ996nqKDrBhwVclB2Sd7IAfnbK3zoCZBrbyL1ZAZBuwmsCuqXfZACx6jGI6LRnixvNXzAP6gcIA0YHPYSWlUZCxRGDvsAcORYZAKIoLmOJYyXhpbzQZDZD").form(
    {setting_type:'greeting',greeting:{text:'hello welcome to fly by'}});
@@ -496,8 +496,10 @@ Vendor.find(function (err, ven) {
             var mdata = multiFoodTruckView(ven);
             sendGenericMessage(sender,mdata);
 
-          }
-          else if(payload=='TRated') {
+          } else if(payload ==='Welcome') {
+            sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Parachute...Cut the line at Food Trucks near you');
+            sendGenericMessage(sender, introView);
+          } else if(payload=='TRated') {
 
             var mdata = multiFoodTruckView(ven);
             sendGenericMessage(sender,mdata);
