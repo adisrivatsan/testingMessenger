@@ -188,7 +188,7 @@ Vendor.find(function (err, ven) {
         event = messaging_events[i];
         console.log('event ' + event);
         sender = event.sender.id;
-        sendTextMessage(sender,sender); 
+
         var nameArray = getNameArray(ven);
         var thisCustomer = getCustomerGivenSenderID(cus,sender);
 
@@ -359,6 +359,8 @@ Vendor.find(function (err, ven) {
             sendGenericMessage(sender,bundle);
           }
 
+        } else if(text==='user profile info') {
+          
         }
 
 
