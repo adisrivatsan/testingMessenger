@@ -196,16 +196,7 @@ Vendor.find(function (err, ven) {
 
         var nameArray = getNameArray(ven);
         var thisCustomer = getCustomerGivenSenderID(cus,sender);
-
-        /*if(!thisCustomer) {
-          var newCust = new Customer({
-            SenderID:sender
-          });
-          newCust.save(); //save
-        } */ //yes
-
-
-
+        console.log('in message'); 
 
         //listening for text
         if (event.message && event.message.text) {
