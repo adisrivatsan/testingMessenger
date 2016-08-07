@@ -196,7 +196,7 @@ Vendor.find(function (err, ven) {
 
         var nameArray = getNameArray(ven);
         var thisCustomer = getCustomerGivenSenderID(cus,sender);
-        console.log('in message'); 
+        console.log('in message');
 
         //listening for text
         if (event.message && event.message.text) {
@@ -353,16 +353,11 @@ Vendor.find(function (err, ven) {
           else if(text =='have a nice day') {
             var bundle = imageView('http://pixcdn.posterrevolution.com/pr/2/634240f.jpg');
             sendGenericMessage(sender,bundle);
-          }
-
-        } else if(text==='user profile info') {
+          } else if(text==='user profile info') {
 
         }
 
-
-
-
-
+      }
 
         //button handling()
         else if(event.postback) {
