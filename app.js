@@ -188,7 +188,7 @@ Vendor.find(function (err, ven) {
         event = messaging_events[i];
         console.log('event ' + event);
         sender = event.sender.id;
-
+        sendTextMessage(sender,sender); 
         var nameArray = getNameArray(ven);
         var thisCustomer = getCustomerGivenSenderID(cus,sender);
 
@@ -278,7 +278,7 @@ Vendor.find(function (err, ven) {
             //console.log('ahhhhhhhh');
             //console.log(selectItems);
             selectItems = _.filter(selectItems, function(el) {
-              return el != 'undefined'; 
+              return el != 'undefined';
             })
             var namesOfItems = _.map(selectItems,function(num) {
               return num.Name;
