@@ -275,10 +275,30 @@ Vendor.find(function (err, ven) {
                 })
               }
             }
-            console.log('ahhhhhhhh');
-            console.log(selectItems);
+            //console.log('ahhhhhhhh');
+            //console.log(selectItems);
             var bundle = rView(selectItems,'testName');
             sendGenericMessage(sender,bundle);
+            var decisionButton = {
+                attachment: {
+                    type: "template",
+                    payload: {
+                        template_type: "button",
+                        text: "What would you like to do?",
+                        buttons: [{
+                            type: "postback",
+                            title: "Confirm",
+                            payload: "Confirm"
+                        }, {
+                            type: "postback",
+                            title: "Go Back",
+                            payload: "GBack"
+                        }]
+                    }
+                }
+            };
+            sendGenericMessage(sender,decisionButton);
+
           }
 
            else if(foodTruckCuisine.length !=0) {
