@@ -494,70 +494,7 @@ Vendor.find(function (err, ven) {
             //chosenFoodTruck = {};
           }
           else if(payload==='ReEnter') {
-            if(record) {
-              var foodTruckText = getFTGivenID(ven,record.foodTruck);
-
-              var itemMenu = _.map(foodTruckText.Menu,function(ele) {
-                return getItemGivenID(item,ele);
-              })
-              var listOfNumbers = text.split(' ');
-              var getMenuItemGivenNumber = function(number) {
-                return _.find(itemMenu,function(elem) {
-                  return elem.ItemMenuNumber === number;
-                })
-              }
-              var selectItems = _.map(listOfNumbers,function(num) {
-                var item = getMenuItemGivenNumber(num);
-                  if(item) {
-                    return item;
-                  } else {
-                    return num;
-                  }
-              })
-
-              var addonArr = [];
-              for (var z = 0; z < selectItems.length; z++) {
-                var singleItem = selectItems[z];
-                if(singleItem.PossibleAddOns) {
-                  addonArr = singleItem.PossibleAddOns;
-                } else {
-                  selectItems[z] = _.find(addonArr,function(num) {
-                    return num.MenuNumber === singleItem;
-                  })
-                }
-              }
-              //console.log('ahhhhhhhh');
-              //console.log(selectItems);
-              selectItems = _.filter(selectItems, function(el) {
-                return typeof el != 'undefined';
-              })
-              var namesOfItems = _.map(selectItems,function(num) {
-                return num.Name;
-              })
-              var bundle = rView(selectItems,'testName');
-              sendGenericMessage(sender,bundle);
-              var decisionButton = {
-                  attachment: {
-                      type: "template",
-                      payload: {
-                          template_type: "button",
-                          text: "What would you like to do?",
-                          buttons: [{
-                              type: "postback",
-                              title: "Confirm",
-                              payload: "Confirm"
-                          }, {
-                              type: "postback",
-                              title: "Re-enter order",
-                              payload: "ReEnter"
-                          }]
-                      }
-                  }
-              };
-              sendGenericMessage(sender,decisionButton);
-            }
-
-
+            sendTextMessage('Please Re-enter your order'); 
           }
 
         }
