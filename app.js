@@ -493,8 +493,8 @@ Vendor.find(function (err, ven) {
             sendGenericMessage(sender,view);
             //chosenFoodTruck = {};
           }
-          else if(payload==='ReEnter') {
-            sendTextMessage('Please Re-enter your order'); 
+          else if(payload =='ReEnter') {
+            sendTextMessage('Please Re-enter your order');
           }
 
         }
