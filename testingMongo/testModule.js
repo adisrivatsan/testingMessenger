@@ -153,10 +153,7 @@ var singleCategoryMap2 = group(singleCategoryMap);
 //processText('Egg and Cheeze on a roll');
  var classifier = new natural.BayesClassifier();
 
-request('https://graph.facebook.com/v2.6/1153726861387033?access_token=EAADwfLzJvdoBAGM95GFRfHevcU4LiARXDc91sUGuqTZA6EvtS0nf76gdOUOQ996nqKDrBhwVclB2Sd7IAfnbK3zoCZBrbyL1ZAZBuwmsCuqXfZACx6jGI6LRnixvNXzAP6gcIA0YHPYSWlUZCxRGDvsAcORYZAKIoLmOJYyXhpbzQZDZD',function(err,res,body) {
-  //console.log(err);
-  console.log(res.body.split(':'));
-})
+
 
 //console.log(natural.JaroWinklerDistance('egg and cheese sandwitch','cheeze'));
 

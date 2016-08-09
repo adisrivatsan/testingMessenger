@@ -274,7 +274,7 @@ Vendor.find(function (err, ven) {
             //console.log('ahhhhhhhh');
             //console.log(selectItems);
             selectItems = _.filter(selectItems, function(el) {
-              return el != 'undefined';
+              return typeof el != 'undefined';
             })
             var namesOfItems = _.map(selectItems,function(num) {
               return num.Name;
@@ -293,7 +293,7 @@ Vendor.find(function (err, ven) {
                             payload: "Confirm"
                         }, {
                             type: "postback",
-                            title: "Go Back",
+                            title: "Re-enter order",
                             payload: "GBack"
                         }]
                     }
