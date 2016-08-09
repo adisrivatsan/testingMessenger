@@ -188,19 +188,20 @@ Vendor.find(function (err, ven) {
 
       //Loops through all the user messages
       for (i = 0; i < messaging_events.length; i++) {
+
         event = messaging_events[i];
         console.log('event ' + event);
         sender = event.sender.id;
-
+        sendTextMessage(sender,'respond'); 
         var nameArray = getNameArray(ven);
         var thisCustomer = getCustomerGivenSenderID(cus,sender);
-        console.log('in message');
+        //console.log('in message');
 
         //listening for text
         if (event.message && event.message.text) {
           text = event.message.text;
           //console.log(event.message.seq);
-          sendTextMessage(sender,text); 
+
           // given list of food truck will get names of all food trucks
 
         //  sendTextMessage(sender,'name: ' + thisCustomer.FirstName);
