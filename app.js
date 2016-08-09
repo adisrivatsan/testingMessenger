@@ -521,7 +521,8 @@ Vendor.find(function (err, ven) {
               }
             }
             var message = confirmItem[2];
-            sendTextMessage(sender, message); 
+            var foodTruck = getFTGivenID(ven,confirmItem[1]);
+            sendTextMessage(sender, foodTruck.VendorName);
             sendGenericMessage(sender,buttonData);
           } else if(payload === 'Venmo') {
             sendTextMessage(sender,"You're good to go");
