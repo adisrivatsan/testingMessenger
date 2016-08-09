@@ -495,6 +495,27 @@ Vendor.find(function (err, ven) {
           }
           else if(payload =='ReEnter') {
             sendTextMessage(sender,'Please Re-enter your order');
+          } else if(payload === 'Confirm') {
+            sendTextMessage(sender, 'Please select your payment method');
+            var buttonData = {
+              attachment: {
+                  type: "template",
+                  payload: {
+                      template_type: "button",
+                      text: "Payment Method",
+                      buttons: [{
+                          type: "postback",
+                          title: "Enter Credit Card",
+                          payload: "Stripe"
+                      }, {
+                          type: "postback",
+                          title: "Venmo",
+                          payload: "Venmo"
+                      }]
+                  }
+              }
+            }
+            sendGenericMessage(sender,buttonData); 
           }
 
         }
