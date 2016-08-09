@@ -268,6 +268,7 @@ Vendor.find(function (err, ven) {
             var namesOfItems = _.map(selectItems,function(num) {
               return num.Name;
             })
+            var namesString = namesOfItems.toString();
             var bundle = rView(selectItems,'testName');
             sendGenericMessage(sender,bundle);
             var decisionButton = {
@@ -279,7 +280,7 @@ Vendor.find(function (err, ven) {
                         buttons: [{
                             type: "postback",
                             title: "Confirm",
-                            payload: "Confirm"
+                            payload: "Confirm" + "*(11)"+ record.foodTruck + "*(11)" + namesString
                         }, {
                             type: "postback",
                             title: "Re-enter order",
@@ -378,6 +379,10 @@ Vendor.find(function (err, ven) {
           var addOnId = addonItem[0];
           var addOnFT = addonItem[1];
           var addonOGItem = addonItem[2];
+
+          //confirm
+          var confirmItem = payload.split('*(11)');
+          var conf = confirmItem[0];
 
           //geting the Menu
           if(specification == 'Menu') {
@@ -495,7 +500,7 @@ Vendor.find(function (err, ven) {
           }
           else if(payload =='ReEnter') {
             sendTextMessage(sender,'Please Re-enter your order');
-          } else if(payload === 'Confirm') {
+          } else if(conf === 'Confirm') {
             sendTextMessage(sender, 'Please select your payment method');
             var buttonData = {
               attachment: {
@@ -515,7 +520,12 @@ Vendor.find(function (err, ven) {
                   }
               }
             }
-            sendGenericMessage(sender,buttonData); 
+            var message = confirmItem[2];
+            sendTextMessage(sender, message); 
+            sendGenericMessage(sender,buttonData);
+          } else if(payload === 'Venmo') {
+            sendTextMessage(sender,"You're good to go");
+
           }
 
         }
