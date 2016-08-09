@@ -186,8 +186,6 @@ Vendor.find(function (err, ven) {
     app.post('/webhook/', function (req, res) {
       var messaging_events = req.body.entry[0].messaging;
 
-
-
       //Loops through all the user messages
       for (i = 0; i < messaging_events.length; i++) {
         event = messaging_events[i];
@@ -202,7 +200,7 @@ Vendor.find(function (err, ven) {
         if (event.message && event.message.text) {
           text = event.message.text;
           //console.log(event.message.seq);
-
+          sendTextMessage(sender,text); 
           // given list of food truck will get names of all food trucks
 
         //  sendTextMessage(sender,'name: ' + thisCustomer.FirstName);
@@ -343,9 +341,7 @@ Vendor.find(function (err, ven) {
           else if(text =='have a nice day') {
             var bundle = imageView('http://pixcdn.posterrevolution.com/pr/2/634240f.jpg');
             sendGenericMessage(sender,bundle);
-          } else if(text==='user profile info') {
-
-        }
+          }
 
       }
 
