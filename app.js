@@ -201,7 +201,7 @@ Vendor.find(function (err, ven) {
         //listening for text
         if (event.message && event.message.text) {
           text = event.message.text;
-          console.log(event.message.seq);
+          //console.log(event.message.seq);
 
           // given list of food truck will get names of all food trucks
 
@@ -213,16 +213,6 @@ Vendor.find(function (err, ven) {
           var record = _.find(custCurrentFoodTruck,function(num) {
             return num.CurrSender === sender;
           })
-
-
-          geocoder.geocode(text,function(err,data) {
-            if(!err) {
-
-            }
-          })
-
-
-
 
           //text handling
           if(text == 'hello' ||  text == 'Hello') {
