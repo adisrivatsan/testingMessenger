@@ -192,7 +192,7 @@ Vendor.find(function (err, ven) {
         event = messaging_events[i];
         console.log('event ' + event);
         sender = event.sender.id;
-        sendTextMessage(sender,'respond'); 
+        
         var nameArray = getNameArray(ven);
         var thisCustomer = getCustomerGivenSenderID(cus,sender);
         //console.log('in message');
