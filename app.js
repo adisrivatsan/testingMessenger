@@ -494,7 +494,7 @@ Vendor.find(function (err, ven) {
             //chosenFoodTruck = {};
           }
           else if(payload =='ReEnter') {
-            sendTextMessage('Please Re-enter your order');
+            sendTextMessage(sender,'Please Re-enter your order');
           }
 
         }
