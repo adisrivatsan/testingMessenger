@@ -266,7 +266,7 @@ Vendor.find(function (err, ven) {
             selectItems = _.filter(selectItems, function(el) {
               return typeof el != 'undefined';
             })
-            if(beforeSelect !== selectItems) {
+            if(beforeSelect.length !== selectItems.length) {
               sendTextMessage(sender, 'there was a potential error in your order. Consider re-entering your order');
             }
             var namesOfItems = _.map(selectItems,function(num) {
