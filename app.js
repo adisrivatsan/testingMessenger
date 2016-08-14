@@ -262,9 +262,13 @@ Vendor.find(function (err, ven) {
             }
             //console.log('ahhhhhhhh');
             //console.log(selectItems);
+            var beforeSelect = selectItems;
             selectItems = _.filter(selectItems, function(el) {
               return typeof el != 'undefined';
             })
+            if(beforeSelect !== selectItems) {
+              sendTextMessage(sender, 'there was a potential error in your order. Consider re-entering your order');
+            }
             var namesOfItems = _.map(selectItems,function(num) {
               return num.Name;
             })
