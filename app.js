@@ -384,6 +384,11 @@ Vendor.find(function (err, ven) {
           var confirmItem = payload.split('*(11)');
           var conf = confirmItem[0];
 
+          //payment and food truck sending.
+
+          var paymentItem = payload.split('*(12)');
+          var payme = paymentItem[0];
+
           //geting the Menu
           if(specification == 'Menu') {
         //    sendTextMessage(sender,'in menu');
@@ -502,6 +507,8 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'Please Re-enter your order');
           } else if(conf === 'Confirm') {
             sendTextMessage(sender, 'Please select your payment method');
+            var message = confirmItem[2];
+            var foodTruck = getFTGivenID(ven,confirmItem[1]);
             var buttonData = {
               attachment: {
                   type: "template",
@@ -511,22 +518,23 @@ Vendor.find(function (err, ven) {
                       buttons: [{
                           type: "postback",
                           title: "Enter Credit Card",
-                          payload: "Stripe"
+                          payload: "Stripe" + "*(12)" + confirmItem[1] + "*(12)" + confirmItem[2]
                       }, {
                           type: "postback",
                           title: "Venmo",
-                          payload: "Venmo"
+                          payload: "Venmo" + "*(12)" + confirmItem[1] + "*(12)" + confirmItem[2]
                       }]
                   }
               }
             }
-            var message = confirmItem[2];
-            var foodTruck = getFTGivenID(ven,confirmItem[1]);
-            sendTextMessage(sender, foodTruck.VendorName);
-            sendGenericMessage(sender,buttonData);
-          } else if(payload === 'Venmo') {
-            sendTextMessage(sender,"You're good to go");
 
+            //sendTextMessage(sender, foodTruck.VendorName);
+            sendGenericMessage(sender,buttonData);
+          } else if(payme === 'Venmo') {
+            sendTextMessage(sender,"You're good to go");
+            var ft = getFTGivenID(ven,paymentItem[1]);
+            var message = paymentItem[2];
+            sendTextMessage(ft.SenderID,message); 
           }
 
         }
