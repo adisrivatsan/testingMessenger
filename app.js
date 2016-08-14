@@ -487,12 +487,12 @@ Vendor.find(function (err, ven) {
               sendTextMessage(sender,"description: " + select.Description);
               sendGenericMessage(sender,bundle);
               if(!custCurrentFoodTruck.CurrSender) {
-                custCurrentFoodTruck.push({CurrSender:sender,foodTruck:chosenFoodTruck._id});
+                custCurrentFoodTruck.push({CurrSender:sender,foodTruck:select._id});
 
               } else {
                 for (var j = 0; j < custCurrentFoodTruck.length; j++) {
                   if(custCurrentFoodTruck[j].CurrSender === sender) {
-                    custCurrentFoodTruck[j].foodTruck = chosenFoodTruck._id;
+                    custCurrentFoodTruck[j].foodTruck = select._id;
                   }
                 }
               }
