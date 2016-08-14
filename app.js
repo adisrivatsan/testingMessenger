@@ -401,16 +401,7 @@ Vendor.find(function (err, ven) {
               sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'type in your order number and your sides numbers, separated by spaces.',
               sendMessageAsync(sender, 'Ex: 15 27 28',function() {
-                if(!custCurrentFoodTruck.CurrSender) {
-                  custCurrentFoodTruck.push({CurrSender:sender,foodTruck:chosenFoodTruck._id});
 
-                } else {
-                  for (var j = 0; j < custCurrentFoodTruck.length; j++) {
-                    if(custCurrentFoodTruck[j].CurrSender === sender) {
-                      custCurrentFoodTruck[j].foodTruck = chosenFoodTruck._id;
-                    }
-                  }
-                }
               })))
 
           }
@@ -495,6 +486,16 @@ Vendor.find(function (err, ven) {
               var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               sendTextMessage(sender,"description: " + select.Description);
               sendGenericMessage(sender,bundle);
+              if(!custCurrentFoodTruck.CurrSender) {
+                custCurrentFoodTruck.push({CurrSender:sender,foodTruck:chosenFoodTruck._id});
+
+              } else {
+                for (var j = 0; j < custCurrentFoodTruck.length; j++) {
+                  if(custCurrentFoodTruck[j].CurrSender === sender) {
+                    custCurrentFoodTruck[j].foodTruck = chosenFoodTruck._id;
+                  }
+                }
+              }
 
           } else if(payload == 'Order') {
             sendTextMessage(sender, 'Please Type in next order');
@@ -534,7 +535,7 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,"You're good to go");
             var ft = getFTGivenID(ven,paymentItem[1]);
             var message = paymentItem[2];
-            sendTextMessage(ft.SenderID,message); 
+            sendTextMessage(ft.SenderID,message);
           }
 
         }
