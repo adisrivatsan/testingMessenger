@@ -348,6 +348,9 @@ Vendor.find(function (err, ven) {
           else if(text =='have a nice day') {
             var bundle = imageView('http://pixcdn.posterrevolution.com/pr/2/634240f.jpg');
             sendGenericMessage(sender,bundle);
+          } else if(text === 'vendor setup') {
+            console.log('hello this is the vendor!!!!!');
+            console.log(sender); 
           }
 
       }
