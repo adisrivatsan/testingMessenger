@@ -350,7 +350,8 @@ Vendor.find(function (err, ven) {
             sendGenericMessage(sender,bundle);
           } else if(text === 'vendor setup') {
             console.log('hello this is the vendor!!!!!');
-            console.log(sender); 
+            console.log(sender);
+            sendTextMessage(sender,sender);
           }
 
       }
