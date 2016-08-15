@@ -275,7 +275,7 @@ Vendor.find(function (err, ven) {
             var namesString = namesOfItems.toString();
             var bundle = rView(selectItems,'testName');
             sendGenericMessage(sender,bundle);
-            sendTextMessage(sender,'This is your order: ' +namesString);
+            sendTextMessage(sender,'You ordered a ' +namesString);
             var decisionButton = {
                 attachment: {
                     type: "template",
