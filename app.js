@@ -408,8 +408,8 @@ Vendor.find(function (err, ven) {
 
 
               sendAsyncGeneric(sender,bundle,
-                sendMessageAsync(sender, 'type in your order number and your sides numbers, separated by spaces.',
-              sendMessageAsync(sender, 'Ex: 15 27 28',function() {
+                sendMessageAsync(sender, 'To order type in the numbers to the side of the dish you want on the menu...make sure to separate the different dishes by spaces.',
+              sendMessageAsync(sender, 'For example, 1 15 27 gives you a Falafel, a Spinach Pie, and a Burger.',function() {
 
               })))
 
