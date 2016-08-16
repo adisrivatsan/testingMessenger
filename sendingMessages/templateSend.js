@@ -57,7 +57,7 @@ var testVasync = function testasync(sender,messageJson,callback) {
   }).on('response',function(response) {
     callback();
   }).on('error',function(err) {
-    reject();
+
   })
 }
 
@@ -66,7 +66,7 @@ var testMessageAsync = function messageAsync(sender,text,callback) {
   var messageData = {
     text:text
   }
-  return testVasync(sender,messageData,callback);
+   testVasync(sender,messageData,callback);
 }
 
 arrFunc = [sendText,testV,testVasync,testMessageAsync];
