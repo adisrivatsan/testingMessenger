@@ -406,7 +406,7 @@ Vendor.find(function (err, ven) {
             var bundle = imageView(chosenFoodTruck.MenuUrl);
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
 
-              Q.fcall(sendAsyncGeneric(sender,bundle)).then(sendMessageAsync(sender,'hello'));
+              sendAsyncGeneric(sender,bundle).then(sendMessageAsync(sender,'hello'));
               /*sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'To order type in the numbers to the side of the dish you want on the menu...make sure to separate the different dishes by spaces.',
               sendMessageAsync(sender, 'For example, 1 15 27 gives you a Falafel, a Spinach Pie, and a Burger.',function() {
