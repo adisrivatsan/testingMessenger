@@ -66,7 +66,7 @@ var testMessageAsync = function messageAsync(sender,text,callback) {
   var messageData = {
     text:text
   }
-   testVasync(sender,messageData,callback);
+   return testVasync(sender,messageData,callback);
 }
 
 arrFunc = [sendText,testV,testVasync,testMessageAsync];
