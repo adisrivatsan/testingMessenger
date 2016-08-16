@@ -55,9 +55,9 @@ return new Promise(function(fullfill,reject) {
     }
 
   }).on('response',function(response) {
-    fullfill(response);
+    fullfill();
   }).on('error',function(err) {
-    reject(err);
+    reject();
   })
 })
 }
