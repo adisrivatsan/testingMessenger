@@ -157,28 +157,9 @@ var singleCategoryMap2 = group(singleCategoryMap);
 
 //console.log(natural.JaroWinklerDistance('egg and cheese sandwitch','cheeze'));
 
+/*things to do:
+  Stripe pending Bank Account
+  Upgrade everything
+  Populate mongodb
 
-
-
-
-
-
-/*
-var testString = 'hi this is Aditya';
-console.log(testString.split(' '));
-console.log(testString);
-
-
-if(chosenFoodTruck) {
-  var itemMenu = _.map(chosenFoodTruck.Menu,function(ele) {
-    return getItemGivenID(item,ele);
-  })
-  var repeatCategory = _.map(itemMenu,function(ele) {
-    return ele.Category;
-  })
-  var uniqCategory = _.uniq(repeatCategory);
-//  sendTextMessage(sender,'hello' + uniqCategory);
-  var bundle = imageView(chosenFoodTruck.MenuUrl);
-
- */
-//console.log(templateFilter(5,'LineLength',collession));
+*/

@@ -352,6 +352,9 @@ Vendor.find(function (err, ven) {
             console.log('hello this is the vendor!!!!!');
             console.log(sender);
             sendTextMessage(sender,sender);
+          } else if(text ==='picture before text') {
+            var bundle = imageView('https://upload.wikimedia.org/wikipedia/commons/8/8c/JPEG_example_JPG_RIP_025.jpg');
+            sendAsyncGeneric(sender,bundle,'hello');
           }
 
       }
@@ -406,12 +409,12 @@ Vendor.find(function (err, ven) {
             var bundle = imageView(chosenFoodTruck.MenuUrl);
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
 
-              sendAsyncGeneric(sender,bundle,'hello');
-            /*  sendAsyncGeneric(sender,bundle,
+              //sendAsyncGeneric(sender,bundle,'hello');
+              sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'To order type in the numbers to the side of the dish you want on the menu...make sure to separate the different dishes by spaces.',
               sendMessageAsync(sender, 'For example, 1 15 27 gives you a Falafel, a Spinach Pie, and a Burger.',function() {
 
-              }))) */
+              })))
 
           }
 
