@@ -33,6 +33,7 @@ var sendGenericMessage = arrFunc[1];
 var sendAsyncGeneric = arrFunc[2];
 var sendMessageAsync = arrFunc[3];
 var sendTwoMessages = arrFunc[4];
+var sendTwoGenMessages = arrFunc[5];
 
 //to be moved to a different file. Collection needs Name property.
 var getNameArray = function(collection) {
@@ -275,7 +276,7 @@ Vendor.find(function (err, ven) {
             })
             var namesString = namesOfItems.toString();
             var bundle = rView(selectItems,'testName');
-            sendGenericMessage(sender,bundle); // sending reciept
+            //sendGenericMessage(sender,bundle); // sending reciept
             var totalCost = 0;
             for (var i = 0; i < selectItems.length; i++) {
               totalCost =  totalCost + selectItems[i].Price
@@ -299,7 +300,8 @@ Vendor.find(function (err, ven) {
                     }
                 }
             };
-            sendGenericMessage(sender,decisionButton);
+            sendTwoGenMessages(sender,bundle,decisionButton);
+            
 
           }
 
