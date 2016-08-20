@@ -363,7 +363,7 @@ Vendor.find(function (err, ven) {
             var bundle = imageView('https://upload.wikimedia.org/wikipedia/commons/8/8c/JPEG_example_JPG_RIP_025.jpg');
             sendAsyncGeneric(sender,bundle,'hello');
           } else if(text==='get id') {
-            sendTextMessage(sender,sender); 
+            sendTextMessage(sender,sender);
           }
 
       }
@@ -554,6 +554,7 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,"You're good to go");
             var ft = getFTGivenID(ven,paymentItem[1]);
             var message = paymentItem[2];
+            sendTextMessage('10208290039623421',message);
             sendTextMessage(ft.SenderID,message);
           }
 
