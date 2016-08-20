@@ -219,7 +219,7 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'yo baby' + nameArray);
             //sendTextMessage(sender,'yo baby' + getFTGivenName(ven,'Trivano').HourOfOperation);
           } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
-            sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Parachute...Cut the line at Food Trucks near you');
+            sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
             sendGenericMessage(sender, introView);
           } else if(select){
               var bundle = singleFoodView(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
@@ -406,12 +406,12 @@ Vendor.find(function (err, ven) {
             var bundle = imageView(chosenFoodTruck.MenuUrl);
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
 
-              sendAsyncGeneric(sender,bundle,'hello');
-              /*sendAsyncGeneric(sender,bundle,
+              //sendAsyncGeneric(sender,bundle,'hello');
+              sendAsyncGeneric(sender,bundle,
                 sendMessageAsync(sender, 'To order type in the numbers to the side of the dish you want on the menu...make sure to separate the different dishes by spaces.',
               sendMessageAsync(sender, 'For example, 1 15 27 gives you a Falafel, a Spinach Pie, and a Burger.',function() {
 
-              }))) */
+              })))
 
           }
 

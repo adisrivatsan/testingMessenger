@@ -65,7 +65,9 @@ var testVasync = function testasync(sender,messageJson,nextText) {
       json: {
         recipient: {id:sender},
         message: messageData
-    }})
+    }}).on('response',function(res) {
+
+    })
 
   }).on('error',function(err) {
 
