@@ -24,7 +24,7 @@ var recieptFunc = function(menuItems,recipient_name) {
               recipient_name: recipient_name,
               order_number: "300",
               currency: "USD",
-              payment_method: "credit",
+              payment_method: "none",
               elements: food,
               summary: {
                   total_cost: totalPrice
