@@ -301,7 +301,7 @@ Vendor.find(function (err, ven) {
                 }
             };
             sendTwoGenMessages(sender,bundle,decisionButton);
-            
+
 
           }
 
@@ -362,6 +362,8 @@ Vendor.find(function (err, ven) {
           } else if(text ==='picture before text') {
             var bundle = imageView('https://upload.wikimedia.org/wikipedia/commons/8/8c/JPEG_example_JPG_RIP_025.jpg');
             sendAsyncGeneric(sender,bundle,'hello');
+          } else if(text==='get id') {
+            sendTextMessage(sender,sender); 
           }
 
       }
