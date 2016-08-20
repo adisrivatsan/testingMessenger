@@ -32,6 +32,7 @@ var sendTextMessage = arrFunc[0];
 var sendGenericMessage = arrFunc[1];
 var sendAsyncGeneric = arrFunc[2];
 var sendMessageAsync = arrFunc[3];
+var sendTwoMessages = arrFunc[4];
 
 //to be moved to a different file. Collection needs Name property.
 var getNameArray = function(collection) {
@@ -410,11 +411,9 @@ Vendor.find(function (err, ven) {
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
 
               //sendAsyncGeneric(sender,bundle,'hello');
-              sendAsyncGeneric(sender,bundle,
-                sendMessageAsync(sender, 'To order type in the numbers to the side of the dish you want on the menu...make sure to separate the different dishes by spaces.',
-              sendMessageAsync(sender, 'For example, 1 15 27 gives you a Falafel, a Spinach Pie, and a Burger.',function() {
-
-              })))
+              sendTwoMessages(sender,'To order type in the numbers to the side of the dish you want on the menu...make sure to separate the different dishes by spaces.',
+            'For example, 1 15 27 gives you a Falafel, a Spinach Pie, and a Burger.');
+              sendGenericMessage(sender,bundle);
 
           }
 

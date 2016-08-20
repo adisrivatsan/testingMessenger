@@ -74,6 +74,36 @@ var testVasync = function testasync(sender,messageJson,nextText) {
   })
 }
 
+var twoMessages = function twoMessage(sender,firstMessageText,secondMessageText) {
+  var messageData = {
+    text:firstMessageText
+  };
+
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData
+  }}).on('response',function(res) {
+    var messageD = {
+      text:secondMessageText
+    }
+    request({
+      url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+        recipient: {id:sender},
+        message: messageD
+    }}).on('response',function(res) {
+
+    })
+
+  })
+
+}
 
 var testMessageAsync = function messageAsync(sender,text,callback) {
   var messageData = {
@@ -82,5 +112,5 @@ var testMessageAsync = function messageAsync(sender,text,callback) {
    return testVasync(sender,messageData,callback);
 }
 
-arrFunc = [sendText,testV,testVasync,testMessageAsync];
+arrFunc = [sendText,testV,testVasync,testMessageAsync,twoMessages];
 module.exports = arrFunc;
