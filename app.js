@@ -275,8 +275,12 @@ Vendor.find(function (err, ven) {
             })
             var namesString = namesOfItems.toString();
             var bundle = rView(selectItems,'testName');
-            sendGenericMessage(sender,bundle);
-            sendTextMessage(sender,'You ordered a ' +namesString);
+            //sendGenericMessage(sender,bundle); // sending reciept
+            var totalCost = 0;
+            for (var i = 0; i < selectItems.length; i++) {
+              totalCost =  totalCost + selectItems[i].Price
+            }
+            sendTextMessage(sender,'You ordered a ' +namesString + 'this cost a total of ' + totalCost);
             var decisionButton = {
                 attachment: {
                     type: "template",
