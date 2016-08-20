@@ -41,7 +41,7 @@ var multiView = function (farr) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": 'Food Truck Options',
+                    "title": 'Food Trucks',
                     "subtitle": 'Below are a list of food trucks near you',
                     "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
                     "buttons": bArray1

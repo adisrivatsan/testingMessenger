@@ -480,7 +480,7 @@ Vendor.find(function (err, ven) {
             sendGenericMessage(sender,mdata);
 
           } else if(payload ==='Welcome') {
-            sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Parachute...Cut the line at Food Trucks near you');
+            sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
             sendGenericMessage(sender, introView);
           } else if(payload=='TRated') {
 
