@@ -556,7 +556,7 @@ Vendor.find(function (err, ven) {
             var message = paymentItem[2];
             request('https://graph.facebook.com/v2.6/'+ sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAADwfLzJvdoBACmYnIFvxpameqEfoxEsmw0kjZCkZBrQmviWZCjm7OBXoeORS7xZAEfsNu4jAHRjLaKHUGiOkj2IU6NffdyCp14WgucQOpH5XsM2ZCevL4sI3LIiGBVRIHQNij5aQCQaR1zrvLDobzhpgvxkvs9KPvlibKYjXzQZDZD',function(err,res,body) {
               var actualBody = JSON.parse(body);
-              var newMessage = message + ' ' + 'by ' + actualBody.first_name + ' ' +actualBody.last_name;
+              var newMessage = message + ' ' + 'for ' + actualBody.first_name + ' ' +actualBody.last_name;
               sendTextMessage('10208290039623421',newMessage);
               sendTextMessage(sender,newMessage);
             })
