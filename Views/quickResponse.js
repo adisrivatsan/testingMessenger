@@ -1,8 +1,6 @@
 var input = {
-  "recipient":{
-   "id":"USER_ID"
- },
- "message":{
+
+
    "text":"Pick a color:",
    "quick_replies":[
      {
@@ -17,5 +15,5 @@ var input = {
      }
    ]
  }
-}
+
 module.exports = input;
