@@ -9,18 +9,14 @@ var messageData = {
                   "image_url": 'http://wp.streetwise.co/wp-content/uploads//2014/09/unnamed-213.jpg',
                   "buttons": [{
                       "type": "postback",
-                      "title": "Top Rated",
+                      "title": "Food Trucks",
                       "payload":"TRated"
                   }, {
                       "type": "postback",
-                      "title": "Shortest line",
+                      "title": "Restaurants",
                       "payload": "SLine"
-                  }, {
-                      "type": "postback",
-                      "title": "Bang for your buck",
-                      "payload": "BBuck"
                   }],
-              }, {
+              } /*{
                 "title": "Food Type",
                 "image_url": 'http://www.ezyhealth.com/magazine/wp-content/uploads/2015/03/iStock_000046272610_Large.jpg',
                 "buttons": [{
@@ -37,7 +33,7 @@ var messageData = {
                     "payload": "cuisine"
                 }
               ]
-              }],
+            } */],
 
           }
       }
