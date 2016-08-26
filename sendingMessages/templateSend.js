@@ -127,5 +127,20 @@ var testMessageAsync = function messageAsync(sender,text,callback) {
    return testVasync(sender,messageData,callback);
 }
 
-arrFunc = [sendText,testV,testVasync,testMessageAsync,twoMessages,twoGenericMessages];
+var sendPictureBeforeMessage = function sendPictureBeforeMessage(sender,bundle,secondMessage) {
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
+      qs: {access_token:token},
+      method: 'POST',
+      json: {
+        recipient: {id:sender},
+        message: bundle
+    }
+
+  }).on('response',function(response) {
+    sendText(sender,secondMessage);
+  })
+}
+
+arrFunc = [sendText,testV,testVasync,testMessageAsync,twoMessages,twoGenericMessages,sendPictureBeforeMessage];
 module.exports = arrFunc;

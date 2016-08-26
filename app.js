@@ -34,6 +34,7 @@ var sendAsyncGeneric = arrFunc[2];
 var sendMessageAsync = arrFunc[3];
 var sendTwoMessages = arrFunc[4];
 var sendTwoGenMessages = arrFunc[5];
+var sendPictureBeforeMessage = arrFunc[6];
 
 //to be moved to a different file. Collection needs Name property.
 var getNameArray = function(collection) {
@@ -223,6 +224,7 @@ Vendor.find(function (err, ven) {
           } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
             sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
             sendGenericMessage(sender, introView);
+            sendPictureBeforeMessage(sender,introView, 'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
           } else if(select){
               var bundle = singleFoodView(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               //chosenFoodTruck = select;
@@ -558,7 +560,7 @@ Vendor.find(function (err, ven) {
               var actualBody = JSON.parse(body);
               var newMessage = message + ' ' + 'for ' + actualBody.first_name + ' ' +actualBody.last_name;
               sendTextMessage('10208290039623421',newMessage);
-              sendTextMessage(sender,newMessage);
+              sendTextMessage(sender, 'this is the order that will be sent to the vendors' + newMessage);
             })
 
             sendTextMessage(ft.SenderID,message);
