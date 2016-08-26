@@ -142,5 +142,7 @@ var sendPictureBeforeMessage = function sendPictureBeforeMessage(sender,bundle,s
   })
 }
 
+
+
 arrFunc = [sendText,testV,testVasync,testMessageAsync,twoMessages,twoGenericMessages,sendPictureBeforeMessage];
 module.exports = arrFunc;

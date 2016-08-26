@@ -143,6 +143,7 @@ var singleItemView = require('./Views/singleItemView');
 var imageView = require('./Views/sampleImageView');
 var webIntroView = require('./Views/introViewWeb');
 var introView = require('./Views/introView2');
+var quickResponses = require('Views/quickResponses');
 var menuObj = [{Name:'Pizza', Price:5.5}, {Name:'Egg and Cheese', Price:2.5}];
 
 //data set up.
@@ -366,6 +367,8 @@ Vendor.find(function (err, ven) {
             sendAsyncGeneric(sender,bundle,'hello');
           } else if(text==='get id') {
             sendTextMessage(sender,sender);
+          } else if(text==='QuickResponse') {
+            sendGenericMessage(sender,quickResponses);
           }
 
       }
