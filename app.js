@@ -143,7 +143,7 @@ var singleItemView = require('./Views/singleItemView');
 var imageView = require('./Views/sampleImageView');
 var webIntroView = require('./Views/introViewWeb');
 var introView = require('./Views/introView2');
-var quickResponses = require('Views/quickResponses');
+var quickResponses = require('./Views/quickResponse');
 var menuObj = [{Name:'Pizza', Price:5.5}, {Name:'Egg and Cheese', Price:2.5}];
 
 //data set up.

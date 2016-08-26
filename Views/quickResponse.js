@@ -18,3 +18,4 @@ var input = {
    ]
  }
 }
+module.exports = input;
