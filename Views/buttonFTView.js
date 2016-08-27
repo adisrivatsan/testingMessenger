@@ -14,7 +14,7 @@ var multiView = function (farr) {
   }
   var firstFive = [];
 
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 3; i++) {
     firstFive[i] = buttonArr[i];
   }
 
