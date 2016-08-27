@@ -12,7 +12,11 @@ var multiView = function (farr) {
       buttonArr.push(Object.assign({},button));
     }
   }
+  var firstFive = [];
 
+  for (var i = 0; i < 5; i++) {
+    firstFive[i] = buttonArr[i];
+  }
 
   var messageData = {
     attachment: {
@@ -20,7 +24,7 @@ var multiView = function (farr) {
         payload: {
             template_type: "button",
             text: "What do you want to do next?",
-            buttons: buttonArr
+            buttons: firstFive
         }
     }
   }
