@@ -427,8 +427,7 @@ Vendor.find(function (err, ven) {
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
 
               //sendAsyncGeneric(sender,bundle,'hello');
-              sendTwoMessages(sender,'To order type in the numbers to the side of the dish you want on the menu...make sure to separate the different dishes by spaces.',
-            'For example, 1 15 27 gives you a Falafel, a Spinach Pie, and a Burger.');
+              sendTwoMessages(sender,'MUST READ! To order food type in the numbers to side of the dish you want on the menu','Make sure leave spaces between numbers');
               sendGenericMessage(sender,bundle);
 
           }
