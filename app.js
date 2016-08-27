@@ -145,6 +145,8 @@ var webIntroView = require('./Views/introViewWeb');
 var introView = require('./Views/introView2');
 var quickResponses = require('./Views/quickResponse');
 var menuObj = [{Name:'Pizza', Price:5.5}, {Name:'Egg and Cheese', Price:2.5}];
+var buttonFTView = require('./Views/buttonFTView');
+
 
 //data set up.
 
@@ -448,6 +450,7 @@ Vendor.find(function (err, ven) {
             var bundle = flexiblePropertyView(foodInCategory,'Name','_id', 'List Of Items','*(8)' + thisFoodTruck._id,'http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2013/01/sandwiches-2.jpg');
             sendGenericMessage(sender,bundle);
 
+
             //geting single item
           }
           //getting items
@@ -502,6 +505,8 @@ Vendor.find(function (err, ven) {
 
             var mdata = multiFoodTruckView(ven);
             sendGenericMessage(sender,mdata);
+            var bundle2 = buttonFTView(ven);
+            sendGenericMessage(sender,bundle2);
 
           } else if(payload == 'Cuisine') {
             sendTextMessage(sender,'please enter cuisine');

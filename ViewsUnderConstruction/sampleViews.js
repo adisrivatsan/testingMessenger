@@ -66,7 +66,8 @@ var welcomeMessage = function() {
     request(options, function(error, body, response) {
         console.log(error);
     })
-}var buttonTest = {
+}
+var buttonTest = {
     attachment: {
         type: "template",
         payload: {
