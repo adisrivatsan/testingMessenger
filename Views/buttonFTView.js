@@ -23,7 +23,7 @@ var multiView = function (farr) {
         type: "template",
         payload: {
             template_type: "button",
-            text: "What do you want to do next?",
+            text: "Below are a list of food trucks near you",
             buttons: firstFive
         }
     }
