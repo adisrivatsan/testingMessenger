@@ -20,11 +20,7 @@ var multiView = function (farr) {
         payload: {
             template_type: "button",
             text: "What do you want to do next?",
-            buttons: [{
-              type:'postback',
-              title:'Adi',
-              'payload': 'oh yes'
-            }]
+            buttons: buttonArr
         }
     }
   }
