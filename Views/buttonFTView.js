@@ -12,27 +12,6 @@ var multiView = function (farr) {
       buttonArr.push(Object.assign({},button));
     }
   }
-    var bArray1 =[];
-    var bArray2 =[];
-    var bArray3 =[];
-    for (var i = 0; i < buttonArr.length; i++) {
-      if(bArray1.length === 0) {
-        bArray1.push(buttonArr[i]);
-      } else if (bArray2.length === 0) {
-        bArray2.push(buttonArr[i]);
-      } else if (bArray3.length === 0) {
-        bArray3.push(buttonArr[i]);
-      } else if(bArray1.length <= 2) {
-        bArray1.push(buttonArr[i]);
-      } else if (bArray2.length <= 2) {
-        bArray2.push(buttonArr[i]);
-      } else if (bArray3.length <=2) {
-        bArray3.push(buttonArr[i]);
-      }
-
-    }
-
-
 
 
   var messageData = {
@@ -41,7 +20,11 @@ var multiView = function (farr) {
         payload: {
             template_type: "button",
             text: "What do you want to do next?",
-            buttons: [buttonArr]
+            buttons: [{
+              type:'postback',
+              title:'Adi',
+              'payload': 'oh yes'
+            }]
         }
     }
   }
