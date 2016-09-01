@@ -15,6 +15,7 @@ var recieptFunc = function(menuItems,recipient_name) {
     }
   }
   getFood();
+  totalPrice = totalPrice + totalPrice*0.029 + 0.3;
 
   var recieptTest = {
       attachment: {
