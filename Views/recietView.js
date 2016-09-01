@@ -13,7 +13,7 @@ var recieptFunc = function(menuItems,recipient_name) {
       totalPrice = totalPrice + menuItems[i].Price;
       food.push(Object.assign({},sampleObj));
     }
-    totalPrice = totalPrice + totalPrice*0.029 + 0.3;
+  //  totalPrice = totalPrice + totalPrice*0.029 + 0.3;
   }
   getFood();
 
