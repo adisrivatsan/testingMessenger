@@ -503,7 +503,7 @@ Vendor.find(function (err, ven) {
           } else if(payload=='TRated') {
 
             var mdata = multiFoodTruckView(ven);
-            sendGenericMessage(sender,mdata);
+            //sendGenericMessage(sender,mdata);
             var bundle2 = buttonFTView(ven);
             sendGenericMessage(sender,bundle2);
 
