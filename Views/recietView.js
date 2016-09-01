@@ -10,10 +10,10 @@ var recieptFunc = function(menuItems,recipient_name) {
         price: menuItems[i].Price,
         image_url:'http://thumbs.dreamstime.com/z/thank-you-choosing-us-banner-design-over-white-background-46977269.jpg'
       }
-      totalPrice = totalPrice + menuItems[i].Price;
+      totalPrice = totalPrice + menuItems[i].Price +  menuItems[i].Price * 0.023 + 0.3;
       food.push(Object.assign({},sampleObj));
     }
-  totalPrice = totalPrice + (totalPrice*0.029 + 0.3);
+
   }
   getFood();
 
