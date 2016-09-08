@@ -587,7 +587,5 @@ Vendor.find(function (err, ven) {
 
 
 
-
-
  app.listen(port);
  console.log("listening on port " + port);
