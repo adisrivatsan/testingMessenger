@@ -11,6 +11,10 @@ var Q = require('q');
 var mongoose = require('mongoose');
 var geocoder = require('geocoder');
 var asyncron = require('async');
+var accountSid = 'ACe60909964695d26924a27005264b4cd9';
+var authToken = 'd9dc915fd6997692310e1a4ed0cc4a41';
+
+var client = require('twilio')(accountSid, authToken);
 
 mongoose.connect('mongodb://adisri:srivatsan21@ds015194.mlab.com:15194/heroku_d8nx0g82');
 
@@ -567,11 +571,19 @@ Vendor.find(function (err, ven) {
             request('https://graph.facebook.com/v2.6/'+ sender + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAADwfLzJvdoBACmYnIFvxpameqEfoxEsmw0kjZCkZBrQmviWZCjm7OBXoeORS7xZAEfsNu4jAHRjLaKHUGiOkj2IU6NffdyCp14WgucQOpH5XsM2ZCevL4sI3LIiGBVRIHQNij5aQCQaR1zrvLDobzhpgvxkvs9KPvlibKYjXzQZDZD',function(err,res,body) {
               var actualBody = JSON.parse(body);
               var newMessage = message + ' ' + 'for ' + actualBody.first_name + ' ' +actualBody.last_name;
-              sendTextMessage('10208290039623421',newMessage);
-              sendTextMessage(sender, 'this is the order that will be sent to the vendors' + newMessage);
+              //sendTextMessage('10208290039623421',newMessage);
+              //sendTextMessage(sender, 'this is the order that will be sent to the vendors' + newMessage);
+              client.messages.create({
+                to: '+19737236258',
+                from: '+19733556212',
+                body: newMessage,
+              }, function (err, message) {
+
+                console.log('working hello');
+              });
             })
 
-            sendTextMessage(ft.SenderID,message);
+            //sendTextMessage(ft.SenderID,message);
           }
 
         }
