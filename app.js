@@ -291,7 +291,7 @@ Vendor.find(function (err, ven) {
             for (var i = 0; i < selectItems.length; i++) {
               totalCost =  totalCost + selectItems[i].Price
             }
-            sendTextMessage(sender,'You ordered a ' +namesString);
+            sendTextMessage(sender,'You ordered a ' +text);
             var decisionButton = {
                 attachment: {
                     type: "template",
