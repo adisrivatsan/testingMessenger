@@ -577,7 +577,7 @@ Vendor.find(function (err, ven) {
               client.messages.create({
                 to: '+19737236258',
                 from: '+19733556212',
-                body: newMessage,
+                body: 'newMessage',
               }, function (err, message) {
 
                 console.log('working hello');
