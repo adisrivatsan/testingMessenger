@@ -301,7 +301,7 @@ Vendor.find(function (err, ven) {
                         buttons: [{
                             type: "postback",
                             title: "Confirm",
-                            payload: "Confirm" + "*(11)"+ record.foodTruck + "*(11)" + namesString
+                            payload: "Confirm" + "*(11)"+ record.foodTruck + "*(11)" + text
                         }, {
                             type: "postback",
                             title: "Re-enter order",
