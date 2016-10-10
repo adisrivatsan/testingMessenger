@@ -229,7 +229,7 @@ Vendor.find(function (err, ven) {
             sendTextMessage(sender,'yo baby' + nameArray);
             //sendTextMessage(sender,'yo baby' + getFTGivenName(ven,'Trivano').HourOfOperation);
           } else if(text == 'hey' || text == 'welcome'|| text == 'Welcome') {
-          //  sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
+           sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
             //sendGenericMessage(sender, introView);
           //  sendPictureBeforeMessage(sender,introView, 'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
             sendPictureTwoMessage(sender,introView,'Looking to order food', 'We can help cut the line at places near you.');
@@ -455,7 +455,7 @@ Vendor.find(function (err, ven) {
             sendGenericMessage(sender,bundle);
 
 
-            //geting single item
+
           }
           //getting items
           else if(itemTruckId) {
