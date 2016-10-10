@@ -8,7 +8,7 @@ var sendText = function sendTextMessage(sender, text) {
     text:text
   }
   request({
-    url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAHCy4whhMSmljNMKZBWt1q785KOLcQcAOKCWRc0qaiGnCm4t8bSwYxVwMtDP5owoKiA1QjtKT2ZBdg9jx1yBRnDYhBD2nB0B0XSzIOaQQ4krjxm20VaQZAwb0LRTPZCS2H54DPK8XINYwHhF4lok1cVr5Yr3fAZDZD',
+    url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAFVaEPFXuHBT65tZCGLhTBQ34g4kKVCrj7ypgJeZCtXYpV0ZAGoSlZAWjqZA9KK4ylPAVuZBA4MTHtTXPDZAESmhuf02ARcusQnjdrKHeqeHNgO81WXAZAZC4zQB9c3U9fHkLVuGEndshHvkKasbNYeeCb5z4ZAAnv3InXi4kBa4mD',
     qs: {access_token:token},
     method: 'POST',
     json: {
