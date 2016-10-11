@@ -8,7 +8,7 @@ var sendText = function sendTextMessage(sender, text) {
     text:text
   }
   request({
-    url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAADwfLzJvdoBAFVaEPFXuHBT65tZCGLhTBQ34g4kKVCrj7ypgJeZCtXYpV0ZAGoSlZAWjqZA9KK4ylPAVuZBA4MTHtTXPDZAESmhuf02ARcusQnjdrKHeqeHNgO81WXAZAZC4zQB9c3U9fHkLVuGEndshHvkKasbNYeeCb5z4ZAAnv3InXi4kBa4mDEEEEEE',
+    url: 'https://graph.facebook.com/v2.6/me/messages?access_token=HEY',
     qs: {access_token:token},
     method: 'POST',
     json: {
@@ -16,6 +16,7 @@ var sendText = function sendTextMessage(sender, text) {
       message: messageData,
     }
   }, function(error, response, body) {
+    console.log("in this")
     if (error) {
       console.log('Error sending message: ', error);
     } else if (response.body.error) {
