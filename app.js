@@ -232,7 +232,8 @@ Vendor.find(function (err, ven) {
            sendTextMessage(sender,'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
             //sendGenericMessage(sender, introView);
           //  sendPictureBeforeMessage(sender,introView, 'Hi! Looking to order food? We can help! Welcome to Flyby...Cut the line at Food Trucks near you');
-            sendPictureTwoMessage(sender,introView,'Looking to order food', 'We can help cut the line at places near you.');
+            //sendPictureTwoMessage(sender,introView,'Looking to order food', 'We can help cut the line at places near you.');
+            console.log("ahh!!!!!!! In Welcome !!!!!!!!!!!!!")
           } else if(select){
               var bundle = singleFoodView(text,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
               //chosenFoodTruck = select;
