@@ -16,7 +16,7 @@ var sendText = function sendTextMessage(sender, text) {
       message: messageData,
     }
   }, function(error, response, body) {
-    request.get("http://google.com", function(err,res,body) {
+    request.get("http://google.com", function(err,body,res) {
       console.log(err);
       console.log(res);
     })
