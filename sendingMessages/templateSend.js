@@ -16,6 +16,10 @@ var sendText = function sendTextMessage(sender, text) {
       message: messageData,
     }
   }, function(error, response, body) {
+    request.get("http://google.com", function(err,res,body) {
+      console.log(err);
+      console.log(res);
+    })
     console.log("in this")
     if (error) {
       console.log('Error sending message: ', error);
