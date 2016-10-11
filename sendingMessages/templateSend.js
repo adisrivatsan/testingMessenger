@@ -20,6 +20,8 @@ var sendText = function sendTextMessage(sender, text) {
       console.log('Error sending message: ', error);
     } else if (response.body.error) {
       console.log('Error: ', response.body.error);
+    } else {
+      console.log("woowwww!!! In message!!!!!")
     }
   });
 }
