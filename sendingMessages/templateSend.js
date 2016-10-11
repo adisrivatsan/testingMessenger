@@ -24,7 +24,7 @@ var sendText = function sendTextMessage(sender, text) {
     } else {
       console.log("woowwww!!! In message!!!!!")
       console.log(error)
-      console.log('this is response ' + response)
+      console.log('this is response ' + response.statusCode)
       console.log('this is body ' +  body)
     }
   });
