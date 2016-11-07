@@ -10,7 +10,7 @@ var messageData = {
                   "buttons": [{
                       "type": "postback",
                       "title": "Food Trucks",
-                      "payload":"TRated"
+                      "payload":"BBuck"
                   }, {
                       "type": "postback",
                       "title": "Restaurants",

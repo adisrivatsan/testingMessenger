@@ -430,7 +430,7 @@ Vendor.find(function (err, ven) {
         //    sendTextMessage(sender,'in menu');
 
             var chosenFoodTruck = getFTGivenID(ven,id);
-            var bundle = imageView(chosenFoodTruck.MenuUrl);
+            var bundle = imageView("http://www.downtownmarket1.com/images/sandwich_menu.jpg");
           //  sendTextMessage(sender,chosenFoodTruck.VendorName);
 
               //sendAsyncGeneric(sender,bundle,'hello');
