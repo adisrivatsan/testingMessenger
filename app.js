@@ -519,7 +519,7 @@ Vendor.find(function (err, ven) {
 
 
           } else if(select) {
-              var bundle = singleFoodView(select,'http://static1.squarespace.com/static/530440fee4b0c7c348bab85a/t/538ff27fe4b00e487bcaaab6/1401942655441/');
+              var bundle = singleFoodView(select,'https://c1.staticflickr.com/3/2260/4509543084_a70fd652fe_b.jpg');
               //sendTextMessage(sender,"description: " + select.Description);
               sendGenericMessage(sender,bundle);
               if(!custCurrentFoodTruck.CurrSender) {
