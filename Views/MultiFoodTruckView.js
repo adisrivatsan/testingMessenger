@@ -42,15 +42,15 @@ var multiView = function (farr) {
                 "template_type": "generic",
                 "elements": [{
                     "title": 'Below are a list of food trucks near you',
-                    "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
+                    "image_url": 'http://foodtruckempire.com/wp-content/uploads/line-of-trucks.png',
                     "buttons": bArray1
                 },{
                   "title": 'Food Truck Options',
-                  "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
+                  "image_url": 'http://foodtruckempire.com/wp-content/uploads/line-of-trucks.png',
                   "buttons": bArray2
                 }, {
                     "title": 'Food Truck Options',
-                    "image_url": 'http://www.hoodmart.com/blog/images/food-truck-line.jpg',
+                    "image_url": 'http://foodtruckempire.com/wp-content/uploads/line-of-trucks.png',
                     "buttons": bArray3
                   }],
 
